@@ -75,5 +75,5 @@ HEALTHCHECK CMD curl -f http://localhost -A "HealthCheck" || exit 1
 # Set console entry path
 WORKDIR /htdocs
 
-EXPOSE 8080 8443
+EXPOSE 8080
 CMD ["docker-entrypoint.sh"]

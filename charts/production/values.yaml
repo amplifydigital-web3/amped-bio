@@ -9,7 +9,7 @@ nameOverride: ''
 fullnameOverride: ''
 
 image:
-  repository: ndau/onelink
+  repository: npaymelabs/onelink
   pullPolicy: Always
   tag: latest
   # pullPolicy: IfNotPresent
