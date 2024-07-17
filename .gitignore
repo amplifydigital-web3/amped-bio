@@ -1,8 +1,6 @@
 /assets/favicon/icons
 
-/linkstack/node_modules
-linkstack/node_modules
-node_modules
+**/node_modules
 
 /linkstack/vendor
 linkstack/vendor

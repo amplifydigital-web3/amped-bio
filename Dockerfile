@@ -45,7 +45,7 @@ RUN cd /htdocs && composer install --no-interaction
 
 RUN cd /htdocs && npm i 
 RUN cd /htdocs && npm run dev
-RUN mkdir /htdocs/js/components
+RUN mkdir -p /htdocs/js/components
 RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
 # RUN npm run production
 
