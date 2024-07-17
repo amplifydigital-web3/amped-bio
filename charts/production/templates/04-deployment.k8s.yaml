@@ -1,0 +1,140 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fullname" . }}
+  labels:
+    {{- include "labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ template "serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP       
+          env:
+            - name: ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: ENVIRONMENT
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: LOG_LEVEL
+            - name: SERVER_ADMIN
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: SERVER_ADMIN
+            - name: HTTP_SERVER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: HTTP_SERVER_NAME
+            - name: HTTPS_SERVER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: HTTPS_SERVER_NAME
+            - name: TZ
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: TZ
+            - name: PHP_MEMORY_LIMIT
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: PHP_MEMORY_LIMIT
+            - name: UPLOAD_MAX_FILESIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: onelink-config
+                  key: UPLOAD_MAX_FILESIZE
+            # - name: DB_DATABASE
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: onelink
+            #       key: DB_DATABASE
+            # - name: DB_HOST
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: onelink
+            #       key: DB_HOST
+            # - name: DB_PORT
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: onelink
+            #       key: DB_PORT
+            # - name: DB_USERNAME
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: onelink
+            #       key: DB_USERNAME
+            # - name: DB_PASSWORD
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: onelink
+            #       key: DB_PASSWORD
+          volumeMounts:
+            # - name: onelink-pvc
+            #   subPath: db
+            #   mountPath: /db 
+            - name: config
+              subPath: env.conf
+              mountPath: /htdocs/.env
+{{- if hasKey .Values "livenessProbe" }}
+          livenessProbe:
+{{ toYaml .Values.livenessProbe | trim | indent 12 }}
+{{- end }}
+{{- if hasKey .Values "readinessProbe" }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe | trim | indent 12 }}
+{{- end }}
+{{- if hasKey .Values "resources" }}
+          resources:
+{{ toYaml .Values.resources | nindent 12 }}
+{{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.volumes }}
+      volumes:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}

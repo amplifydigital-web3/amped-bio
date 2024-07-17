@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  linkstack:
+    hostname: 'linkstack'
+    image: 'ndau/onelink:latest'
+    environment:
+      TZ: 'Europe/Berlin'
+      SERVER_ADMIN: 'admin@example.com'
+      HTTP_SERVER_NAME: 'example.com'
+      HTTPS_SERVER_NAME: 'example.com'
+      LOG_LEVEL: 'info'
+      PHP_MEMORY_LIMIT: '256M'
+      UPLOAD_MAX_FILESIZE: '8M'
+    volumes:
+      - '/htdocs'
+    ports:
+      - '8080:80'
+      - '8081:443'
+    restart: unless-stopped
+    user: apache:apache
+    # read_only: true
+    depends_on:
+      - mysql
+    links:
+      - mysql
+  mysql:
+    image: mysql:8
+    environment:
+        MYSQL_ROOT_PASSWORD: xeFgUGb5mPPn5q2d
+    ports:
+        - 3306:3306
