@@ -42,7 +42,7 @@ CREATE TABLE `buttons` (
 
 CREATE TABLE `failed_jobs` (
   `id` int(11) NOT NULL AUTO_INCREMENT, 
-  `uuid` varchar(1024) not null, 
+  `uuid` varchar(255) not null, 
   `connection` text not null, 
   `queue` text not null, 
   `payload` text not null, 
@@ -139,7 +139,7 @@ CREATE TABLE `social_accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `provider_name` varchar(1024) DEFAULT NULL,
-  `provider_id` varchar(1024) DEFAULT NULL,
+  `provider_id` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
