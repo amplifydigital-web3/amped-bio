@@ -14,7 +14,7 @@
    @include('linkstack.modules.share-button')
    @include('linkstack.modules.report-icon')
    <div class="container">
-      <!--div id="hello-react" style="width: 500px;height: 50px"></div-->
+      <!--div id="connect-react" style="width: 500px;height: 50px"></div-->
       <div class="row">
          <div class="column" style="margin-top: 5%">
             @include('linkstack.elements.avatar')

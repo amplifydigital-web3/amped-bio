@@ -1,6 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
 import Viewer from "@knowins/viewer";
 
 const Spotify = () => {
@@ -19,14 +16,5 @@ const Spotify = () => {
         />
     );
 };
-
-console.log("Run spotify....................");
-if (document.getElementById("spotify-react")) {
-    console.log("Spotify did run ....................");
-    const root = ReactDOM.createRoot(
-        document.getElementById("spotify-react") as HTMLElement
-    );
-    root.render(<Spotify />);
-}
 
 export default Spotify;

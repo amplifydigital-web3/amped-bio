@@ -31,7 +31,7 @@ mix
     // .js("@tanstack/react-query", "public/js")
     // .js("@walletconnect/keyvaluestorage", "public/js")
     // .js("node_modules/@web3modal/wagmi", "public/js")
-    .js("resources/js/components/Hello.tsx", "public/js/components")
+    .js("resources/js/components/Connect.tsx", "public/js/components")
     .js("resources/js/app.js", "public/js")
     .react()
     // .extract(extractLibs)

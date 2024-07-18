@@ -299,7 +299,7 @@ $usrhandl = Auth::user()->littlelink_name;
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
                 <li>
-                  <div id="hello-react"></div>
+                  <div id="connect-react"></div>
                 </li>
                 <li class="me-0 me-xl-2">
                   <div class="dropdown d-flex flex-row align-items-center">
