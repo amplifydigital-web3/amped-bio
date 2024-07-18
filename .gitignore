@@ -1,12 +1,8 @@
 /assets/favicon/icons
 
 **/node_modules
-
-/linkstack/vendor
 linkstack/vendor
-vendor
-
-/public
+linkstack/resources/views/vendor
 public
 
 /public/hot
