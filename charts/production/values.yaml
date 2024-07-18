@@ -14,7 +14,7 @@ image:
   tag: latest
   # pullPolicy: IfNotPresent
   imagePullSecrets:
-    - name: ndau-repo-dockerhub
+    - name: npaymelabs-repo-dockerhub
   # Overrides the image tag whose default is the chart appVersion.
 
 imagePullSecrets: []
@@ -108,9 +108,9 @@ affinity: {}
 
 
 volumes:
-  - name: onelink-pvc
-    persistentVolumeClaim:
-      claimName: onelink-cephfs-pvc
+#  - name: onelink-pvc
+#    persistentVolumeClaim:
+#      claimName: onelink-cephfs-pvc
   - name: config
     configMap:
       name: onelink-config
