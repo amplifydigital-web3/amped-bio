@@ -1,7 +1,7 @@
 const Connect = () => {
   return (
     <>
-      <w3m-button label="Connect Wallet"></w3m-button>
+      <w3m-button label="Sign In with Web3 Wallet"></w3m-button>
     </>
   );
 };

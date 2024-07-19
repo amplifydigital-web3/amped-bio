@@ -152,7 +152,7 @@ $usrhandl = Auth::user()->littlelink_name;
                                 </svg>
                                                          
                             </i>
-                            <span class="item-name">{{__('messages.Add Reward')}}</span>
+                            <span class="item-name">{{__('messages.Add Loyalty Program')}}</span>
                         </a>
                     </li>
                     @if(auth()->user()->role == 'admin')

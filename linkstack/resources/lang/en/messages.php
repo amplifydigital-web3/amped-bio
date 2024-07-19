@@ -157,7 +157,7 @@ return [
 
     'Home' => 'Home',
     'Add Link' => 'Add Link',
-    'Add Reward' => 'Add Reward',
+    'Add Loyalty Program' => 'Add Loyalty Program',
     'Administration' => 'Administration',
     'Admin' => 'Admin',
     'Config' => 'Config',
