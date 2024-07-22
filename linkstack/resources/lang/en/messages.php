@@ -13,6 +13,7 @@ return [
 
     'Log in' => 'Log in',
     'Register' => 'Register',
+    'Claim your OneLink' => 'Claim your OneLink',
 
     'Dashboard' => 'Dashboard',
     'Copyright' => 'Copyright',
