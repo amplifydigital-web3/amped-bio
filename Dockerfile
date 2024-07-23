@@ -72,9 +72,9 @@ COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/
 
 RUN chown -R root:root /var/www/logs
 RUN chown -R root:root /var/log/apache2/
-RUN chmode 777 -R /var/log/apache2/
+RUN chmod 777 -R /var/log/apache2/
 RUN chown -R root:root storage
-RUN chmode 777 -R storage
+RUN chmod 777 -R storage
 
 
 HEALTHCHECK CMD curl -f http://localhost -A "HealthCheck" || exit 1
