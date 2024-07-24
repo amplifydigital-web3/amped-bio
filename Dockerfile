@@ -53,28 +53,29 @@ COPY configs/apache2/httpd.conf /etc/apache2/httpd.conf
 COPY configs/apache2/ssl.conf /etc/apache2/conf.d/ssl.conf
 COPY configs/php/php.ini /etc/php8.2/php.ini
 
-# RUN chown apache:apache /etc/ssl/apache2/server.pem
-# RUN chown apache:apache /etc/ssl/apache2/server.key
+RUN chown apache:apache /etc/ssl/apache2/server.pem
+RUN chown apache:apache /etc/ssl/apache2/server.key
 
-# RUN chown -R apache:apache /htdocs
+RUN chown -R apache:apache /htdocs
 
 # To be removed
-# RUN find /htdocs -type d -print0 | xargs -0 chmod 0755
-# RUN find /htdocs -type f -print0 | xargs -0 chmod 0644
+RUN find /htdocs -type d -print0 | xargs -0 chmod 0755
+RUN find /htdocs -type f -print0 | xargs -0 chmod 0644
 
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/
 
-# RUN chown -R apache:apache /var/www/logs
-# RUN chown -R apache:apache /var/log/apache2/
-# RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
+RUN chown -R apache:apache /var/www/logs
+RUN chown -R apache:apache /var/log/apache2/
+RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
-# USER apache:apache
+USER apache:apache
 
-RUN chown -R root:root /var/www/logs
-RUN chown -R root:root /var/log/apache2/
-RUN chmod 777 -R /var/log/apache2/
-RUN chown -R root:root /htdocs/storage
-RUN chmod 777 -R /htdocs/storage
+# For debugging
+# RUN chown -R root:root /var/www/logs
+# RUN chown -R root:root /var/log/apache2/
+# RUN chmod 777 -R /var/log/apache2/
+# RUN chown -R root:root /htdocs/storage
+# RUN chmod 777 -R /htdocs/storage
 
 
 HEALTHCHECK CMD curl -f http://localhost -A "HealthCheck" || exit 1
