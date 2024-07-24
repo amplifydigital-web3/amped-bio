@@ -59,8 +59,8 @@ RUN chown apache:apache /etc/ssl/apache2/server.key
 RUN chown -R apache:apache /htdocs
 
 # To be removed
-RUN find /htdocs -type d -print0 | xargs -0 chmod 0755
-RUN find /htdocs -type f -print0 | xargs -0 chmod 0644
+# RUN find /htdocs -type d -print0 | xargs -0 chmod 0755
+# RUN find /htdocs -type f -print0 | xargs -0 chmod 0644
 
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/
 

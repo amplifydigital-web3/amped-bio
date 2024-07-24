@@ -1,25 +1,25 @@
 <?php
 
-    /*
-    |--------------------------------------------------------------------------
-    | Traduction réalisée par Cédric Locqueneux - https://www.maison-et-domotique.com
-    |--------------------------------------------------------------------------
-    */
+/*
+|--------------------------------------------------------------------------
+| Traduction réalisée par Cédric Locqueneux - https://www.maison-et-domotique.com
+|--------------------------------------------------------------------------
+ */
 
-return array (
+return array(
 
-    /*
-    |--------------------------------------------------------------------------
-    | Home Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/home.blade.php
-    |
-    */
-    
+  /*
+  |--------------------------------------------------------------------------
+  | Home Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/home.blade.php
+  |
+   */
+
   'Log in' => 'Connexion',
   'Register' => 'Créer un Compte',
-    
+
   'Dashboard' => 'Tableau de bord',
   'Copyright' => 'Copyright',
   'Made with' => 'Réalisé avec',
@@ -31,29 +31,30 @@ return array (
    tous vos liens importants au même endroit</strong> et offrez à votre public une expérience de navigation transparente.</p>
   ',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Demo Page/Home Page Example Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/demo.blade.php
-    |
-    */
-    
+  /*
+  |--------------------------------------------------------------------------
+  | Demo Page/Home Page Example Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/demo.blade.php
+  |
+   */
+
+  'Your Name' => 'Your Name',
   'Example page' => 'Exemple de page',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Pages
-    |--------------------------------------------------------------------------
-    |
-    | Login, Register, Forgot Password, Reset Password etc.
-    | This includes authentication emails like password reset and email verification.
-    | resources/views/auth
-    |
-    */
+  /*
+  |--------------------------------------------------------------------------
+  | Authentication Pages
+  |--------------------------------------------------------------------------
+  |
+  | Login, Register, Forgot Password, Reset Password etc.
+  | This includes authentication emails like password reset and email verification.
+  | resources/views/auth
+  |
+   */
 
-    # Login Page
+  # Login Page
   'Sign In' => 'S\'identifier',
   'Login to stay connected' => 'Connectez-vous pour rester connecté',
   'Email' => 'E-mail',
@@ -64,12 +65,12 @@ return array (
   'Don’t have an account?' => 'Vous n\'avez pas de compte ?',
   'Click here to sign up' => 'Cliquez ici pour vous inscrire',
 
-    # Reset password
+  # Reset password
   'Forgot your password?' => 'Mot de passe oublié?',
   'No problem' => 'Aucun problème. Indiquez-nous simplement votre adresse e-mail et nous vous enverrons par e-mail un lien de réinitialisation de mot de passe qui vous permettra d\'en choisir un nouveau.',
   'Email Password Reset Link' => 'Lien de réinitialisation du mot de passe par e-mail',
 
-    # Register Page
+  # Register Page
   'Sign Up' => 'S\'inscrire',
   'Register to stay connected' => 'Inscrivez-vous pour rester connecté',
   'Display Name' => 'Nom à afficher',
@@ -77,27 +78,24 @@ return array (
   'Already have an account?' => 'Vous avez déjà un compte?',
   'Click here to sign in' => 'Cliquez ici pour vous connecter',
 
-    # Pending verification by admin    
+  # Pending verification by admin
   'Verification Status' => 'Statut de vérification',
   'auth_pending' => 'Votre compte est toujours en attente de vérification',
   'auth_unverified' => 'Votre compte n\'est actuellement pas vérifié et nécessite une vérification manuelle par un administrateur.',
   'Log out' => 'Se déconnecter',
 
-    # Password confirmation
+  # Password confirmation
   'auth_password' => 'Il s\'agit d\'une zone sécurisée de l\'application. Veuillez confirmer votre mot de passe avant de continuer.',
   'Confirm' => 'Confirmer',
 
-
-    # Password Reset
+  # Password Reset
   'Reset Password' => 'Réinitialiser le mot de passe',
   'Enter a new password' => 'Entrez un nouveau mot de passe',
 
-
-    # Test email
+  # Test email
   'Test E-Mail' => 'Tester le courrier électronique',
 
-
-    # Signup notification email
+  # Signup notification email
   'A new user has registered on' => 'Un nouvel utilisateur s\'est inscrit sur',
   'and is awaiting verification' => 'et est en attente de vérification',
   'The user' => 'L\'utilisateur',
@@ -109,22 +107,20 @@ return array (
   'to verify the user' => 'pour vérifier l\'utilisateur.',
   'Manage users' => 'Gérer les utilisateurs',
 
-
-    # Email verification email
+  # Email verification email
   'auth_thanks' => 'Merci pour l\'enregistrement! Avant de commencer, pourriez-vous vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer ? Si vous n\'avez pas reçu l\'e-mail, nous vous en enverrons un autre avec plaisir. Si vous ne voyez pas l\'e-mail dans quelques minutes, vérifiez votre dossier de courrier indésirable ou de spam.',
   'auth_verification' => 'Un nouveau lien de vérification a été envoyé à l\'adresse e-mail que vous avez fournie lors de l\'inscription.',
   'Resend Verification Email' => 'Renvoyer l\'e-mail de vérification',
 
-    
-    /*
-    |--------------------------------------------------------------------------
-    | Styling Slide In
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/layouts/sidebar.blade.php
-    |
-    */
-    
+  /*
+  |--------------------------------------------------------------------------
+  | Styling Slide In
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/layouts/sidebar.blade.php
+  |
+   */
+
   'Settings' => 'Paramètres',
   'Scheme' => 'Eclairage',
   'Auto' => 'Auto',
@@ -145,16 +141,15 @@ return array (
   'Pill One Side' => 'Pilule d\'un côté',
   'Pill All' => 'Pilule des deux côtés',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Site customization
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/site.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Site customization
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/site.blade.php
-    |
-    */
-    
   'Home' => 'Accueil',
   'Add Link' => 'Ajouter un lien',
   'Administration' => 'Administration',
@@ -171,16 +166,15 @@ return array (
   'Favicon' => 'Icône de favori',
   'Home message' => 'Message d\'accueil',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Navbar
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/layouts/sidebar.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Navbar
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/layouts/sidebar.blade.php
-    |
-    */
-    
   'View Page' => 'Voir la page',
   'Share your profile' => 'Partagez votre profil',
   'Share your profile:' => 'Partagez votre profil:',
@@ -192,14 +186,14 @@ return array (
   'QR code could not be generated' => 'Le QR code n\'a pas pu être généré',
   'Reason:' => 'Raison:',
 
-    # QR Code dropdown
+  # QR Code dropdown
   'Close' => 'Fermer',
   'Dismiss' => 'Rejeter',
 
-    # Notification dropdown
+  # Notification dropdown
   'All Notifications' => 'Toutes les notifications',
 
-    # Updater dropdown
+  # Updater dropdown
   'Updater' => 'Mise à jour',
   'Beta Mode' => 'Mode bêta',
   'Local version' => 'Version locale',
@@ -209,7 +203,7 @@ return array (
   'Up to date' => 'À jour',
   'Check again' => 'Revérifier',
 
-    # User section in navbar
+  # User section in navbar
   'Administrator' => 'Administrateur',
   'Verified user' => 'Utilisateur vérifié',
   'User' => 'Utilisateur',
@@ -217,23 +211,22 @@ return array (
   'Styling' => 'Style',
   'Logout' => 'Se déconnecter',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Dashboard Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/index.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Dashboard Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/index.blade.php
-    |
-    */
-
-    # Header with image
+  # Header with image
   'Hi' => 'Salut',
   'stranger' => 'étranger',
   'welcome' => 'Bienvenue sur :appName !',
   'Set a handle' => 'Définir un pseudo',
 
-    # Dashboard Page
+  # Dashboard Page
   'Total Links:' => 'Nombre total de liens :',
   'Link Clicks:' => 'Clics sur le lien :',
   'View/Edit Links' => 'Afficher/Modifier les liens',
@@ -251,17 +244,15 @@ return array (
   'Last 24 hours' => 'Dernières 24 heures',
   'Active users:' => 'Utilisateurs actifs :',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Button Editor
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/studio/button-editor.blade.php
+  |
+   */
 
-    
-    /*
-    |--------------------------------------------------------------------------
-    | Button Editor
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/studio/button-editor.blade.php
-    |
-    */
-    
   'Button Editor' => 'Éditeur de boutons',
   'Back' => 'Retour',
   'Custom Button' => 'Bouton personnalisé',
@@ -291,16 +282,15 @@ return array (
   'Update icon' => 'Mettre à jour l\'icône',
   'See all icons' => 'Voir toutes les icônes',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Edit Link Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/studio/edit-link.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Edit Link Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/studio/edit-link.blade.php
-    |
-    */
-    
   'Edit' => 'Modifier',
   'Add' => 'Ajouter',
   'Block' => 'un Bloc',
@@ -312,16 +302,15 @@ return array (
   'Click to change link blocks' => 'Cliquez pour changer les blocs de liens',
   'Click for a list of available link blocks' => 'Cliquez pour obtenir une liste des blocs disponibles',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Links Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/studio/links.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Links Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/studio/links.blade.php
-    |
-    */
-    
   'My Links' => 'Mes liens',
   'Add new Link' => 'Ajouter un nouveau lien',
   'No Link Added' => 'Vous n\'avez pas encore ajouté de liens.',
@@ -331,23 +320,22 @@ return array (
   'Page Icons' => 'Icônes de la page',
   'Save links' => 'Enregistrer les liens',
 
-    # Tooltips
+  # Tooltips
   'Customize' => 'Personnaliser',
   'Delete' => 'Supprimer',
   'Clear icon cache' => 'Effacer le cache des icônes',
 
   'confirm_delete' => 'Voulez-vous vraiment supprimer :title ?',
 
+  /*
+  |--------------------------------------------------------------------------
+  | "My Profile"/Appearance Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/studio/page.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | "My Profile"/Appearance Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/studio/page.blade.php
-    |
-    */
-    
   'My Profile' => 'Mon profil',
   'Profile Picture' => 'Image de profil',
   'Page URL' => 'L\'URL de la page',
@@ -359,16 +347,15 @@ return array (
   'Show share button' => 'Afficher le bouton de partage',
   'disablesharebutton' => 'Ce paramètre vous permet de masquer le bouton de partage sur votre page.',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Personal Settings Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/studio/profile.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Personal Settings Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/studio/profile.blade.php
-    |
-    */
-    
   'Account Settings' => 'Paramètres du compte',
   'Change email' => 'Changer l\'e-mail',
   'Change password' => 'Changer le mot de passe',
@@ -385,20 +372,19 @@ return array (
   'You are about to delete This action cannot be undone' => 'Vous êtes sur le point de supprimer votre compte ! Cette action ne peut pas être annulée.',
   'Delete account' => 'Supprimer le compte',
 
-    # Alerts
+  # Alerts
   'Profile updated successfully!' => 'Mise à jour du profil réussie!',
   'An error occurred while updating your profile.' => 'Une erreur s\'est produite lors de la mise à jour de votre profil.',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Themes Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/studio/theme.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Themes Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/studio/theme.blade.php
-    |
-    */
-    
   'Select a theme' => 'Sélectionner un thème',
   'Select theme' => 'Sélectionnez un thème',
   'Custom background' => 'Arrière-plan personnalisé',
@@ -411,16 +397,15 @@ return array (
   'Download themes' => 'Télécharger des thèmes',
   'Delete a theme' => 'Supprimer un thème',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Theme Updater
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/studio/theme-updater.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Theme Updater
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/studio/theme-updater.blade.php
-    |
-    */
-    
   'Theme Updater' => 'Mise à jour du thème',
   'Theme name' => 'Nom du thème :',
   'Update status' => 'État de mise à jour:',
@@ -429,80 +414,74 @@ return array (
   'Update manually' => 'Mettre à jour manuellement',
   'Update all themes' => 'Mettre à jour tous les thèmes',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Edit User Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/edit-user.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Edit User Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/edit-user.blade.php
-    |
-    */
-    
   'Edit User' => 'Modifier l\'utilisateur',
   'Logo' => 'Logo',
   'Page description' => 'Description de la page',
   'Role' => 'Rôle',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Links Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/links.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Links Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/links.blade.php
-    |
-    */
-    
   'Title' => 'Titre',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Links Page (Admin)
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/links.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Links Page (Admin)
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/links.blade.php
-    |
-    */
-    
   'Link' => 'Lien',
 
+  /*
+  |--------------------------------------------------------------------------
+  | PHP info Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/phpinfo.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | PHP info Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/phpinfo.blade.php
-    |
-    */
-    
   'Information about PHP’s configuration' => 'Informations sur la configuration de PHP',
   'Outputs information about the current state of PHP' => 'Affiche des informations sur l\'état actuel de PHP',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Delete themes page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/theme.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Delete themes page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/theme.blade.php
-    |
-    */
-    
   'Delete theme' => 'Supprimer le thème',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Manage Users Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/panel/users.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Manage Users Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/panel/users.blade.php
-    |
-    */
-    
   'Users:' => 'Utilisateurs:',
   'Search user' => 'Rechercher un utilisateur',
   'ID' => 'ID',
@@ -518,48 +497,47 @@ return array (
   'Verified' => 'Vérifié',
   'Approved' => 'Approuvé',
   'Add new user' => 'Ajouter un nouvel utilisateur',
-    
-    # Tooltips
+
+  # Tooltips
   'tt.Delete' => 'Supprimer',
   'tt.Impersonate' => 'Prendre l\'identité de cet utilisateur',
   'tt.Edit' => 'Modifier',
   'tt.All links' => 'Tous les liens',
-    
+
   'confirm.delete.user' => 'Voulez-vous vraiment supprimer cet utilisateur ? \\nCette action ne peut pas être annulée !',
 
-    # Date Format
+  # Date Format
   'date.format' => 'd/m/Y',
-    
+
   'days ago' => 'jours avant',
   '1 day ago' => 'il y a 1 jour',
   'Today' => 'Aujourd\'hui',
   '1 year ago' => 'il y a 1 an',
   'years ago' => 'années avant',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Config Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/components/config/
+  | resources/views/panel/config-editor.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Config Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/components/config/
-    | resources/views/panel/config-editor.blade.php
-    |
-    */
-    
   'Advanced Config' => 'Configuration avancée',
   'Take Backup' => 'Faire une sauvegarde',
   'All Backups' => 'Sauvegardes',
   'Diagnosis' => 'Diagnostic',
-    
+
   'Alternative Config Editor' => 'Éditeur de configuration alternatif',
   'Use the Alternative Config Editor to edit the config directly' => 'Utilisez l\'éditeur de configuration alternatif pour modifier directement la configuration',
- 
+
   'PHP info' => 'Informations PHP',
   'Display debugging information about your PHP setup' => 'Afficher des informations de débogage sur votre configuration PHP',
-    
+
   'Jump directly to:' => 'Accédez directement à :',
-    
+
   'Application' => 'Application',
   'Panel settings' => 'Paramètres du panneau',
   'Security' => 'Sécurité',
@@ -568,19 +546,19 @@ return array (
   'Footer links' => 'Liens de pied de page',
   'Debug' => 'Déboguer',
   'Language' => 'Langue',
-    
+
   'default' => 'défaut',
   'Apply' => 'Appliquer',
-    
+
   'AC.description' => 'Permet de modifier l\'interface de votre site. Entre autres choses, ce fichier permet de personnaliser : la page d\'accueil, les liens, les titres, Google Analytics et les balises méta.',
   'Advanced Configuration file.' => 'Fichier de configuration avancée.',
   'Restore defaults' => 'Réinitialiser',
-    
+
   'Backup' => 'Sauvegarde',
   'You can back up your entire instance:' => 'Vous pouvez sauvegarder l\'intégralité de votre instance :',
   'The backup system won’t save more than two backups at a time' => 'Le système de sauvegarde ne sauvegardera pas plus de deux sauvegardes à la fois.',
   'Backup Instance' => 'Sauvegarde de l\'installation',
-    
+
   'wtrue' => 'Tout fonctionne comme prévu !',
   'wfalse' => 'Ce fichier ne peut pas être écrit. Cela peut entraver le bon fonctionnement.',
   'utrue' => 'Votre sécurité est en danger. Ce fichier est accessible à tous. Une action immédiate s\'impose !',
@@ -602,14 +580,14 @@ return array (
   'PHP Extension' => 'Extension PHP',
   'No backups found' => 'Aucune sauvegarde trouvée',
   'Backup your instance' => 'Sauvegardez votre instance',
-    
+
   'Go back' => 'Retour en arrière',
-    
+
   'Strings with a # in front of them are comments and wont affect anything' => 'Les chaînes précédées d\'un # sont des commentaires et n\'affectent rien.',
-  
+
   'Download your updater backups:' => 'Téléchargez vos sauvegardes de mise à jour :',
   'The server will never store more that two backups at a time' => 'Le serveur ne stockera jamais plus de deux sauvegardes à la fois.',
-    
+
   'SMTP.title' => 'Utiliser le serveur SMTP intégré',
   'SMTP.description' => 'Utilise le serveur SMTP fourni par LinkStack. Peut-être pas fiable à 100 %. Doit être désactivé pour pouvoir utiliser un serveur SMTP personnalisé.',
   'SMTP.description.alt' => '(Enregistrer les modifications avec "Appliquer les modifications" ci-dessous)',
@@ -623,10 +601,10 @@ return array (
   'Apply changes' => 'Appliquer les modifications',
   'Test E-Mail setup:' => 'Testez la configuration de l\'e-mail :',
   'Send Test E-Mail' => 'Envoyer un e-mail test',
-    
+
   'Debug.title' => 'Mode débogage',
   'Debug.description' => 'Doit être désactivé dans un environnement de production. Utile pour le débogage lors de l\'installation.',
-    
+
   'DISPLAY_FOOTER_HOME.title' => 'Lien de pied de page d\'accueil',
   'DISPLAY_FOOTER_HOME.description' => 'Activer le lien de pied de page d\'accueil.',
   'REGISTER_AUTH.title' => 'Activer la vérification des e-mails',
@@ -647,7 +625,7 @@ return array (
   'HOME_URL.description' => 'Définissez une page utilisateur comme page d\'accueil. Cela déplacera la page d\'accueil précédente vers example.com/home.',
   'ALLOW_USER_HTML.title' => 'Autoriser la syntaxe étendue dans les descriptions de l\'utilisateur',
   'ALLOW_USER_HTML.description' => 'Cela permet aux utilisateurs d\'utiliser une mise en forme spéciale comme des titres et des liens dans la description de leur page.<br>Cela est généralement considéré comme sûr.',
-'APP_NAME.title' => 'Titre de l\'application',
+  'APP_NAME.title' => 'Titre de l\'application',
   'APP_NAME.description' => 'Définit le titre de votre application. Un changement déconnectera chaque utilisateur actif.',
   'APP_KEY.title' => 'APP_KEY',
   'APP_KEY.description' => 'APP_KEY',
@@ -730,19 +708,18 @@ return array (
   'LOCALE.title' => 'Localisation de l\'application',
   'LOCALE.description' => 'Change la langue de votre application',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Installer
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/installer/installer.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Installer
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/installer/installer.blade.php
-    |
-    */
-
-    # Title Tag
+  # Title Tag
   'LinkStack setup' => 'Configuration de LinkStack',
-    
+
   'Setup LinkStack' => 'Installation de LinkStack',
   'Welcome to the setup for LinkStack!' => 'Bienvenue dans la configuration de LinkStack !',
   'This setup will:' => 'Cette installation va :',
@@ -751,37 +728,37 @@ return array (
   'Create the admin user' => '3. Créer l\'utilisateur administrateur',
   'Configure the app' => '4. Configurer l\'application',
   'Choose a language' => 'Choisissez une langue',
-    
+
   'Next' => 'Suivant',
   'Yes' => 'Oui',
   'No' => 'Non',
   'Finish setup' => 'Terminer la configuration',
-    
+
   'Setup failed' => 'La configuration a échoué',
   'An error has occured. Please try again' => 'Une erreur est survenue. Veuillez réessayer.',
   'Depending on your database type:' => 'Selon votre type de base de données :',
   'Try again' => 'Essayer à nouveau',
-    
+
   'Dependency check' => 'Contrôle des dépendances',
   'Required PHP modules:' => 'Modules PHP requis :',
-    
+
   'Select a database type' => 'Sélectionnez un type de base de données',
   'Under most circumstances, we recommend using SQLite' => 'Dans la plupart des cas, nous vous recommandons d\'utiliser SQLite.',
   'MySQL requires a separate, empty MySQL database' => 'MySQL nécessite une base de données MySQL distincte et vide.',
-    
+
   'Database type:' => 'Type de base de données :',
   'Database host:' => 'Hébergeur de la base de données :',
   'Database port:' => 'Port de la base de données :',
   'Database name:' => 'Nom de la base de données:',
   'Database username:' => 'Nom d\'utilisateur de la base de données :',
   'Database password:' => 'Mot de passe de la base de données :',
-    
+
   'Create an admin account' => 'Création du compte administrateur.',
   'Admin email:' => 'Courriel de l\'administrateur :',
   'Admin password:' => 'Mot de passe administrateur:',
   'Handle:' => 'Pseudo:',
   'Name:' => 'Nom:',
-    
+
   'Configure your page' => 'Configurez votre page',
   'Enable registration:' => 'Activer l\'inscription :',
   'Enable email verification:' => 'Activer la vérification par e-mails :',
@@ -789,29 +766,28 @@ return array (
   'This will move the Home Page to /home' => 'Cela déplacera la page d\'accueil vers /home',
   'App Name:' => 'Nom de l\'application:',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Updater/Update-Backup
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/update.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Updater/Update-Backup
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/update.blade.php
-    |
-    */
-
-    # Title Tag
+  # Title Tag
   'Update LinkStack' => 'Mettre à jour LinkStack',
-    
+
   'Latest beta version' => 'Dernière version bêta',
   'Installed beta version' => 'Version bêta installée',
   'none' => 'aucun',
   'You need to update to the latest mainline release' => 'Vous devez mettre à jour vers la dernière version principale',
   'You’re running the latest mainline release' => 'Vous utilisez la dernière version principale',
-    
+
   'update.manually' => 'Vous pouvez mettre à jour votre installation automatiquement ou télécharger la mise à jour et l\'installer manuellement :',
   'update.windows' => 'Les utilisateurs de Windows peuvent utiliser le programme de mise à jour alternatif. Ce programme de mise à jour ne créera pas de sauvegarde. Utilisez à votre propre discrétion.',
   'Update automatically' => 'Mettre à jour automatiquement',
-    
+
   'Updating' => 'Mise à jour',
   'Creating backup' => 'Création d\'une sauvegarde',
   'Preparing update' => 'Préparation de la mise à jour',
@@ -826,96 +802,93 @@ return array (
   'Error' => 'Erreur',
   'Something went wrong with the update' => 'Quelque chose s\'est mal passé avec la mise à jour',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Backup
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/backup.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Backup
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/backup.blade.php
-    |
-    */
-
-    # Title Tag
+  # Title Tag
   'Backup.title' => 'Sauvegarde',
-    
+
   'The backup was successful' => 'La sauvegarde a réussi, vous pouvez maintenant revenir au panneau d\'administration ou voir toutes vos sauvegardes.',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Page Blocks
+  |--------------------------------------------------------------------------
+  |
+  | Parts are stored in the database.
+  | resources/views/studio/edit-link.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Page Blocks
-    |--------------------------------------------------------------------------
-    |
-    | Parts are stored in the database.
-    | resources/views/studio/edit-link.blade.php
-    |
-    */
-
-    # predefined
+  # predefined
   'block.title.predefined' => 'Site prédéfini',
   'block.description.predefined' => 'Faites votre choix parmi une liste de sites Web prédéfinis et personnalisez automatiquement votre lien en utilisant les couleurs et l\'icône de la marque de ce site.',
 
-    # link
+  # link
   'block.title.link' => 'Lien personnalisé',
   'block.description.link' => 'Créez un lien personnalisé qui mène à n\'importe quel site Web. Personnalisez le style et l\'icône du bouton, ou utilisez le favicon du site Web comme icône du bouton.',
-  
-    # vcard
+
+  # vcard
   'block.title.vcard' => 'Vcard',
   'block.description.vcard' => 'Créez ou téléchargez une carte de visite électronique.',
 
-    # email
+  # email
   'block.title.email' => 'Adresse e-mail',
   'block.description.email' => 'Ajoutez un e-mail qui ouvre une boîte de dialogue système pour composer un nouvel e-mail.',
 
-    # telephone
+  # telephone
   'block.title.telephone' => 'Numéro de téléphone',
   'block.description.telephone' => 'Ajoutez un numéro de téléphone qui ouvre une boîte de dialogue système pour lancer un appel téléphonique.',
 
-    # heading
+  # heading
   'block.title.heading' => 'Titre',
   'block.description.heading' => 'Utilisez des en-têtes pour organiser vos liens et séparez-les en groupes.',
 
-    # spacer
+  # spacer
   'block.title.spacer' => 'Espacement',
   'block.description.spacer' => 'Ajoutez un espace vide à votre liste de liens. Vous pouvez choisir la hauteur.',
 
-    # text
+  # text
   'block.title.text' => 'Texte',
   'block.description.text' => 'Ajoutez du texte statique à votre page qui n\'est pas cliquable.',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Page Items
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/components/pageitems/
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Page Items
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/components/pageitems/
-    |
-    */
-    
   'Default Email' => 'E-mail par défaut',
   'Custom Title' => 'Titre personnalisé',
   'Leave blank for default title' => 'Laissez vide pour le titre par défaut',
   'E-Mail address' => 'Adresse e-mail',
   'Enter your E-Mail' => 'Entrer votre Email',
-    
+
   'Heading Text:' => 'Texte d\'en-tête :',
 
   'URL' => 'URL',
   'Show website icon on button' => 'Afficher l\'icône du site Web sur le bouton',
-    
+
   'Select a predefined site' => 'Sélectionnez un site prédéfini',
   'Enter the link URL' => 'Entrez l\'URL du lien',
-    
+
   'Spacing height' => 'Hauteur d\'espacement',
-    
+
   'Phone' => 'Téléphone',
   'Telephone number' => 'Numéro de téléphone',
   'Enter your telephone number' => 'Entrez votre numéro de téléphone',
-    
+
   'Text to display' => 'Texte à afficher',
-    
+
   'Vcard' => 'Vcard',
   'First Name' => 'Prénom',
   'Middle Name' => 'Deuxième nom',
@@ -940,19 +913,18 @@ return array (
   'Zip/Postal Code' => 'Code postal',
   'Country' => 'Pays',
   'Work Address' => 'Adresse professionnelle',
-    
+
   'URL to the video' => 'URL de la vidéo',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Maintenance Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/mainenance.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Maintenance Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/mainenance.blade.php
-    |
-    */
-    
   'Maintenance Mode' => 'En Cours de Maintenance',
   'We are performing scheduled site maintenance at this time' => 'Nous effectuons actuellement une maintenance planifiée du site.',
   'Please check back with us later' => 'Merci de revenir plus tard.',
@@ -960,16 +932,15 @@ return array (
   'Turn off' => 'Arrêter',
   'Warn.Disable.Maintenance' => 'Vous êtes sur le point de désactiver le mode maintenance. Etes vous sûr?',
 
+  /*
+  |--------------------------------------------------------------------------
+  | LinkStack (Links) Page
+  |--------------------------------------------------------------------------
+  |
+  | resources/views/littlelink.blade.php
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | LinkStack (Links) Page
-    |--------------------------------------------------------------------------
-    |
-    | resources/views/littlelink.blade.php
-    |
-    */
-    
   'Share this page' => 'Partager cette page',
   'Share' => 'Partager',
   'Copy URL to clipboard' => 'Copier l\'URL dans le presse-papiers',
@@ -980,32 +951,32 @@ return array (
   'Search User' => 'Rechercher par utilisateur',
 
   'Edit my profile' => 'Éditer le profil',
-    /*
-    |--------------------------------------------------------------------------
-    | Footer
-    |--------------------------------------------------------------------------
-    |
-    | Added to the bottom of certain pages.
-    | resources/views/layouts/footer.blade.php
-    |
-    */
-    
+  /*
+  |--------------------------------------------------------------------------
+  | Footer
+  |--------------------------------------------------------------------------
+  |
+  | Added to the bottom of certain pages.
+  | resources/views/layouts/footer.blade.php
+  |
+   */
+
   'Learn more about LinkStack' => 'En savoir plus sur LinkStack',
   'Learn more' => 'Plus d\'info',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Notification messages
-    |--------------------------------------------------------------------------
-    |
-    | All internal notifications.
-    | resources/views/layouts/notifications.blade.php
-    |
-    */
-    
+  /*
+  |--------------------------------------------------------------------------
+  | Notification messages
+  |--------------------------------------------------------------------------
+  |
+  | All internal notifications.
+  | resources/views/layouts/notifications.blade.php
+  |
+   */
+
   'No notifications' => 'Aucune notification',
 
-    # Security Risk Notification
+  # Security Risk Notification
   'Your security is at risk!' => 'La sécurité est compromise !',
   'Immediate action is required!' => 'Une action immédiate s\'impose !',
   'security.msg1' => 'La sécurité est compromise.',
@@ -1013,7 +984,7 @@ return array (
   'security.msg3' => 'Certains fichiers importants sont accessibles au public, mettant la sécurité en danger. Veuillez prendre des mesures immédiates pour révoquer l\'accès public à ces fichiers afin d\'empêcher tout accès non autorisé à vos informations sensibles.',
   'security.msg4' => 'Plus d\'info',
 
-    # Help Us Out Notification
+  # Help Us Out Notification
   'Hide this notification' => 'Masquer cette notification',
   'Help Us Out' => 'Aidez-nous',
   'Enjoying Linkstack?' => 'Vous aimez Linkstack ?',
@@ -1025,57 +996,51 @@ return array (
   'support.msg5' => 'd\'apporter une contribution financière</a>, même un petit montant nous aiderait à couvrir les coûts de maintenance et d\'amélioration de Linkstack.',
   'support.msg6' => 'Merci pour votre soutien et de faire partie de la communauté LinkStack !',
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Footer Links
-    |--------------------------------------------------------------------------
-    |
-    */
+  /*
+  |--------------------------------------------------------------------------
+  | Footer Links
+  |--------------------------------------------------------------------------
+  |
+   */
 
   'footer.Home' => 'Accueil',
   'footer.Terms' => 'Conditions',
   'footer.Privacy' => 'Confidentialité',
   'footer.Contact' => 'Contact',
 
+  #=============================================================================#
+  # Laravel internal translations                                               #
+  #=============================================================================#
 
-    #=============================================================================#
-    # Laravel internal translations                                               #
-    #=============================================================================#
+  /*
+  |--------------------------------------------------------------------------
+  | Authentication Language Lines
+  |--------------------------------------------------------------------------
+  |
+  | The following language lines are used during authentication for various
+  | messages that we need to display to the user. You are free to modify
+  | these language lines according to your application's requirements.
+  |
+   */
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-    
   'failed' => 'Ces informations d\'identification ne correspondent pas à nos dossiers.',
   'password' => 'Le mot de passe fourni est incorrect.',
   'throttle' => 'Trop de tentatives de connexion. Veuillez réessayer dans : secondes secondes.',
 
+  /*
+  |--------------------------------------------------------------------------
+  | Pagination Language Lines
+  |--------------------------------------------------------------------------
+  |
+  | The following language lines are used by the paginator library to build
+  | the simple pagination links. You are free to change them to anything
+  | you want to customize your views to better match your application.
+  |
+   */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Pagination Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used by the paginator library to build
-    | the simple pagination links. You are free to change them to anything
-    | you want to customize your views to better match your application.
-    |
-    */
-    
   'previous' => '" Précédent',
   'next' => 'Suivant "',
-  
+
   'Add new link' => 'Ajouter un nouveau lien',
-  
-  
-  
+
 );

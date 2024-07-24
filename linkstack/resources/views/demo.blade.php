@@ -1,4 +1,4 @@
-<?php use App\Models\UserData; ?>
+<?php use App\Models\UserData;?>
 
 <!DOCTYPE html>
 @include('layouts.lang')
@@ -7,28 +7,31 @@
 
   @php $GLOBALS['themeName'] = config('advanced-config.home_theme'); @endphp
   <?php
-  // Theme Config
-  function theme($key){
+// Theme Config
+function theme($key) {
   $key = trim($key);
   $file = base_path('themes/' . $GLOBALS['themeName'] . '/config.php');
-    if (file_exists($file)) {
-      $config = include $file;
+  if (file_exists($file)) {
+    $config = include $file;
     if (isset($config[$key])) {
       return $config[$key];
-  }}
-  return null;}
-  
-  // Theme Custom Asset
-  function themeAsset($path){
+    }
+  }
+  return null;
+}
+
+// Theme Custom Asset
+function themeAsset($path) {
   $path = url('themes/' . $GLOBALS['themeName'] . '/extra/custom-assets/' . $path);
-  return $path;}
-  ?>
+  return $path;
+}
+?>
 
   <!-- Custom icons font-awesome -->
   <script>{!! file_get_contents(base_path("assets/external-dependencies/fontawesome.js")) !!}</script>
   <style>{!! str_replace('../', 'studio/', file_get_contents(base_path("assets/external-dependencies/fontawesome.css"))) !!}</style>
 
-  @include('layouts.fonts') 
+  @include('layouts.fonts')
 
   @if(theme('enable_custom_code') == "true" and theme('enable_custom_head') == "true" and env('ALLOW_CUSTOM_CODE_IN_THEMES') == 'true')@include($GLOBALS['themeName'] . '.extra.custom-head')@endif
 
@@ -87,20 +90,14 @@
     <div class="row">
       <div class="column" style="margin-top: 15%">
 
-        @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
-        <img alt="avatar" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" width="auto" height="128px">
-        @else
-        <div class="logo-container fadein">
-          <img src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo" style="width:150px; height:150px;">
-        </div>
-        @endif
+        <img alt="avatar" src="{{ asset('assets/linkstack/images/user.png') }}" width="auto" height="128px">
 
-        <h1 class="fadein">{{ config('app.name') }}</h1>
+        <h1 class="fadein">{{__('messages.Your Name')}}</h1>
 
 
         <style>.description-parent * {margin-bottom: 1em;}.description-parent {padding-bottom: 30px;}</style>
         <center><div class="fadein description-parent"><p class="fadein">{{__('messages.Example page')}}</p></div></center>
-        
+
         {{-- <!-- Icons -->
         @php $icons = DB::table('links')->where('user_id', $userinfo->id)->where('button_id', 94)->get(); @endphp
         <div class="row fadein social-icon-div">
@@ -110,12 +107,13 @@
         </div> --}}
 
         <!-- Buttons -->
-        <?php function strp($urlStrp){return str_replace(array('http://', 'https://'), '', $urlStrp);} ?>
-        <?php $initial=1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
+        <?php function strp($urlStrp) {return str_replace(array('http://', 'https://'), '', $urlStrp);}?>
+        <?php $initial = 1; // <-- Effectively sets the initial loading time of the buttons. This value should be left at 1. ?>
         @if(config('advanced-config.use_custom_buttons') == 'true')
-                <?php $array = config('advanced-config.buttons'); ?>
+                <?php $array = config('advanced-config.buttons');?>
                 @foreach($array as $button)
                  @php $linkName = str_replace('default ','',$button['button']) @endphp
+                 @php $linkTitle = str_replace('default ','',$button['title']) @endphp
                  @if($button['button'] === "custom" and ($button['custom_css'] === "" or $button['custom_css'] === "NULL") or (theme('allow_custom_buttons') == "false" and $button['button'] === "custom"))
                  <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif >@if($button['icon'] == 'llc')<img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/assets/linkstack/icons\/')}}llc.svg">@else<i style="color: {{$button['icon']}}" class="icon hvr-icon fa {{$button['icon']}}"></i>@endif {{ $button['title'] }}</a></div>
                  @elseif($button['button'] === "custom" and $button['custom_css'] != "")
@@ -127,18 +125,20 @@
                  @elseif($button['button'] === "custom_website" and $button['custom_css'] != "")
                  <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-hover icon-hover" style="{{ $button['custom_css'] }}" rel="noopener noreferrer nofollow" href="{{ $button['link'] }}" @if(theme('open_links_in_same_tab') != "true")target="_blank"@endif ><img alt="button-icon" class="icon hvr-icon" src="@if(file_exists(base_path("assets/favicon/icons/").localIcon($button['id']))){{url('assets/favicon/icons/'.localIcon($button['id']))}}@else{{getFavIcon($button['id'])}}@endif">{{ $button['title'] }}</a></div>
                  @elseif($button['button'] === "space")
-                 <?php 
-                  if (is_numeric($button['title']) and $button['title'] < 10)
-                  echo str_repeat("<br>",$button['title']);
-                  elseif (is_numeric($button['title']) and $button['title'] >= 10)
-                  echo str_repeat("<br>",10);
-                  else
-                  echo "<br><br><br>"
-                  ?>
+                 <?php
+if (is_numeric($button['title']) and $button['title'] < 10) {
+  echo str_repeat("<br>", $button['title']);
+} elseif (is_numeric($button['title']) and $button['title'] >= 10) {
+  echo str_repeat("<br>", 10);
+} else {
+  echo "<br><br><br>"
+  ;
+}
+?>
                  @elseif($button['button'] === "heading")
                  <h2>{{ $button['title'] }}</h2>
                  @else
-                 <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/assets/linkstack/icons\/') . $linkName }}.svg">{{ ucfirst($linkName) }}</a></div>
+                 <div style="--delay: {{ $initial++ }}s" class="button-entrance"><a class="button button-{{ $button['button'] }} button button-hover icon-hover" @if($button['link'] != '') href="{{ $button['link'] }}" target="_blank"@endif><img alt="button-icon" class="icon hvr-icon" src="{{ asset('\/assets/linkstack/icons\/') . $linkName }}.svg">{{ ucfirst($linkTitle) }}</a></div>
                  @endif
                 @endforeach
         @else
@@ -146,7 +146,7 @@
                 <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-twitter button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('assets/linkstack/icons/twitter.svg') }}">Twitter</div></div>
                 <div style="--delay: {{ $initial++ }}s" class="button-entrance"><div class="button button-instagram button button-hover icon-hover"><img alt="button-icon" class="icon hvr-icon" src="{{ asset('assets/linkstack/icons/instagram.svg') }}">Instagram</div></div>
         @endif
-          
+
       </div>
     </div>
   </div>

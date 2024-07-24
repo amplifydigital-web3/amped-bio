@@ -1,6 +1,6 @@
 <?php
 
-return array (
+return array(
   'Log in' => 'Влез',
   'Register' => 'Регистрация',
   'Dashboard' => 'Табло',
