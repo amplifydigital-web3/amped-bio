@@ -9,7 +9,7 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo">
            <div class="logo-centered">l</div>
         </div>
         <h1>{{__('messages.Backup')}}</h1>
@@ -49,7 +49,7 @@ exit(); ?>
       <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
-           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
+           <img class="logo-img" src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo">
         </div>
         <h1>{{__('messages.Success!')}}</h1>
         <h4 class="">{{__('messages.The backup was successful')}}</h4>

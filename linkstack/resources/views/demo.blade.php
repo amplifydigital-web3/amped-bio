@@ -91,7 +91,7 @@
         <img alt="avatar" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" width="auto" height="128px">
         @else
         <div class="logo-container fadein">
-          <img src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo" style="width:150px; height:150px;">
+          <img src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo" style="width:150px; height:150px;">
         </div>
         @endif
 

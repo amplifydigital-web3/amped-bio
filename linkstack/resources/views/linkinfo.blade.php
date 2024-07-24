@@ -18,7 +18,7 @@
       @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
       <link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
       @else
-      <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
+      <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.png') }}">
       @endif
       
       <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
@@ -69,10 +69,10 @@
                   </div>
                     @else
                     <div class="logo-normal">
-                      <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                      <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
                   </div>
                   <div class="logo-mini">
-                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
                   </div>
                     @endif
                     </div>
@@ -101,7 +101,7 @@
                                 @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
                                     <img alt="avatar" class="fadein" src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" height="128px" width="128px" style="object-fit: cover;">
                                 @else
-                                    <img alt="avatar" class="fadein" src="{{ asset('assets/linkstack/images/logo.svg') }}" height="128px" style="width:auto;min-width:128px;object-fit: cover;">
+                                    <img alt="avatar" class="fadein" src="{{ asset('assets/linkstack/images/logo.png') }}" height="128px" style="width:auto;min-width:128px;object-fit: cover;">
                                 @endif
                             </div>
                             <h5 class="card-title">{{$userData->name}}</h5>

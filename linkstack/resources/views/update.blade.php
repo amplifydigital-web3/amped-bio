@@ -15,7 +15,7 @@
 <?php //landing page ?>
         
         <div class="logo-container fadein">
-<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo">
         </div>
         <h1>{{__('messages.Updater')}}</h1>
         @if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
@@ -164,7 +164,7 @@ exit(); ?>
       <?php //if no new version available ?>
         
         <div class="logo-container fadein">
-<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo">
         </div>
         <h1>{{__('messages.No new version')}}</h1>
         <h4>{{__('messages.There is no new version available')}}</h4>
@@ -208,7 +208,7 @@ if($debug === true){
       <?php //after successfully updating ?>
         
         <div class="logo-container fadein">
-<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo">
         </div>
         <h1>{{__('messages.Success!')}}</h1>
         @if(env('JOIN_BETA') === true)
@@ -237,7 +237,7 @@ if($debug === true){
         <?php EnvEditor::editKey('MAINTENANCE_MODE', false); ?>
 
         <div class="logo-container fadein">
-<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo">
+<img class="logo-img" src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo">
         </div>
         <h1>{{__('messages.Error')}}</h1>
         <h4>{{__('messages.Something went wrong with the update')}} :(</h4>

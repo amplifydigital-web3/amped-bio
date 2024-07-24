@@ -32,7 +32,7 @@ $usrhandl = Auth::user()->littlelink_name;
       @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
       <link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
       @else
-      <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
+      <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.png') }}">
       @endif
       
       <!-- Library / Plugin Css Build -->
@@ -91,10 +91,10 @@ $usrhandl = Auth::user()->littlelink_name;
               </div>
                 @else
                 <div class="logo-normal">
-                  <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                  <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
               </div>
               <div class="logo-mini">
-                <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
               </div>
                 @endif
                 </div>
@@ -261,10 +261,10 @@ $usrhandl = Auth::user()->littlelink_name;
                 </div>
                   @else
                   <div class="logo-normal">
-                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
                 </div>
                 <div class="logo-mini">
-                  <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                  <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
                 </div>
                   @endif
                   </div>
@@ -447,7 +447,7 @@ $usrhandl = Auth::user()->littlelink_name;
           @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
           <img src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" alt="User-Profile" class="img logo" style="width:auto;height:30px;">
 					@else
-					<img src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded">
+					<img src="{{ asset('assets/linkstack/images/logo.png') }}" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded">
 					@endif
                     <div class="caption ms-3 d-none d-md-block ">
                         <h6 class="mb-0 caption-title">{{Auth::user()->name}}</h6>

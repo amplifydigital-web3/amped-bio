@@ -183,7 +183,7 @@
                   @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
                   <img src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" class="img-fluid rounded-pill avatar-100 bg-white" width="100" height="100" draggable="false">
                   @else
-                  <img src="{{ asset('assets/linkstack/images/logo.svg') }}" class="img-fluid rounded-pill avatar-100 bg-white" width="100" height="100" draggable="false">
+                  <img src="{{ asset('assets/linkstack/images/logo.png') }}" class="img-fluid rounded-pill avatar-100 bg-white" width="100" height="100" draggable="false">
                   @endif
                   @if(file_exists(base_path(findAvatar(Auth::user()->id))))
                   <div class="upload-icone bg-primary">

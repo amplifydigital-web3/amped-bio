@@ -32,10 +32,10 @@ foreach($pages as $page)
                   </div>
                     @else
                     <div class="logo-normal">
-                      <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                      <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
                   </div>
                   <div class="logo-mini">
-                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.svg') }}" width="30px" height="30px">
+                    <img class="img logo" type="image/svg+xml" src="{{ asset('assets/linkstack/images/logo.png') }}" width="30px" height="30px">
                   </div>
                     @endif
                     </div>

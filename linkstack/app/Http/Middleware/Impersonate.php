@@ -50,7 +50,7 @@ class Impersonate
                     } elseif (file_exists(base_path("assets/linkstack/images/") . findFile('avatar'))) {
                         $avatarUrl = url("assets/linkstack/images/") . "/" . findFile('avatar');
                     } else {
-                        $avatarUrl = asset('assets/linkstack/images/logo.svg');
+                        $avatarUrl = asset('assets/linkstack/images/logo.png');
                     }
 
                     $customHtml = <<<EOD

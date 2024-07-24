@@ -102,7 +102,7 @@ if(Auth::user()->id == $userinfo->id){
                   @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
                   <img src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" class="avatar avatar-26 photo" height="26" width="26" style="width:auto;height:30px;">
                   @else
-                  <img src="{{ asset('assets/linkstack/images/logo.svg') }}" class="avatar avatar-26 photo avatar-rounded" height="26" width="26" height="64" width="64">
+                  <img src="{{ asset('assets/linkstack/images/logo.png') }}" class="avatar avatar-26 photo avatar-rounded" height="26" width="26" height="64" width="64">
                   @endif
                 </a>
                  <div class="ab-sub-wrapper">
@@ -113,7 +113,7 @@ if(Auth::user()->id == $userinfo->id){
                         @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
                         <img src="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}" class="avatar avatar-64 photo" height="64" width="64" style="width:auto;height:30px;">
                         @else
-                        <img src="{{ asset('assets/linkstack/images/logo.svg') }}" class="avatar avatar-64 photo avatar-rounded" height="64" width="64">
+                        <img src="{{ asset('assets/linkstack/images/logo.png') }}" class="avatar avatar-64 photo avatar-rounded" height="64" width="64">
                         @endif
                         <span class="display-name">{{Auth::user()->name}}</span></a></li>
                        <li><a class="ab-item" href="{{ url('/studio/page') }}">{{__('messages.Edit my profile')}}</a></li>

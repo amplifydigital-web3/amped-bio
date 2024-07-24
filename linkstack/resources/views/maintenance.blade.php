@@ -28,7 +28,7 @@
   @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
   <link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
   @else
-  <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.png') }}">
   @endif
 
   <link rel="stylesheet" href="{{ asset('assets/linkstack/css/brands.css') }}">
@@ -85,7 +85,7 @@ body {
         <img alt="avatar" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" width="auto" height="200px">
         @else
         <div class="logo-container">
-           <img src="{{ asset('assets/linkstack/images/logo.svg') }}" alt="Logo" style="width:200px; height:200px;">
+           <img src="{{ asset('assets/linkstack/images/logo.png') }}" alt="Logo" style="width:200px; height:200px;">
         </div>
         @endif
 

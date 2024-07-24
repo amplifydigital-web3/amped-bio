@@ -33,7 +33,7 @@
     @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
     <meta property="og:image" content="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}">
     @else
-    <meta property="og:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
+    <meta property="og:image" content="{{ asset('assets/linkstack/images/logo.png') }}">
     @endif
 
     <!-- Twitter Meta Tags -->
@@ -47,7 +47,7 @@
     @elseif(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
     <meta name="twitter:image" content="{{ url("assets/linkstack/images/")."/".findFile('avatar') }}">
     @else
-    <meta name="twitter:image" content="{{ asset('assets/linkstack/images/logo.svg') }}">
+    <meta name="twitter:image" content="{{ asset('assets/linkstack/images/logo.png') }}">
     @endif
 
 <!--#### END Meta Tags social media preview images  ####-->
@@ -68,7 +68,7 @@
 @if(file_exists(base_path("assets/linkstack/images/").findFile('favicon')))
 <link rel="icon" type="image/png" href="{{ asset('assets/linkstack/images/'.findFile('favicon')) }}">
 @else
-<link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.svg') }}">
+<link rel="icon" type="image/svg+xml" href="{{ asset('assets/linkstack/images/logo.png') }}">
 @endif
 
 @include('layouts.analytics')
