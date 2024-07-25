@@ -53,7 +53,7 @@
                                                                   {{ $link->link }} - {{ $link->name }}
                                                                 </div>
                                                                 <span class="badge bg-primary rounded-pill p-2">{{ $link->click_number }} - {{__('messages.clicks')}}</span>
-                                                                @if($link->title == "VL")
+                                                                @if(env('ENABLE_SPOTIFY') == true && $link->title == "Spotify")
                                                                 <div id="spotify-react" class="ms-2 me-auto "></div>
                                                                 @endif
                                                               </li>
@@ -71,6 +71,7 @@
          </div>
         </div>
 
+    @if(env('ENABLE_PROMOTE') == true)
     <div class="col-lg-12">
         <div class="card   rounded">
             <div class="card-body">
@@ -82,6 +83,7 @@
             </div>
         </div>
     </div>
+    @endif
 
        <div class="col-lg-12">
           <div class="card   rounded">

@@ -139,37 +139,37 @@ return [
   'use_custom_buttons' => 'true', // Set this to false if you wish to display the default dummy buttons.
 
   'buttons' => array(
-    array(
-      'button' => 'reward',
-      'link' => 'https://reward-dev.npayme.io',
-      'title' => 'My Loyalty Program',
-      'icon' => '',
-      'custom_css' => '',
-    ),
-    array(
-      'button' => 'promote',
-      'link' => 'https://onelink.npayme.io',
-      'title' => 'My Fundraiser',
-      'icon' => '',
-      'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #4b1977 0%, #2b0081 95%);',
-    ),
+    // array(
+    //   'button' => 'reward',
+    //   'link' => 'https://reward-dev.npayme.io',
+    //   'title' => 'My Loyalty Program',
+    //   'icon' => '',
+    //   'custom_css' => '',
+    // ),
+    // array(
+    //   'button' => 'promote',
+    //   'link' => 'https://onelink.npayme.io',
+    //   'title' => 'My Fundraiser',
+    //   'icon' => '',
+    //   'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #4b1977 0%, #2b0081 95%);',
+    // ),
     array(
       'button' => 'instagram',
-      'link' => 'https://onelink.npayme.io',
+      'link' => 'https://www.instagram.com',
       'title' => 'My Instagram',
       'icon' => '',
       'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #D700E5 0%, #FF1945 95%);',
     ),
     array(
       'button' => 'youtube',
-      'link' => 'https://onelink.npayme.io',
+      'link' => 'https://www.youtube.com',
       'title' => 'My YouTube',
       'icon' => '',
       'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #FF0000 0%, #FF0000 95%);',
     ),
     array(
       'button' => 'linkedin',
-      'link' => 'https://onelink.npayme.io',
+      'link' => 'https://www.linkedin.com/',
       'title' => 'My Linkedln',
       'icon' => '',
       'custom_css' => 'color:#ffffff; background-image:radial-gradient(circle, #0966C1 0%, #0966C1 95%);',
