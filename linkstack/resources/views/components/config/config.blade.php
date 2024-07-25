@@ -268,6 +268,9 @@ foreach($users as $user){if($user->littlelink_name != $configValue2){echo '<opti
 {{text('APP_NAME')}}
 
 
+{{text('APP_COPYRIGHT')}}
+
+
 {{toggle('HIDE_VERIFICATION_CHECKMARK')}}
 
 

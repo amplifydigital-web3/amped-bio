@@ -80,7 +80,7 @@
               @endif                     
             </ul>
             <div class="right-panel">
-              {{__('messages.Copyright')}} &copy; @php echo date('Y'); @endphp {{ config('app.name') }}
+              {{__('messages.Copyright')}} &copy; @php echo date('Y'); @endphp {{ config('app.copyright') }}
               @if(env('DISPLAY_CREDIT_FOOTER') === true)
                 <span class="">
                   - {{__('messages.Made with')}} 
