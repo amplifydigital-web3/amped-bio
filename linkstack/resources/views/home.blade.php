@@ -169,14 +169,10 @@
             <div class="card card-transparent auth-card shadow-none d-flex mb-0">
               <div class="card-body justify-content-center text-center">
 
-                @if(file_exists(base_path("assets/linkstack/images/").findFile('avatar')))
-                <img alt="avatar" src="{{ asset('assets/linkstack/images/'.findFile('avatar')) }}" width="auto" height="128px">
-                @else
                 <div class="logo-container fadein">
-                  <img src="{{ asset('assets/linkstack/images/logo-animated.svg') }}" alt="Logo" style="width:150px; height:150px;">
+                  <img src="{{ asset('assets/linkstack/images/onelink.svg') }}" alt="Logo" style="width:150px; height:150px;">
                 </div>
-                @endif
-
+                
                 <h1 class="h1 fw-bold mb-4 pt-4">{{ config('app.name') }}</h1>
 
                 <div class="lead">
