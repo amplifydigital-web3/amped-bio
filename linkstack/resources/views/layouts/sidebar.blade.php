@@ -143,6 +143,7 @@ $usrhandl = Auth::user()->littlelink_name;
                             <span class="item-name">{{__('messages.Add Link')}}</span>
                         </a>
                     </li>
+                    @if(env('ENABLE_PROMOTE') == true)
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'add-reward' ? 'active' : ''}}" aria-current="page" href="{{ url('/studio/add-reward') }}">
                             <i class="icon">
@@ -155,6 +156,7 @@ $usrhandl = Auth::user()->littlelink_name;
                             <span class="item-name">{{__('messages.Add Loyalty Program')}}</span>
                         </a>
                     </li>
+                    @endif
                     @if(auth()->user()->role == 'admin')
                     <li class="nav-item static-item">
                         <a class="nav-link static-item disabled" href="#" tabindex="-1">
@@ -298,9 +300,11 @@ $usrhandl = Auth::user()->littlelink_name;
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+                @if(env('ENABLE_CONNECT_WALLET') == true)
                 <li>
                   <div id="connect-react"></div>
                 </li>
+                @endif
                 <li class="me-0 me-xl-2">
                   <div class="dropdown d-flex flex-row align-items-center">
                     <a target="_blank" href="{{url('/@'.Auth::user()->littlelink_name)}}">

@@ -13,19 +13,10 @@ import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Connect from "./Connect";
 
-// declare global {
-//     interface Window {
-//         ethereum?: any;
-//     }
-// }
-
 const queryClient = new QueryClient();
 export const projectId = (process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
   "64c300c731392456340fe626355b366e") as string;
-console.log("projectId:", projectId);
-// mainnet.rpcUrls.default.http.push ('https://eth-goerli.g.alchemy.com/v2/zq6RjOuZ3l1xLNtY__7JlVqMKS5swDYI');
 const chains = [mainnet, sepolia, arbitrum] as const;
-console.log("chains...:", mainnet.rpcUrls);
 const metadata = {
   name: "npayme reward",
   description: "npayme loyalty program toolkit",
@@ -69,7 +60,6 @@ const App = (props: any) => {
 
 const hasConnectComponent = document.getElementById("connect-react");
 if (hasConnectComponent) {
-  console.log("Render connect-react........");
   const root = ReactDOM.createRoot(
     document.getElementById("connect-react") as HTMLElement
   );
@@ -83,11 +73,10 @@ if (hasConnectComponent) {
 
 const hasSpotifyComponent = document.getElementById("spotify-react");
 if (hasSpotifyComponent) {
-  console.log("Render spotify-react........");
   const root = ReactDOM.createRoot(
     document.getElementById("spotify-react") as HTMLElement
   );
-  
+
   root.render(
     <App>
       <Spotify />
@@ -97,11 +86,10 @@ if (hasSpotifyComponent) {
 
 const hasCampaignComponent = document.getElementById("campaign-react");
 if (hasCampaignComponent) {
-  console.log("Render campaign-react........");
   const root = ReactDOM.createRoot(
     document.getElementById("campaign-react") as HTMLElement
   );
-  
+
   root.render(
     <App>
       <Campaign />
