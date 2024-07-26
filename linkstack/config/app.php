@@ -32,7 +32,19 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'LinkStack'),
+    'name' => env('APP_NAME', 'OneLink'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Copyright
+    |--------------------------------------------------------------------------
+    |
+    | This value is the copyright owner of your application. This value is used
+    | when the framework needs to place a copyright message on a page.
+    |
+    */
+
+    'copyright' => env('APP_COPYRIGHT', 'npayme Labs'),
 
     /*
     |--------------------------------------------------------------------------
