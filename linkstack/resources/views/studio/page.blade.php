@@ -245,14 +245,15 @@
                             </div> --}}
                             <input type="text" class="form-control" name="name" value="{{ $page->name }}" required>
                         </div>
-
+                        @if(env('ENABLE_PROMOTE') == true)
                         <label style="margin-top:15px">{{__('messages.Reward Program ID')}}</label>
                         <div class="input-group">
                             {{-- <div class="input-group-prepend">
                                 <div class="input-group-text">{{__('messages.Reward')}}</div>
                             </div> --}}
-                            <input type="text" class="form-control" name="reward" value="{{ $page->reward_business_id }}" required>
+                            <input type="text" class="form-control" name="reward" value="{{ $page->reward_business_id }}">
                         </div>
+                        @endif
                     </div>
                 
                     <div class="form-group col-lg-8">
