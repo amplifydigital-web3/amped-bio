@@ -13,7 +13,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-            images: ndau/onelink
+            images: npaymelabs/onelink
             tags: |
              type=semver,pattern={{version}}
 
@@ -36,4 +36,4 @@ jobs:
         with:
           push: true
           tags: |
-            ndau/onelink:${{ steps.meta.outputs.version }}
+            npaymelabs/onelink:${{ steps.meta.outputs.version }}
