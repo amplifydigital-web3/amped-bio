@@ -16,7 +16,7 @@
 
                           <section class='text-gray-400'>
                               <div class='card-body'>
-                                  <iframe style="width: 810px;height: 600px;" src="https://reward-dev.npayme.io"></iframe>
+                                  <!--iframe style="width: 810px;height: 600px;" src="https://reward.npayme.io"></iframe-->
                               </div>
                           </section>
                         </div>

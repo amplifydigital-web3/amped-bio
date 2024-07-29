@@ -141,7 +141,7 @@ return [
   'buttons' => array(
     // array(
     //   'button' => 'reward',
-    //   'link' => 'https://reward-dev.npayme.io',
+    //   'link' => 'https://reward.npayme.io',
     //   'title' => 'My Loyalty Program',
     //   'icon' => '',
     //   'custom_css' => '',
