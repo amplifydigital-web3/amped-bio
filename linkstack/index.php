@@ -65,5 +65,3 @@ if ($installing_file_exists) {
     ))->send();
     
     $kernel->terminate($request, $response);
-    
-    
