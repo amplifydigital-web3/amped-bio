@@ -28,13 +28,20 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
-        - name: onelink-pvc-permission-fix
+        - name: onelink-pvc-permission-fix-1
           image: busybox
           command: ["/bin/chmod","-R","777", "/htdocs/themes"]
           volumeMounts:
           - name: onelink-pvc
             subPath: themes
             mountPath: /htdocs/themes
+        - name: onelink-pvc-permission-fix-2
+          image: busybox
+          command: ["/bin/chmod","-R","777", "/htdocs/assets/img"]
+          volumeMounts:
+          - name: onelink-pvc
+            subPath: assets/img
+            mountPath: /htdocs/assets/img
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -115,6 +122,9 @@ spec:
             - name: onelink-pvc
               subPath: themes
               mountPath: /htdocs/themes
+            - name: onelink-pvc
+              subPath: assets/img
+              mountPath: /htdocs/assets/img
             - name: onelink-pvc
               subPath: dev
               mountPath: /db 
