@@ -20,21 +20,16 @@ const path = require("path");
 const extractLibs = [
     "react",
     "react-dom/client",
-    "@web3modal/wagmi",
+    "@npaymelabs/connect",
     "wagmi",
     "viem",
     "@tanstack/react-query",
-    "@walletconnect/keyvaluestorage",
 ];
 
 mix
-    // .js("@tanstack/react-query", "public/js")
-    // .js("@walletconnect/keyvaluestorage", "public/js")
-    // .js("node_modules/@web3modal/wagmi", "public/js")
-    .js("resources/js/components/Connect.tsx", "public/js/components")
+    // .extract(extractLibs)
     .js("resources/js/app.js", "public/js")
     .react()
-    // .extract(extractLibs)
     .postCss("resources/css/app.css", "css", [
         require("postcss-import"),
         require("tailwindcss"),

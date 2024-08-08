@@ -29,6 +29,5 @@
    </div>
    @stack('linkstack-body-end')
    <!--script src="https://reward-dev.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script-->
-   <script defer type="text/javascript" src="{{ asset('public/js/app.js') }}"></script>
 </body>
 </html>

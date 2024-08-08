@@ -47,7 +47,7 @@
       <link rel="stylesheet" href="{{asset('assets/css/rtl.min.css')}}" />
 
       <!-- Scripts -->
-      <script src="{{ asset('assets/js/app.js') }}" defer></script>
+      <!--script src="{{ asset('assets/js/app.js') }}" defer></script-->
 
 	  <link rel="stylesheet" href="{{ asset('assets/external-dependencies/bootstrap-icons.css') }}">
     </head>
