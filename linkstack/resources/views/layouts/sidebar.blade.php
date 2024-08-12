@@ -831,7 +831,7 @@ try {
 <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
 <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
-<script defer type="text/javascript" src="{{ asset('public/js/app.js') }}"></script>
+<script async type="text/javascript" src="{{ asset('public/js/app.js') }}"></script>
 
 @stack('sidebar-scripts')
 

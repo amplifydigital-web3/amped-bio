@@ -16,8 +16,6 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        <!-- Scripts -->
-        <!--script defer type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script-->
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

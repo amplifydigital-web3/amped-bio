@@ -3,37 +3,45 @@ import { useAccount } from "wagmi";
 import { AppContext } from ".";
 
 export default function Web3ConnectButton() {
-  const { address, isConnecting, isDisconnected, isReconnecting, isConnected } =
-    useAccount();
+  const { isConnecting, isReconnecting } = useAccount();
 
-    const ctx = useContext(AppContext);
+  const ctx = useContext<any>(AppContext);
+  const { address, setAddress, setOpen } = ctx;
   // const { disconnect } = useDisconnect();
 
   // const parent = this._reactInternalInstance._currentElement._owner._instance;
 
   console.log("address................. 1", address);
-  console.log("isConnected................. 1", isConnected);
+
   const handleClick = () => {
-    if (address && isConnected) {
-      // disconnect();
-      console.log("Need to disconnect");
-    } else if (isDisconnected) {
-      // @ts-ignore
-      ctx.setOpen(true);
+    if (address) {
+      localStorage.removeItem("@w3m-storage/SOCIAL_USERNAME");
+      localStorage.removeItem("@w3m/connected_social");
+      localStorage.removeItem("@w3m-storage/EMAIL");
+      localStorage.removeItem("@w3m-storage/EMAIL_LOGIN_USED_KEY");
+      localStorage.removeItem("@w3m-storage/LAST_USED_CHAIN_KEY");
+      localStorage.removeItem("@w3m-storage/SMART_ACCOUNT_ENABLED_NETWORKS");
+      localStorage.removeItem("wagmi.recentConnectorId");
+      localStorage.removeItem("@w3m/connected_connector");
+      localStorage.removeItem("wagmi.store");
+
+      // disconnect()
+      setAddress(undefined);
+    } else {
+      setOpen(true);
     }
   };
 
   return (
-    <button onClick={handleClick} disabled={isConnecting || isReconnecting}>
-      {isConnecting
-        ? "Connecting…"
-        : isReconnecting
-        ? "Reconnecting..."
-        : isDisconnected
-        ? "Sign In with Web3 Wallet"
-        : `0x...${address.substring(address.length - 5)}`}
+    <button
+      onClick={handleClick}
+      disabled={isConnecting || isReconnecting ? true : undefined}
+    >
+      {address
+        ? `Disconnect 0x...${address.substring(address.length - 5)}`
+        : isConnecting || isReconnecting
+        ? "Try reconnecting..."
+        : "Connect Web3 Wallet"}
     </button>
   );
 }
-
-// export default Web3ConnectButton;

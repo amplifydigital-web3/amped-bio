@@ -34,13 +34,24 @@ export const AppContext = createContext({});
 
 const App = (props: any) => {
   const [open, setOpen] = useState(false);
+  const [address, setAddress] = useState();
 
   const connect = () => {
     console.log("web3 wallet connected");
   };
 
+  const onAccountChanged = (data: any) => {
+    console.log("onAccountChanged.......", data);
+    const { address: wallet } = data;
+    if (wallet) {
+      setAddress(wallet);
+      setOpen(false);
+    }
+  };
+
   const providerValue = {
-    open,
+    address,
+    setAddress,
     setOpen,
   };
 
@@ -51,6 +62,7 @@ const App = (props: any) => {
       onConnect={connect}
       open={open}
       setOpen={setOpen}
+      onAccountChanged={onAccountChanged}
     >
       <QueryClientProvider client={queryClient}>
         <AppContext.Provider value={providerValue}>
