@@ -49,7 +49,7 @@ if (env('MAINTENANCE_MODE') != 'true') {
   Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink')->middleware('disableCookies');
   Route::get('/pages/' . strtolower(footer('Terms')), [AdminController::class, 'pagesTerms'])->name('pagesTerms')->middleware('disableCookies');
   Route::get('/pages/' . strtolower(footer('Privacy')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy')->middleware('disableCookies');
-  Route::get('/pages/' . strtolower(footer('Contact')), [AdminController::class, 'pagesContact'])->name('pagesContact')->middleware('disableCookies');
+  // Route::get('/pages/' . strtolower(footer('Contact')), [AdminController::class, 'pagesContact'])->name('pagesContact')->middleware('disableCookies');
   Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
   Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
   Route::get('/u/{id?}', [UserController::class, 'userRedirect'])->name('userRedirect');

@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { useAccount } from "wagmi";
+// import { useDisconnect } from "wagmi";
+
 import { AppContext } from ".";
 
 export default function Web3ConnectButton() {
@@ -8,8 +10,6 @@ export default function Web3ConnectButton() {
   const ctx = useContext<any>(AppContext);
   const { address, setAddress, setOpen } = ctx;
   // const { disconnect } = useDisconnect();
-
-  // const parent = this._reactInternalInstance._currentElement._owner._instance;
 
   console.log("address................. 1", address);
 

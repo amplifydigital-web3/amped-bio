@@ -396,17 +396,17 @@ class AdminController extends Controller {
   }
 
   //View footer page: contact
-  public function pagesContact(Request $request) {
-    $name = "contact";
+  // public function pagesContact(Request $request) {
+  //   $name = "contact";
 
-    try {
-      $data['page'] = Page::select($name)->first();
-    } catch (Exception $e) {
-      return abort(404);
-    }
+  //   try {
+  //     $data['page'] = Page::select($name)->first();
+  //   } catch (Exception $e) {
+  //     return abort(404);
+  //   }
 
-    return view('pages', ['data' => $data, 'name' => $name]);
-  }
+  //   return view('pages', ['data' => $data, 'name' => $name]);
+  // }
 
   //Statistics of the number of clicks and links
   public function phpinfo() {
