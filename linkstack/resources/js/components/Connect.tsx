@@ -27,6 +27,7 @@ export default function Web3ConnectButton() {
 
       // disconnect()
       setAddress(undefined);
+      setOpen(false);
     } else {
       setOpen(true);
     }
@@ -34,6 +35,7 @@ export default function Web3ConnectButton() {
 
   return (
     <button
+      className="dark-button"
       onClick={handleClick}
       disabled={isConnecting || isReconnecting ? true : undefined}
     >

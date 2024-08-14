@@ -300,8 +300,8 @@ $usrhandl = Auth::user()->littlelink_name;
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
-                <li>
-                  <div id="connect-react"></div>
+                <li class="me-0 me-xl-2" id="connect-react">
+                  Loading Web3...
                 </li>
                 <li class="me-0 me-xl-2">
                   <div class="dropdown d-flex flex-row align-items-center">
@@ -528,7 +528,7 @@ try {
                   @if(env('DISPLAY_FOOTER_HOME') === true)<li class="list-inline-item"><a class="list-inline-item" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{footer('Home')}}</a></li>@endif
                   @if(env('DISPLAY_FOOTER_TERMS') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(footer('Terms')) }}">{{footer('Terms')}}</a></li>@endif
                   @if(env('DISPLAY_FOOTER_PRIVACY') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(footer('Privacy')) }}">{{footer('Privacy')}}</a></li>@endif
-                  @if(env('DISPLAY_FOOTER_CONTACT') === true)<li class="list-inline-item"><a class="list-inline-item" href="{{ url('') }}/pages/{{ strtolower(footer('Contact')) }}">{{footer('Contact')}}</a></li>@endif
+                  @if(env('DISPLAY_FOOTER_CONTACT') === true)<li class="list-inline-item"><a class="list-inline-item" href="https://npaymelabs.freshdesk.com/support/tickets/new?ticket_form=npayme_onelink_support">{{footer('Contact')}}</a></li>@endif
                 @endif
               </ul>
               <div class="right-panel">

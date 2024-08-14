@@ -11,6 +11,7 @@ import "./index.css";
 import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Web3ConnectButton from "./Connect";
+import { addwallet } from "../repository";
 
 // 0. Setup queryClient
 const queryClient = new QueryClient();
@@ -46,6 +47,8 @@ const App = (props: any) => {
     if (wallet) {
       setAddress(wallet);
       setOpen(false);
+
+      addwallet(wallet);
     }
   };
 
@@ -63,6 +66,8 @@ const App = (props: any) => {
       open={open}
       setOpen={setOpen}
       onAccountChanged={onAccountChanged}
+      brandColor="#563AE8"
+      copyColor="#FFFFFF"
     >
       <QueryClientProvider client={queryClient}>
         <AppContext.Provider value={providerValue}>
@@ -75,8 +80,6 @@ const App = (props: any) => {
 
 const hasConnectComponent = document.getElementById("connect-react");
 if (hasConnectComponent) {
-  console.log("Render Web3ConnectButton...");
-
   const root = ReactDOM.createRoot(
     document.getElementById("connect-react") as HTMLElement
   );
