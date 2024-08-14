@@ -45,8 +45,11 @@ RUN cd /htdocs && composer install --no-interaction
 
 RUN cd /htdocs && npm i 
 RUN cd /htdocs && npm run dev
-RUN mkdir -p /htdocs/js/components
-RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
+# RUN mkdir -p /htdocs/js/components
+# RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
+
+RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
+
 # RUN npm run production
 
 COPY configs/apache2/httpd.conf /etc/apache2/httpd.conf

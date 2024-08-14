@@ -16,8 +16,6 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        <!-- Scripts -->
-        <!--script defer type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script-->
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -36,8 +34,7 @@
             </main>
         </div>
 
-        <!--script src="{{ asset('js/manifest.js') }}"></script-->
+        <!-- <script src="{{ asset('js/manifest.js') }}"></script-->
         <!--script src="{{ asset('js/vendor.js') }}"></script-->
-        <!--script src="{{ asset('public/js/app.js') }}"></script-->
     </body>
 </html>

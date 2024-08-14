@@ -686,3 +686,18 @@ INSERT INTO onelink.pages (terms,privacy,contact,home_message,register,created_a
 
 ---
 
+CREATE TABLE IF NOT EXISTS `user_wallets` (
+  `id` int AUTO_INCREMENT PRIMARY KEY,
+  `user_id` int(11) NOT NULL COMMENT 'User ID',
+  `wallet_address` varchar(42) NOT NULL COMMENT 'Wallet Address',
+  `chain_id` int(11) NOT NULL DEFAULT 1 COMMENT 'Chain ID',
+  `updated_by` varchar(68) DEFAULT NULL COMMENT 'Updated By',
+  `updated_at` datetime DEFAULT NULL COMMENT 'Last Updated',
+  `created_by` varchar(68) NOT NULL COMMENT 'Created By',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY unq_csanalysiscode_category_code (`user_id`,`wallet_address`),
+	CONSTRAINT `user_wallets_fk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  KEY `user_id` (`user_id`),
+  KEY `wallet_address` (`wallet_address`),
+  KEY `chain_id` (`chain_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

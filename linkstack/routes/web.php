@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\SocialLoginController;
-use App\Http\Controllers\InstallerController;
 use App\Http\Controllers\LinkTypeViewController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -27,114 +26,90 @@ if (file_exists(base_path('storage/app/ISINSTALLED'))) {
   if (!file_exists(base_path("config/advanced-config.php"))) {copy(base_path('storage/templates/advanced-config.php'), base_path('config/advanced-config.php'));}
 }
 
-// Installer
-if (file_exists(base_path('INSTALLING')) or file_exists(base_path('INSTALLERLOCK'))) {
-
-  Route::get('/', [InstallerController::class, 'showInstaller'])->name('showInstaller');
-  Route::post('/create-admin', [InstallerController::class, 'createAdmin'])->name('createAdmin');
-  Route::post('/db', [InstallerController::class, 'db'])->name('db');
-  Route::post('/mysql', [InstallerController::class, 'mysql'])->name('mysql');
-  Route::post('/options', [InstallerController::class, 'options'])->name('options');
-  Route::get('/mysql-test', [InstallerController::class, 'mysqlTest'])->name('mysqlTest');
-  Route::get('/skip', function () {Artisan::call('db:seed', ['--class' => 'AdminSeeder']);return redirect(url(''));});
-  Route::post('/editConfigInstaller', [InstallerController::class, 'editConfigInstaller'])->name('editConfigInstaller');
-
-  Route::get('{any}', function () {
-    if (!DB::table('users')->get()->isEmpty()) {
-      if (file_exists(base_path("INSTALLING")) and !file_exists(base_path('INSTALLERLOCK'))) {unlink(base_path("INSTALLING")); header("Refresh:0");}
-    } else {
-      return redirect(url(''));
-    }
-  })->where('any', '.*');
-
-} else {
-
 // Disables routes if in Maintenance Mode
-  if (env('MAINTENANCE_MODE') != 'true') {
+if (env('MAINTENANCE_MODE') != 'true') {
 
-    require __DIR__ . '/home.php';
+  require __DIR__ . '/home.php';
 
 //Redirect if no page URL is set
-    Route::get('/@', function () {
-      return redirect('/studio/no_page_name');
-    });
+  Route::get('/@', function () {
+    return redirect('/studio/no_page_name');
+  });
 
 //Show diagnose page
-    Route::get('/panel/diagnose', function () {
-      return view('panel/diagnose', []);
-    });
+  Route::get('/panel/diagnose', function () {
+    return view('panel/diagnose', []);
+  });
 
 //Public route
-    $custom_prefix = config('advanced-config.custom_url_prefix');
-    Route::get('/going/{id?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber')->middleware('disableCookies');
-    Route::get('/info/{id?}', [AdminController::class, 'redirectInfo'])->name('redirectInfo');
-    if ($custom_prefix != "") {Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}
-    Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink')->middleware('disableCookies');
-    Route::get('/pages/' . strtolower(footer('Terms')), [AdminController::class, 'pagesTerms'])->name('pagesTerms')->middleware('disableCookies');
-    Route::get('/pages/' . strtolower(footer('Privacy')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy')->middleware('disableCookies');
-    Route::get('/pages/' . strtolower(footer('Contact')), [AdminController::class, 'pagesContact'])->name('pagesContact')->middleware('disableCookies');
-    Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
-    Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
-    Route::get('/u/{id?}', [UserController::class, 'userRedirect'])->name('userRedirect');
+  $custom_prefix = config('advanced-config.custom_url_prefix');
+  Route::get('/going/{id?}', [UserController::class, 'clickNumber'])->where('link', '.*')->name('clickNumber')->middleware('disableCookies');
+  Route::get('/info/{id?}', [AdminController::class, 'redirectInfo'])->name('redirectInfo');
+  if ($custom_prefix != "") {Route::get('/' . $custom_prefix . '{littlelink}', [UserController::class, 'littlelink'])->name('littlelink');}
+  Route::get('/@{littlelink}', [UserController::class, 'littlelink'])->name('littlelink')->middleware('disableCookies');
+  Route::get('/pages/' . strtolower(footer('Terms')), [AdminController::class, 'pagesTerms'])->name('pagesTerms')->middleware('disableCookies');
+  Route::get('/pages/' . strtolower(footer('Privacy')), [AdminController::class, 'pagesPrivacy'])->name('pagesPrivacy')->middleware('disableCookies');
+  Route::get('/pages/' . strtolower(footer('Contact')), [AdminController::class, 'pagesContact'])->name('pagesContact')->middleware('disableCookies');
+  Route::get('/theme/@{littlelink}', [UserController::class, 'theme'])->name('theme');
+  Route::get('/vcard/{id?}', [UserController::class, 'vcard'])->name('vcard');
+  Route::get('/u/{id?}', [UserController::class, 'userRedirect'])->name('userRedirect');
 
-    Route::get('/report', function () {return view('report');});
-    Route::post('/report', [UserController::class, 'report'])->name('report');
+  Route::get('/report', function () {return view('report');});
+  Route::post('/report', [UserController::class, 'report'])->name('report');
+  Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo')->middleware('disableCookies');
+}
 
-    Route::get('/demo-page', [App\Http\Controllers\HomeController::class, 'demo'])->name('demo')->middleware('disableCookies');
-
-  }
-
-  Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
+Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
 //User route
-    Route::group([
-      'middleware' => env('REGISTER_AUTH'),
-    ], function () {
-      if (env('FORCE_ROUTE_HTTPS') == 'true') {URL::forceScheme('https');}
-      if (isset($_COOKIE['LinkCount'])) {if ($_COOKIE['LinkCount'] == '20') {$LinkPage = 'showLinks20';} elseif ($_COOKIE['LinkCount'] == '30') {$LinkPage = 'showLinks30';} elseif ($_COOKIE['LinkCount'] == 'all') {$LinkPage = 'showLinksAll';} else { $LinkPage = 'showLinks';}} else { $LinkPage = 'showLinks';} //Shows correct link number
-      Route::get('/dashboard', [AdminController::class, 'index'])->name('panelIndex');
-      Route::get('/studio/index', function () {return redirect(url('dashboard'));});
-      Route::get('/studio/add-link', [UserController::class, 'AddUpdateLink'])->name('showButtons');
-      Route::get('/studio/add-reward', [UserController::class, 'AddRewardProgram'])->name('showReward');
-      Route::post('/studio/edit-link', [UserController::class, 'saveLink'])->name('addLink');
-      Route::get('/studio/edit-link/{id}', [UserController::class, 'AddUpdateLink'])->name('showLink')->middleware('link-id');
-      Route::post('/studio/sort-link', [UserController::class, 'sortLinks'])->name('sortLinks');
-      Route::get('/studio/links', [UserController::class, $LinkPage])->name($LinkPage);
-      Route::get('/studio/theme', [UserController::class, 'showTheme'])->name('showTheme');
-      Route::post('/studio/theme', [UserController::class, 'editTheme'])->name('editTheme');
-      Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('deleteLink')->middleware('link-id');
-      Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink')->middleware('link-id');
-      Route::post('/studio/edit-link/{id}', [UserController::class, 'editLink'])->name('editLink')->middleware('link-id');
-      Route::get('/studio/button-editor/{id}', [UserController::class, 'showCSS'])->name('showCSS')->middleware('link-id');
-      Route::post('/studio/button-editor/{id}', [UserController::class, 'editCSS'])->name('editCSS')->middleware('link-id');
-      Route::get('/studio/page', [UserController::class, 'showPage'])->name('showPage');
-      Route::get('/studio/no_page_name', [UserController::class, 'showPage'])->name('showPage');
-      Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage');
-      Route::post('/studio/background', [UserController::class, 'themeBackground'])->name('themeBackground');
-      Route::get('/studio/rem-background', [UserController::class, 'removeBackground'])->name('removeBackground');
-      Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('showProfile');
-      Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
-      Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcons');
-      Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
-      Route::get('/studio/page/delprofilepicture', [UserController::class, 'delProfilePicture'])->name('delProfilePicture');
-      Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
-      Route::post('/auth-as', [AdminController::class, 'authAs'])->name('authAs');
+  Route::group([
+    'middleware' => env('REGISTER_AUTH'),
+  ], function () {
+    if (env('FORCE_ROUTE_HTTPS') == 'true') {URL::forceScheme('https');}
+    if (isset($_COOKIE['LinkCount'])) {if ($_COOKIE['LinkCount'] == '20') {$LinkPage = 'showLinks20';} elseif ($_COOKIE['LinkCount'] == '30') {$LinkPage = 'showLinks30';} elseif ($_COOKIE['LinkCount'] == 'all') {$LinkPage = 'showLinksAll';} else { $LinkPage = 'showLinks';}} else { $LinkPage = 'showLinks';} //Shows correct link number
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('panelIndex');
+    Route::get('/studio/index', function () {return redirect(url('dashboard'));});
+    Route::get('/studio/add-link', [UserController::class, 'AddUpdateLink'])->name('showButtons');
+    Route::get('/studio/add-reward', [UserController::class, 'AddRewardProgram'])->name('showReward');
+    Route::post('/studio/edit-link', [UserController::class, 'saveLink'])->name('addLink');
+    Route::get('/studio/edit-link/{id}', [UserController::class, 'AddUpdateLink'])->name('showLink')->middleware('link-id');
+    Route::post('/studio/sort-link', [UserController::class, 'sortLinks'])->name('sortLinks');
+    Route::get('/studio/links', [UserController::class, $LinkPage])->name($LinkPage);
+    Route::get('/studio/theme', [UserController::class, 'showTheme'])->name('showTheme');
+    Route::post('/studio/theme', [UserController::class, 'editTheme'])->name('editTheme');
+    Route::get('/deleteLink/{id}', [UserController::class, 'deleteLink'])->name('deleteLink')->middleware('link-id');
+    Route::get('/upLink/{up}/{id}', [UserController::class, 'upLink'])->name('upLink')->middleware('link-id');
+    Route::post('/studio/edit-link/{id}', [UserController::class, 'editLink'])->name('editLink')->middleware('link-id');
+    Route::get('/studio/button-editor/{id}', [UserController::class, 'showCSS'])->name('showCSS')->middleware('link-id');
+    Route::post('/studio/button-editor/{id}', [UserController::class, 'editCSS'])->name('editCSS')->middleware('link-id');
+    Route::get('/studio/page', [UserController::class, 'showPage'])->name('showPage');
+    Route::get('/studio/no_page_name', [UserController::class, 'showPage'])->name('showPage');
+    Route::post('/studio/page', [UserController::class, 'editPage'])->name('editPage');
+    Route::post('/studio/background', [UserController::class, 'themeBackground'])->name('themeBackground');
+    Route::get('/studio/rem-background', [UserController::class, 'removeBackground'])->name('removeBackground');
+    Route::get('/studio/profile', [UserController::class, 'showProfile'])->name('showProfile');
+    Route::post('/studio/profile', [UserController::class, 'editProfile'])->name('editProfile');
+    Route::post('/edit-icons', [UserController::class, 'editIcons'])->name('editIcons');
+    Route::get('/clearIcon/{id}', [UserController::class, 'clearIcon'])->name('clearIcon');
+    Route::get('/studio/page/delprofilepicture', [UserController::class, 'delProfilePicture'])->name('delProfilePicture');
+    Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
+    Route::post('/auth-as', [AdminController::class, 'authAs'])->name('authAs');
+    Route::post('/add-wallet', [UserController::class, 'addWallet'])->name('addWallet');
 
 // Catch all redirects
-      Route::get('/admin/users/all', fn() => redirect(route('showUsers')));
-      Route::get('/studio', fn() => redirect(url('dashboard')));
-      Route::get('/studio/edit-link', fn() => redirect(url('dashboard')));
+    Route::get('/admin/users/all', fn() => redirect(route('showUsers')));
+    Route::get('/studio', fn() => redirect(url('dashboard')));
+    Route::get('/studio/edit-link', fn() => redirect(url('dashboard')));
 
-      if (env('ALLOW_USER_EXPORT') != false) {
-        Route::get('/export-links', [UserController::class, 'exportLinks'])->name('exportLinks');
-        Route::get('/export-all', [UserController::class, 'exportAll'])->name('exportAll');
-      }
-      if (env('ALLOW_USER_IMPORT') != false) {
-        Route::post('/import-data', [UserController::class, 'importData'])->name('importData');
-      }
-      Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewController::class, 'getParamForm'])->name('linkparamform.part');
-    });
+    if (env('ALLOW_USER_EXPORT') != false) {
+      Route::get('/export-links', [UserController::class, 'exportLinks'])->name('exportLinks');
+      Route::get('/export-all', [UserController::class, 'exportAll'])->name('exportAll');
+    }
+    if (env('ALLOW_USER_IMPORT') != false) {
+      Route::post('/import-data', [UserController::class, 'importData'])->name('importData');
+    }
+    Route::get('/studio/linkparamform_part/{typeid}/{linkid}', [LinkTypeViewController::class, 'getParamForm'])->name('linkparamform.part');
   });
-}
+});
 
 //Social login route
 Route::get('/social-auth/{provider}/callback', [SocialLoginController::class, 'providerCallback']);

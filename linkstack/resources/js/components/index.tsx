@@ -1,60 +1,80 @@
-import React from "react";
+import React, { useState, createContext } from "react";
 import ReactDOM from "react-dom/client";
 
+import ContextProvider from "@npaymelabs/connect";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { mainnet, arbitrum, sepolia } from "wagmi/chains";
 
-import { WagmiProvider } from "wagmi";
-import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
-// import { cookieStorage, createStorage, cookieToInitialState } from "wagmi";
-import { createWeb3Modal } from "@web3modal/wagmi/react";
+console.log("Starting React App...");
+
 import "./index.css";
 import Campaign from "./Campaign";
 import Spotify from "./Spotify";
-import Connect from "./Connect";
+import Web3ConnectButton from "./Connect";
+import { addwallet } from "../repository";
 
+// 0. Setup queryClient
 const queryClient = new QueryClient();
-export const projectId = (process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
-  "64c300c731392456340fe626355b366e") as string;
+
+const projectId =
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
+  "64c300c731392456340fe626355b366e";
+
 const chains = [mainnet, sepolia, arbitrum] as const;
+
+// const chains = [mainnet, baseSepolia] as const
+
 const metadata = {
-  name: "npayme reward",
-  description: "npayme loyalty program toolkit",
-  url: process.env.REWARD_URL || "", // origin must match your domain & subdomain
+  name: "OneLink",
+  description: "npayme OneLink",
+  url: "onelink.npayme.io",
   icons: [],
 };
 
-const wagmiConfig = defaultWagmiConfig({
-  chains,
-  // connectors: w3mConnectors({ chains, projectId }),
-  projectId,
-  metadata,
-  ssr: true,
-  enableInjected: true,
-  // enableWalletConnect: true,
-  // storage: createStorage({
-  //   storage: cookieStorage,
-  // }),
-});
-
-const web3Modal = createWeb3Modal({
-  wagmiConfig,
-  projectId,
-  themeMode: "light",
-  themeVariables: {
-    "--w3m-color-mix": "#00DCFF",
-    "--w3m-color-mix-strength": 20,
-  },
-  // allWallets: 'ONLY_MOBILE',
-});
+export const AppContext = createContext({});
 
 const App = (props: any) => {
+  const [open, setOpen] = useState(false);
+  const [address, setAddress] = useState();
+
+  const connect = () => {
+    console.log("web3 wallet connected");
+  };
+
+  const onAccountChanged = (data: any) => {
+    console.log("onAccountChanged.......", data);
+    const { address: wallet } = data;
+    if (wallet) {
+      setAddress(wallet);
+      setOpen(false);
+
+      addwallet(wallet);
+    }
+  };
+
+  const providerValue = {
+    address,
+    setAddress,
+    setOpen,
+  };
+
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <ContextProvider
+      projectId={projectId}
+      metadata={metadata}
+      onConnect={connect}
+      open={open}
+      setOpen={setOpen}
+      onAccountChanged={onAccountChanged}
+      brandColor="#563AE8"
+      copyColor="#FFFFFF"
+    >
       <QueryClientProvider client={queryClient}>
-        {props.children}
+        <AppContext.Provider value={providerValue}>
+          {props.children}
+        </AppContext.Provider>
       </QueryClientProvider>
-    </WagmiProvider>
+    </ContextProvider>
   );
 };
 
@@ -66,7 +86,7 @@ if (hasConnectComponent) {
 
   root.render(
     <App>
-      <Connect />
+      <Web3ConnectButton />
     </App>
   );
 }
