@@ -11,7 +11,7 @@ fullnameOverride: ''
 image:
   repository: npaymelabs/onelink
   pullPolicy: Always
-  tag: latest
+  tag: 0.0.7
   # pullPolicy: IfNotPresent
   imagePullSecrets:
     - name: npaymelabs-repo-dockerhub
@@ -59,10 +59,10 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "7200"
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "npayme.io"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.npayme.io https://api.cloudinary.com/v1_1/dsaw7i5t3/image/upload; img-src 'self'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests;";
-      more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
-      more_set_headers "Feature-Policy: camera 'none'; microphone 'none'; geolocation 'none'; encrypted-media 'none'; payment 'none'; speaker 'none'; usb 'none';";
+    # nginx.ingress.kubernetes.io/configuration-snippet: |
+    #   more_set_headers "Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.npayme.io https://api.cloudinary.com/v1_1/dsaw7i5t3/image/upload; img-src 'self'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests;";
+    #   more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
+    #   more_set_headers "Feature-Policy: camera 'none'; microphone 'none'; geolocation 'none'; encrypted-media 'none'; payment 'none'; speaker 'none'; usb 'none';";
      
   hosts:
     - host: onelink.npayme.io
@@ -108,9 +108,9 @@ affinity: {}
 
 
 volumes:
-#  - name: onelink-pvc
-#    persistentVolumeClaim:
-#      claimName: onelink-cephfs-pvc
+  - name: onelink-pvc
+    persistentVolumeClaim:
+      claimName: onelink-cephfs-pvc
   - name: config
     configMap:
       name: onelink-config
