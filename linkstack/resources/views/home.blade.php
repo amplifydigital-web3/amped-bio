@@ -8,6 +8,7 @@
     @php $GLOBALS['themeName'] = config('advanced-config.home_theme'); @endphp
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+      <meta http-equiv="Content-Security-Policy-Report-Only" content="frame-ancestors 'self'">
       @if(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
       <title>{{ config('advanced-config.title') }}</title>
       @else

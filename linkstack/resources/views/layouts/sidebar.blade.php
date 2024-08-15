@@ -10,6 +10,7 @@ $usrhandl = Auth::user()->littlelink_name;
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+      <meta http-equiv="Content-Security-Policy-Report-Only" content="frame-ancestors 'self'">
       <title>{{env('APP_NAME')}}</title>
 
       <script src="{{asset('assets/js/detect-dark-mode.js')}}"></script>
