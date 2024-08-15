@@ -301,9 +301,11 @@ $usrhandl = Auth::user()->littlelink_name;
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+                @if(env('ENABLE_CONNECT_WALLET') == true)
                 <li class="me-0 me-xl-2" id="connect-react">
                   Loading Web3...
                 </li>
+                @endif
                 <li class="me-0 me-xl-2">
                   <div class="dropdown d-flex flex-row align-items-center">
                     <a target="_blank" href="{{url('/@'.Auth::user()->littlelink_name)}}">
