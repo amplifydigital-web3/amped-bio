@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     @php $GLOBALS['themeName'] = config('advanced-config.home_theme'); @endphp
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <!--meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-      <meta http-equiv="Content-Security-Policy" content="frame-ancestors *"-->
+      <!--meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" -->
+      <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://secure.walletconnect.org https://secure-mobile.walletconnect.com https://*.vercel.app">
       @if(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
       <title>{{ config('advanced-config.title') }}</title>
       @else
