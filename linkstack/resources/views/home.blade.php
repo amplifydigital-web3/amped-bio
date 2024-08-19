@@ -8,7 +8,7 @@
     @php $GLOBALS['themeName'] = config('advanced-config.home_theme'); @endphp
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!--metax http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"-->
-      <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://secure.walletconnect.org https://verify.walletconnect.org/">  
+      <meta http-equiv="Content-Security-Policy" content="frame-src 'self' https://secure.walletconnect.org https://verify.walletconnect.org">  
       @if(env('CUSTOM_META_TAGS') == 'true' and config('advanced-config.title') != '')
       <title>{{ config('advanced-config.title') }}</title>
       @else
