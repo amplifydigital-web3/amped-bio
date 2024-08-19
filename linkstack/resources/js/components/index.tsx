@@ -18,7 +18,8 @@ const queryClient = new QueryClient();
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
-  "64c300c731392456340fe626355b366e";
+  "e0c0b073645ed7ce3b15930fd2847d6d";
+// "64c300c731392456340fe626355b366e";
 
 const chains = [mainnet, sepolia, arbitrum] as const;
 
