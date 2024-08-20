@@ -11,10 +11,10 @@ class Headers
     {
         // Note - Vle: Temporarily comment out to debug CSP frame ancestor
         // Check if FORCE_HTTPS is set to true
-        // if (env('FORCE_HTTPS') == 'true') {
-        //     \URL::forceScheme('https'); // Force HTTPS
-        //     header("Content-Security-Policy: upgrade-insecure-requests");
-        // }
+        if (env('FORCE_HTTPS') == 'true') {
+            \URL::forceScheme('https'); // Force HTTPS
+            header("Content-Security-Policy: upgrade-insecure-requests");
+        }
 
         // Check if FORCE_ROUTE_HTTPS is set to true
         if (env('FORCE_ROUTE_HTTPS') == 'true' && (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off')) {

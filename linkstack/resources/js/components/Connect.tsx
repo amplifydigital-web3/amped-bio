@@ -40,7 +40,7 @@ export default function Web3ConnectButton() {
       // disabled={isConnecting || isReconnecting ? true : undefined}
     >
       {address
-        ? `Disconnect 0x...${address.substring(address.length - 5)}`
+        ? `0x${address.substring(0,2)}...${address.substring(address.length - 5)}`
         // : isConnecting || isReconnecting
         // ? "Try reconnecting..."
         : "Connect Web3 Wallet"}
