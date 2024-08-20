@@ -27,7 +27,7 @@ export default function Web3ConnectButton() {
 
       // disconnect()
       setAddress(undefined);
-      setOpen(false);
+      setOpen(true);
     } else {
       setOpen(true);
     }
@@ -37,12 +37,9 @@ export default function Web3ConnectButton() {
     <button
       className="dark-button"
       onClick={handleClick}
-      // disabled={isConnecting || isReconnecting ? true : undefined}
     >
       {address
         ? `0x${address.substring(0,2)}...${address.substring(address.length - 5)}`
-        // : isConnecting || isReconnecting
-        // ? "Try reconnecting..."
         : "Connect Web3 Wallet"}
     </button>
   );

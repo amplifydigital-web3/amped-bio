@@ -11,7 +11,7 @@ fullnameOverride: ''
 image:
   repository: npaymelabs/onelink
   pullPolicy: Always
-  tag: 0.0.12
+  tag: 0.0.14
   # pullPolicy: IfNotPresent
   imagePullSecrets:
     - name: npaymelabs-repo-dockerhub
@@ -60,8 +60,7 @@ ingress:
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "npayme.io"
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.npayme.io wss://relay.walletconnect.com https://api.web3modal.org; img-src 'self' blob: data: ; frame-src 'self' https://secure.walletconnect.org https://secure-mobile.walletconnect.com https://verify.walletconnect.org/; frame-ancestors 'self' https://secure.walletconnect.org https://secure-mobile.walletconnect.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com; upgrade-insecure-requests;";
-    #   more_set_headers "Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.npayme.io https://api.cloudinary.com/v1_1/dsaw7i5t3/image/upload; img-src 'self'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests;";
+      more_set_headers "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.npayme.io wss://relay.walletconnect.com https://api.web3modal.org https://rpc.walletconnect.org https://cloudflare-eth.com; img-src 'self' blob: data: ; frame-src 'self' https://secure.walletconnect.org https://secure-mobile.walletconnect.com https://verify.walletconnect.org/; frame-ancestors 'self' https://secure.walletconnect.org https://secure-mobile.walletconnect.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com; upgrade-insecure-requests;";
     #   more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
     #   more_set_headers "Feature-Policy: camera 'none'; microphone 'none'; geolocation 'none'; encrypted-media 'none'; payment 'none'; speaker 'none'; usb 'none';";
      
