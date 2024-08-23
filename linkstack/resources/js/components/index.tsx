@@ -17,7 +17,8 @@ import { addwallet } from "../repository";
 const queryClient = new QueryClient();
 
 const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || "64c300c731392456340fe626355b366e";
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
+  "64c300c731392456340fe626355b366e";
 
 const chains = [mainnet, sepolia, arbitrum] as const;
 
@@ -32,46 +33,66 @@ const metadata = {
 
 export const AppContext = createContext({});
 
+type CreateContextProviderProps = {
+  address: string | undefined;
+  openModal: any;
+  openWeb3Modal: any;
+  children: React.ReactNode;
+};
+
+const AppContextProvider = ({
+  address,
+  openModal,
+  openWeb3Modal,
+  children,
+}: CreateContextProviderProps) => {
+  return (
+    <AppContext.Provider value={{ address, openModal, openWeb3Modal }}>
+      {children}
+    </AppContext.Provider>
+  );
+};
+
 const App = (props: any) => {
   const [open, setOpen] = useState(false);
+  const [w3m, setW3m] = useState<boolean | null>(null);
   const [address, setAddress] = useState();
 
-  const connect = () => {
-    console.log("web3 wallet connected");
-  };
-
   const onAccountChanged = (data: any) => {
-    console.log("onAccountChanged.......", data);
-    const { address: wallet } = data;
-    if (wallet) {
-      setAddress(wallet);
+    console.log(`onAccountChanged.......: address = '${address}' `, data);
+    const { address: update } = data;
+    if ((update && update != address) || !update) {
+      console.log("Update address to......", update);
+      setAddress(update);
       setOpen(false);
-
-      addwallet(wallet);
     }
-  };
 
-  const providerValue = {
-    address,
-    setAddress,
-    setOpen,
+    if (update) {
+      addwallet(update);
+    }
   };
 
   return (
     <ContextProvider
       projectId={projectId}
       metadata={metadata}
-      onConnect={connect}
       open={open}
       setOpen={setOpen}
+      close={close}
+      w3m={w3m}
+      setW3M={setW3m}
       onAccountChanged={onAccountChanged}
       brandColor="#563AE8"
       copyColor="#FFFFFF"
     >
       <QueryClientProvider client={queryClient}>
-        <AppContext.Provider value={providerValue}>
+        <AppContextProvider
+          address={address}
+          openModal={() => setOpen(true)}
+          openWeb3Modal={() => setW3m(true)}
+        >
           {props.children}
-        </AppContext.Provider>
+        </AppContextProvider>
       </QueryClientProvider>
     </ContextProvider>
   );
