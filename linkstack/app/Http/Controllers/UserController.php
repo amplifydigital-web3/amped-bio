@@ -784,12 +784,12 @@ class UserController extends Controller
                 'isunique:users,id,'.$userId,
             ],
             'name' => 'sometimes|max:255|string',
-            'image' => 'sometimes|image|mimes:jpeg,jpg,png,webp|max:2048', // Max file size: 2MB
+            'image' => 'sometimes|image|mimes:jpeg,jpg,png,webp|max:1024', // Max file size: 1MB
         ], [
             'littlelink_name.unique' => __('messages.That handle has already been taken'),
             'image.image' => __('messages.The selected file must be an image'),
             'image.mimes' => __('messages.The image must be') . ' JPEG, JPG, PNG, webP.',
-            'image.max' => __('messages.The image size should not exceed 2MB'),
+            'image.max' => __('messages.The image size should not exceed 1MB'),
         ]);
     
         if ($validator->fails()) {
@@ -859,12 +859,12 @@ class UserController extends Controller
         $littlelink_name = Auth::user()->littlelink_name;
     
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,jpg,png,webp,gif|max:2048', // Max file size: 2MB
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp,gif|max:1024', // Max file size: 1MB
         ], [
             'image.required' => __('messages.Please select an image'),
             'image.image' => __('messages.The selected file must be an image'),
             'image.mimes' => __('messages.The image must be') . ' JPEG, JPG, PNG, webP, GIF.',
-            'image.max' => __('messages.The image size should not exceed 2MB'),
+            'image.max' => __('messages.The image size should not exceed 1MB'),
         ]);
     
         $customBackground = $request->file('image');
