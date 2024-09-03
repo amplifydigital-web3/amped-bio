@@ -143,7 +143,7 @@ $usrhandl = Auth::user()->littlelink_name;
                             <span class="item-name">{{__('messages.Add Link')}}</span>
                         </a>
                     </li>
-                    @if(env('ENABLE_PROMOTE') == true)
+                    @if(env('ENABLE_LOYALTY') == true)
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(2) == 'add-reward' ? 'active' : ''}}" aria-current="page" href="{{ url('/studio/add-reward') }}">
                             <i class="icon">

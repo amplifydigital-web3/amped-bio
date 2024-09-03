@@ -35,6 +35,7 @@ export const AppContext = createContext({});
 
 type CreateContextProviderProps = {
   address: string | undefined;
+  setAddress: any;
   openModal: any;
   openWeb3Modal: any;
   children: React.ReactNode;
@@ -42,12 +43,15 @@ type CreateContextProviderProps = {
 
 const AppContextProvider = ({
   address,
+  setAddress,
   openModal,
   openWeb3Modal,
   children,
 }: CreateContextProviderProps) => {
   return (
-    <AppContext.Provider value={{ address, openModal, openWeb3Modal }}>
+    <AppContext.Provider
+      value={{ address, setAddress, openModal, openWeb3Modal }}
+    >
       {children}
     </AppContext.Provider>
   );
@@ -61,7 +65,7 @@ const App = (props: any) => {
   const onAccountChanged = (data: any) => {
     console.log(`onAccountChanged.......: address = '${address}' `, data);
     const { address: update } = data;
-    if ((update && update != address) || !update) {
+    if ((update && update != address) || (address && !update)) {
       console.log("Update address to......", update);
       setAddress(update);
       setOpen(false);
@@ -88,6 +92,7 @@ const App = (props: any) => {
       <QueryClientProvider client={queryClient}>
         <AppContextProvider
           address={address}
+          setAddress={setAddress}
           openModal={() => setOpen(true)}
           openWeb3Modal={() => setW3m(true)}
         >

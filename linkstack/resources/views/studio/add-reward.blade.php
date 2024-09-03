@@ -15,8 +15,9 @@
                           @endpush
 
                           <section class='text-gray-400'>
-                              <div class='card-body'>
-                                  <!--iframe style="width: 810px;height: 600px;" src="https://reward.npayme.io"></iframe-->
+                              <div class='class="holds-the-iframe'>
+                                  <!--iframe loading="lazy" style="width: 100%;height: 600px;" src="{{env('REWARD_URL')}}"></iframe-->
+                                  <embed class="holds-the-iframe" style="width: 100%;height: 800px;" src="{{env('REWARD_URL')}}"></embed>
                               </div>
                           </section>
                         </div>

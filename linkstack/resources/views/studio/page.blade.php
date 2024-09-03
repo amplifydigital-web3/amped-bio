@@ -245,7 +245,7 @@
                             </div> --}}
                             <input type="text" class="form-control" name="name" value="{{ $page->name }}" required>
                         </div>
-                        @if(env('ENABLE_PROMOTE') == true)
+                        @if(env('ENABLE_LOYALTY') == true)
                         <label style="margin-top:15px">{{__('messages.Reward Program ID')}}</label>
                         <div class="input-group">
                             {{-- <div class="input-group-prepend">

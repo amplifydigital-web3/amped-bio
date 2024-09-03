@@ -138,3 +138,7 @@ section #footer_spin{
   border-radius: 40px;
   transition: 0.3s;
 }
+
+.holds-the-iframe {
+  background:url(../images/loading-spinner.gif) center center no-repeat;
+}
