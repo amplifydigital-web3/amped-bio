@@ -16,9 +16,20 @@
 
                           <section class='text-gray-400'>
                               <div class='class="holds-the-iframe'>
-                                  <!--iframe loading="lazy" style="width: 100%;height: 600px;" src="{{env('REWARD_URL')}}"></iframe-->
-                                  <embed class="holds-the-iframe" style="width: 100%;height: 800px;" src="{{env('REWARD_URL')}}"></embed>
+                                  <iframe id="iframe-npayme-reward" loading="lazy" class="holds-the-iframe" style="width: 100%;height: 800px;" src="{{env('REWARD_URL')}}"></iframe>
+                                  <!--embed id="iframe-npayme-reward" class="holds-the-iframe" style="width: 100%;height: 800px;" src="{{env('REWARD_URL')}}"></embed-->
                               </div>
+                              <script type="text/javascript">
+                                const reward = document.getElementById("iframe-npayme-reward");
+                                const t = setInterval(() => reward.contentWindow.postMessage('ping-loyalty', '*'), 1000);
+                                window.addEventListener('message', message => {
+                                    if (message.origin === '{{env('REWARD_ORIGIN')}}')
+                                    console.log('message.........:',message);
+                                    if (message.data === 'pong-onelink' ) {
+                                        clearTimeout(t);
+                                    }
+                                });
+                              </script>
                           </section>
                         </div>
                     </div>
