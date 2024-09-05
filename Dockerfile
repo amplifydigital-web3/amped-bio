@@ -68,6 +68,7 @@ RUN chown -R apache:apache /htdocs
 
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/
 
+# For production
 RUN chown -R apache:apache /var/www/logs
 RUN chown -R apache:apache /var/log/apache2/
 RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf

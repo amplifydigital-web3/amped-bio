@@ -65,10 +65,24 @@ const App = (props: any) => {
   const onAccountChanged = (data: any) => {
     console.log(`onAccountChanged.......: address = '${address}' `, data);
     const { address: update } = data;
-    if ((update && update != address) || (address && !update)) {
+    if ((update && update != address) || !update) {
       console.log("Update address to......", update);
       setAddress(update);
       setOpen(false);
+
+      const reward = document.getElementById("iframe-npayme-reward");
+      if (reward) {
+        // @ts-ignore
+        reward.contentWindow.postMessage(
+          {
+            type: update ? "connect" : "disconnect",
+            payload: {
+              address: update,
+            },
+          },
+          "*"
+        );
+      }
     }
 
     if (update) {

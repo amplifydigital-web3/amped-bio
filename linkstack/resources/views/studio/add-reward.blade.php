@@ -21,12 +21,19 @@
                               </div>
                               <script type="text/javascript">
                                 const reward = document.getElementById("iframe-npayme-reward");
-                                const t = setInterval(() => reward.contentWindow.postMessage('ping-loyalty', '*'), 1000);
+                                const t = setInterval(() => reward.contentWindow.postMessage({
+                                    type: 'ping',
+                                }, '*'), 1000);
                                 window.addEventListener('message', message => {
-                                    if (message.origin === '{{env('REWARD_ORIGIN')}}')
-                                    console.log('message.........:',message);
-                                    if (message.data === 'pong-onelink' ) {
-                                        clearTimeout(t);
+                                    console.log('message data.........:',message.data);
+                                    // console.log('php.... origin:','{{env('REWARD_ORIGIN')}}');
+                                    if (message.origin === '{{env('REWARD_ORIGIN')}}') {
+                                        switch (message.data.type) {
+                                            case 'pong':
+                                                clearTimeout(t);
+                                                break;
+                                            default:
+                                        }
                                     }
                                 });
                               </script>
