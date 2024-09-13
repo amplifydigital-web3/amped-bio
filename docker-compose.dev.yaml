@@ -1,0 +1,35 @@
+## inspired by https://github.com/alloyking1/twilio_laravel_and_docker_/blob/master/docker-compose.yml
+services:
+  maildev:
+    image: maildev/maildev
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+  
+  linkstack:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.php
+    ports:
+      - 8082:8080
+    environment:
+      - DEVELOPMENT=true
+      - LOG_LEVEL=info
+      - HTTP_SERVER_NAME=www.example.xyz
+      - HTTPS_SERVER_NAME=www.example.xyz
+      - SERVER_ADMIN=admin@example.xyz
+      - TZ=Europe/Berlin
+      - PHP_MEMORY_LIMIT=512M
+      - UPLOAD_MAX_FILESIZE=16M
+    working_dir: /var/www/html
+    volumes:
+      - ./linkstack:/var/www/html
+  
+  node:
+    build: 
+      context: ./linkstack
+      dockerfile: ../docker/Dockerfile.node
+    volumes:
+      - ./linkstack:/app
+      - ./linkstack/node_modules:/app/node_modules
+    tty: true

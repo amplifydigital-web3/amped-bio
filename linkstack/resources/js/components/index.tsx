@@ -1,8 +1,6 @@
 import React, { useState, createContext } from "react";
 import ReactDOM from "react-dom/client";
-
 import ContextProvider from "@npaymelabs/connect";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { mainnet, arbitrum, sepolia } from "wagmi/chains";
 
 console.log("Starting React App...");
@@ -12,9 +10,6 @@ import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Web3ConnectButton from "./Connect";
 import { addwallet } from "../repository";
-
-// 0. Setup queryClient
-const queryClient = new QueryClient();
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
@@ -34,24 +29,18 @@ const metadata = {
 export const AppContext = createContext({});
 
 type CreateContextProviderProps = {
-  address: string | undefined;
-  setAddress: any;
   openModal: any;
   openWeb3Modal: any;
   children: React.ReactNode;
 };
 
 const AppContextProvider = ({
-  address,
-  setAddress,
   openModal,
   openWeb3Modal,
   children,
 }: CreateContextProviderProps) => {
   return (
-    <AppContext.Provider
-      value={{ address, setAddress, openModal, openWeb3Modal }}
-    >
+    <AppContext.Provider value={{ openModal, openWeb3Modal }}>
       {children}
     </AppContext.Provider>
   );
@@ -96,23 +85,18 @@ const App = (props: any) => {
       metadata={metadata}
       open={open}
       setOpen={setOpen}
-      close={close}
       w3m={w3m}
       setW3M={setW3m}
       onAccountChanged={onAccountChanged}
       brandColor="#563AE8"
       copyColor="#FFFFFF"
     >
-      <QueryClientProvider client={queryClient}>
-        <AppContextProvider
-          address={address}
-          setAddress={setAddress}
-          openModal={() => setOpen(true)}
-          openWeb3Modal={() => setW3m(true)}
-        >
-          {props.children}
-        </AppContextProvider>
-      </QueryClientProvider>
+      <AppContextProvider
+        openModal={() => setOpen(true)}
+        openWeb3Modal={() => setW3m(true)}
+      >
+        {props.children}
+      </AppContextProvider>
     </ContextProvider>
   );
 };

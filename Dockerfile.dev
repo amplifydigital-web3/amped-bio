@@ -34,12 +34,13 @@ RUN apk --no-cache --update \
     php82-xmlwriter \
     php82-redis \
     tzdata \
+    git \
     yarn \
     python3 py3-pip make \
     && mkdir /htdocs
 
-# Install Node.js version 20.9.0 and npm
-RUN curl -fsSL https://nodejs.org/dist/v20.9.0/node-v20.9.0-linux-x64.tar.xz | tar -xJ -C /usr/local --strip-components=1
+# Install Node.js version 20.14.0 and npm
+RUN curl -fsSL https://nodejs.org/dist/v20.14.0/node-v20.14.0-linux-x64.tar.xz | tar -xJ -C /usr/local --strip-components=1
 
 # Copy application files and install PHP dependencies
 COPY linkstack /htdocs

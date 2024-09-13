@@ -1,7 +1,7 @@
 {
     "private": true,
     "engines": {
-        "node": ">=20.9.0"
+        "node": ">=20.14.0"
     },
     "scripts": {
         "dev": "npm run development",
@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "@knowins/viewer": "^1.0.19",
-        "@npaymelabs/connect": "^0.0.11",
+        "@npaymelabs/connect": "^0.0.19",
         "@tanstack/react-query": "^5.49.2",
         "@walletconnect/keyvaluestorage": "^1.1.1",
         "axios": "^1.7.3",

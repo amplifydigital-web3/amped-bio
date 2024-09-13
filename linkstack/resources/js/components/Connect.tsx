@@ -1,18 +1,16 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useAccount } from "wagmi";
-
 import { AppContext } from ".";
 
 export default function Web3ConnectButton() {
   const ctx = useContext<any>(AppContext);
-  const { address, setAddress, openWeb3Modal, openModal } = ctx;
-  const { address: newAddress, isConnecting, isReconnecting } = useAccount();
+  const { openWeb3Modal, openModal } = ctx;
+  const { address } = useAccount();
 
-  console.log("newAddress................. 1", newAddress);
-  if (newAddress && newAddress != address) {
-    console.log("update newAddress................. 1", newAddress);
-    setAddress(newAddress);
-  }
+  useEffect(() => {
+    console.log("newAddress................. 1", address);
+    console.log("update newAddress................. 1", address);
+  }, []);
 
   const handleClick = () => {
     if (address) {
