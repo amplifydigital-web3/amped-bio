@@ -316,3 +316,11 @@ server {
 
 <br>
 <br>
+
+# Run in development
+
+```bash
+docker compose -f docker-compose.dev.yaml up
+```
+
+And every change in `/linkstack` folder will auto reload :)
