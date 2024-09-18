@@ -28,6 +28,6 @@
       </div>
    </div>
    @stack('linkstack-body-end')
-   <!--script src="https://reward-dev.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script-->
+   <!--script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script-->
 </body>
 </html>
