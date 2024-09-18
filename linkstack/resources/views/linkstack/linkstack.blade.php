@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 @include('layouts.lang')
 <head>
-   <!--script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script-->
+   <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
    @include('linkstack.modules.meta')
    @include('linkstack.modules.theme')
    @stack('linkstack-head')
