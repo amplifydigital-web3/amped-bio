@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 @include('layouts.lang')
 <head>
+   @if ($userinfo->reward_business_id)
+      <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
+   @endif
    @include('linkstack.modules.meta')
    @include('linkstack.modules.theme')
    @stack('linkstack-head')
@@ -28,6 +31,5 @@
       </div>
    </div>
    @stack('linkstack-body-end')
-   <!--script src="https://reward-dev.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script-->
 </body>
 </html>
