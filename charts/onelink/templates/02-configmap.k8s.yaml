@@ -28,7 +28,7 @@ data:
     #=NOTIFY_UPDATES either true or false.
     NOTIFY_UPDATES=true
     DISPLAY_FOOTER=true
-    DISPLAY_CREDIT=true
+    DISPLAY_CREDIT=false
     DISPLAY_CREDIT_FOOTER=true
 
     ADMIN_EMAIL=
@@ -163,3 +163,5 @@ data:
     ENABLE_PROMOTE=true
     ENABLE_LOYALTY=true
     ENABLE_SPOTIFY=true
+
+    REWARD_URL=https://reward-dev.npayme.io/get-started/business
