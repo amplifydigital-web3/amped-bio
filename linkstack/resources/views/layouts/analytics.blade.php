@@ -13,8 +13,8 @@ $analyticsHTML = trim($analyticsHTML);
 @endif
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RJJX8Q9P3R"></script>
-<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-RJJX8Q9P3R'); </script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJJX8Q9P3R"></script>
+<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-RJJX8Q9P3R'); </script> -->
 <!-- End of Google tag (gtag.js) --> 
 
 <!-- Plausible analytics -->
