@@ -15,6 +15,7 @@
    @foreach($information as $info)
    @stack('linkstack-head-end')
 </head>
+
 <body>
    @stack('linkstack-body-start')
    @include('linkstack.modules.admin-bar')
