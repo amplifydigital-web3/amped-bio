@@ -2,10 +2,10 @@
 @include('layouts.lang')
 <head>
    <!-- If it's not a user page, insert npayme Labs campaign. If it's a user and the business ID is set, use it. -->
-   @if(Request::path()[0] != "@" )
-      <script src="https://reward.npayme.io/panel.js?onelink=dd1400dd-c412-4633-b076-1ea09877b806"></script>
-   @elseif (strlen($userinfo->reward_business_id) > 0)
+   @if(($request->path()[0] == "@") && (strlen($userinfo->reward_business_id) > 0))
       <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
+   @else
+      <script src="https://reward.npayme.io/panel.js?onelink=dd1400dd-c412-4633-b076-1ea09877b806"></script>
    @endif
 
    @include('linkstack.modules.meta')
