@@ -20,3 +20,9 @@ $analyticsHTML = trim($analyticsHTML);
 <!-- Plausible analytics -->
 <script defer data-domain="onelink.npayme.io" src="https://plausible.io/js/script.js"></script>
 <!-- End of Plausible analytics -->
+
+@if (Str::startsWith(Request::path(), "@") === false)
+    <script src="https://reward.npayme.io/panel.js?onelink=dd1400dd-c412-4633-b076-1ea09877b806"></script>
+@elseif (strlen($userinfo->reward_business_id) > 0)
+    <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
+@endif

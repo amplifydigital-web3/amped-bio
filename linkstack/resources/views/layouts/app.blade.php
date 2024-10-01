@@ -2,13 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        
-        @if (Str::startsWith(Request::path(), "@") === false)
-            <script src="https://reward.npayme.io/panel.js?onelink=dd1400dd-c412-4633-b076-1ea09877b806"></script>
-        @elseif (strlen($userinfo->reward_business_id) > 0)
-            <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
-        @endif
-        @include('layouts.analytics')
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
