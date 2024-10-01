@@ -2,6 +2,7 @@
 @include('layouts.lang')
 <head>
    <!-- If it's not a user page, insert npayme Labs campaign. If it's a user and the business ID is set, use it. -->
+
    @if (Str::startsWith(Request::path(), "@") === false)
       <script src="https://reward.npayme.io/panel.js?onelink=dd1400dd-c412-4633-b076-1ea09877b806"></script>
    @elseif (strlen($userinfo->reward_business_id) > 0)
@@ -15,6 +16,7 @@
    @foreach($information as $info)
    @stack('linkstack-head-end')
 </head>
+
 <body>
    @stack('linkstack-body-start')
    @include('linkstack.modules.admin-bar')
