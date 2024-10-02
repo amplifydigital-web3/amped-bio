@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 @include('layouts.lang')
 <head>
-   @if (strlen($userinfo->reward_business_id) > 0)
-      <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
-   @endif
    @include('linkstack.modules.meta')
    @include('linkstack.modules.theme')
    @stack('linkstack-head')
    @include('linkstack.modules.assets')
    @foreach($information as $info)
    @stack('linkstack-head-end')
+
+   @if (strlen($userinfo->reward_business_id) > 0)
+      <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
+   @endif
+   
 </head>
+
 <body>
    @stack('linkstack-body-start')
    @include('linkstack.modules.admin-bar')

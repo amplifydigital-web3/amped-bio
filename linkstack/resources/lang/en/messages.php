@@ -1016,7 +1016,7 @@ return [
   'footer.Home' => 'Home',
   'footer.Terms' => 'Terms',
   'footer.Privacy' => 'Privacy',
-  'footer.Contact' => 'Contact',
+  'footer.Contact' => 'Contact Support',
 
   /*
   |--------------------------------------------------------------------------

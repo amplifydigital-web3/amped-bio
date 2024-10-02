@@ -50,6 +50,8 @@
       
       <!-- RTL Css -->
       <link rel="stylesheet" href="{{asset('assets/css/rtl.min.css')}}" />
+      @include('layouts.analytics')
+
   </head>
 
 <body>
