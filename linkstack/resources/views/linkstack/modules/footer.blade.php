@@ -4,7 +4,7 @@
 		@if(env('DISPLAY_FOOTER_HOME') === true)<a class="footer-hover spacing" href="@if(str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) === "" ){{ url('') }}@else{{ str_replace('"', "", EnvEditor::getKey('HOME_FOOTER_LINK')) }}@endif">{{footer('Home')}}</a>@endif
 		@if(env('DISPLAY_FOOTER_TERMS') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(footer('Terms')) }}">{{footer('Terms')}}</a>@endif
 		@if(env('DISPLAY_FOOTER_PRIVACY') === true)<a class="footer-hover spacing" href="{{ url('') }}/pages/{{ strtolower(footer('Privacy')) }}">{{footer('Privacy')}}</a>@endif
-		@if(env('DISPLAY_FOOTER_CONTACT') === true)<a class="footer-hover spacing" href="https://npaymelabs.freshdesk.com/support/tickets/new?ticket_form=npayme_onelink_support" target="_blank">{{footer('Contact')}}</a>@endif
+		@if(env('DISPLAY_FOOTER_CONTACT') === true)<a class="footer-hover spacing" href="https://npaymelabs.freshdesk.com/support/tickets/new?ticket_form=npayme_onelink_support" target="_blank">{{footer('Contact Support')}}</a>@endif
 	@endif
 	</div>
 
