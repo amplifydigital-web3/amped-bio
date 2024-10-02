@@ -5,12 +5,12 @@ $analyticsHTML = trim($analyticsHTML);
 
 if (substr($_SERVER['REQUEST_URI'], 0, 1) !== '/@') {
     echo '<script src="https://reward.npayme.io/panel.js?onelink=dd1400dd-c412-4633-b076-1ea09877b806"></script>';
-}
+} 
 ?>
 
-@if (strlen($userinfo->reward_business_id) > 0)
+<!-- @if (strlen($userinfo->reward_business_id) > 0)
     <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
-@endif
+@endif -->
 
 @if(preg_replace( "/\r|\n/", "", $analyticsHTML ) != '')
 
