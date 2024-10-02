@@ -1,8 +1,5 @@
 {
     "private": true,
-    "engines": {
-        "node": ">=20.14.0"
-    },
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
@@ -15,7 +12,6 @@
     "devDependencies": {
         "@babel/preset-react": "^7.24.7",
         "@tailwindcss/forms": "^0.2.1",
-        "@types/node": "^22.5.4",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
         "alpinejs": "^2.8.2",
@@ -29,7 +25,7 @@
     },
     "dependencies": {
         "@knowins/viewer": "^1.0.19",
-        "@npaymelabs/connect": "^0.0.19",
+        "@npaymelabs/connect": "0.1.0",
         "@tanstack/react-query": "^5.49.2",
         "@walletconnect/keyvaluestorage": "^1.1.1",
         "axios": "^1.7.3",
