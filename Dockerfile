@@ -41,6 +41,23 @@ RUN apk --no-cache --update \
 COPY linkstack /htdocs
 COPY --from=composer /usr/bin/composer /bin/composer
 COPY ./linkstack/composer.json /htdocs/
+
+RUN chown -R apache:apache /htdocs
+
+COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/
+
+# For debugging
+# RUN chown -R root:root /var/www/logs
+# RUN chown -R root:root /var/log/apache2/
+# RUN chmod 777 -R /var/log/apache2/
+# RUN chown -R root:root /htdocs/storage
+# RUN chmod 777 -R /htdocs/storage
+
+# For production
+RUN chown -R apache:apache /var/www/logs
+RUN chown -R apache:apache /var/log/apache2/
+RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
+
 RUN cd /htdocs && composer install --no-interaction
 
 RUN cd /htdocs && npm i 
@@ -60,28 +77,8 @@ COPY configs/php/php.ini /etc/php8.2/php.ini
 RUN chown apache:apache /etc/ssl/apache2/server.pem
 RUN chown apache:apache /etc/ssl/apache2/server.key
 
-RUN chown -R apache:apache /htdocs
-
-# To be removed
-# RUN find /htdocs -type d -print0 | xargs -0 chmod 0755
-# RUN find /htdocs -type f -print0 | xargs -0 chmod 0644
-
-COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/
-
-# For production
-RUN chown -R apache:apache /var/www/logs
-RUN chown -R apache:apache /var/log/apache2/
-RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
 USER apache:apache
-
-# For debugging
-# RUN chown -R root:root /var/www/logs
-# RUN chown -R root:root /var/log/apache2/
-# RUN chmod 777 -R /var/log/apache2/
-# RUN chown -R root:root /htdocs/storage
-# RUN chmod 777 -R /htdocs/storage
-
 
 HEALTHCHECK CMD curl -f http://localhost -A "HealthCheck" || exit 1
 
