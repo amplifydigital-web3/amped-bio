@@ -51,7 +51,7 @@ return [
   # Login Page
   'Sign In' => 'Sign In',
   'Login to stay connected' => 'Login to stay connected',
-  'Email' => 'Email',
+  'Email' => 'Username or email',
   'Password' => 'Password',
   'Remember Me' => 'Remember Me',
   'Forgot Password?' => 'Forgot Password?',
@@ -1016,7 +1016,7 @@ return [
   'footer.Home' => 'Home',
   'footer.Terms' => 'Terms',
   'footer.Privacy' => 'Privacy',
-  'footer.Contact' => 'Contact',
+  'footer.Contact' => 'Contact Support',
 
   /*
   |--------------------------------------------------------------------------

@@ -14,6 +14,8 @@
       <title>{{ config('app.name') }}</title>
       @endif
 
+@include('layouts.analytics')
+
 <!--#### BEGIN Meta Tags social media preview images  ####-->
   <!-- This shows a preview for title, description and avatar image of users profiles if shared on social media sites -->
 

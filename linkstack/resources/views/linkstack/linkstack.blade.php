@@ -7,7 +7,13 @@
    @include('linkstack.modules.assets')
    @foreach($information as $info)
    @stack('linkstack-head-end')
+
+   @if (strlen($userinfo->reward_business_id) > 0)
+      <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
+   @endif
+   
 </head>
+
 <body>
    @stack('linkstack-body-start')
    @include('linkstack.modules.admin-bar')
@@ -28,6 +34,5 @@
       </div>
    </div>
    @stack('linkstack-body-end')
-   <!--script src="https://reward-dev.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script-->
 </body>
 </html>
