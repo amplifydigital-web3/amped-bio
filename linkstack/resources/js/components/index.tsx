@@ -12,6 +12,9 @@ import "./index.css";
 import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Web3ConnectButton from "./Connect";
+import DashboardStatistics from "./Statistics";
+import DashboardRegistrations from "./Registrations";
+import DashboardActiveUsers from "./ActiveUsers";
 import { addwallet } from "../repository";
 
 const projectId =
@@ -183,6 +186,45 @@ if (hasCampaignComponent) {
   root.render(
     <App>
       <Campaign />
+    </App>
+  );
+}
+
+const hasStatisticsComponent = document.getElementById("stats-react");
+if (hasStatisticsComponent) {
+  const element = document.getElementById("stats-react") as HTMLElement;
+  const root = ReactDOM.createRoot(element);
+  const data = {...element.dataset};
+
+  root.render(
+    <App>
+      <DashboardStatistics stats={data} />
+    </App>
+  );
+}
+
+const hasRegistrationsComponent = document.getElementById("registrations-react");
+if (hasRegistrationsComponent) {
+  const element = document.getElementById("registrations-react") as HTMLElement;
+  const root = ReactDOM.createRoot(element);
+  const data = {...element.dataset};
+
+  root.render(
+    <App>
+      <DashboardRegistrations registrations={data} />
+    </App>
+  );
+}
+
+const hasActiveUsersComponent = document.getElementById("activeUsers-react");
+if (hasActiveUsersComponent) {
+  const element = document.getElementById("activeUsers-react") as HTMLElement;
+  const root = ReactDOM.createRoot(element);
+  const data = {...element.dataset};
+
+  root.render(
+    <App>
+      <DashboardActiveUsers users={data} />
     </App>
   );
 }
