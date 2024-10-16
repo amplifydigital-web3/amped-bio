@@ -1,6 +1,6 @@
 import Card from "./core/Card"
 
-export default function DashboardRegistrations(props) {
+export default function DashboardRegistrations(props :any) {
   const { registrations } = props;
 
   return (

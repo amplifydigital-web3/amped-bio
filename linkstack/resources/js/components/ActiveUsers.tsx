@@ -1,6 +1,6 @@
 import Card from "./core/Card"
 
-export default function DashboardActiveUsers(props) {
+export default function DashboardActiveUsers(props :any) {
   const { users } = props;
 
   return (

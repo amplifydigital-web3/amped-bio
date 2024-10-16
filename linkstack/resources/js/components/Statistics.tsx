@@ -1,6 +1,6 @@
 import Card from "./core/Card"
 
-export default function DashboardStatistics(props) {
+export default function DashboardStatistics(props :any) {
   const { stats } = props;
 
   return (

@@ -1,5 +1,5 @@
 
-export default function Card(props) {
+export default function Card(props :any) {
     return (
         <div className="col-lg-12">
             <div className="card rounded">
