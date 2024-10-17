@@ -12,9 +12,7 @@ import "./index.css";
 import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Web3ConnectButton from "./Connect";
-import DashboardStatistics from "./Statistics";
-import DashboardRegistrations from "./Registrations";
-import DashboardActiveUsers from "./ActiveUsers";
+import Dashboard from "./Dashboard/Dashboard"
 import { addwallet } from "../repository";
 
 const projectId =
@@ -69,8 +67,8 @@ const App = (props: any) => {
 
   useEffect(() => {
     window.addEventListener("message", (message) => {
-      console.log("message data.........:", message.data);
-      console.log("php/js.... origin 1..:", process.env.REWARD_ORIGIN);
+      //console.log("message data.........:", message.data);
+      //console.log("php/js.... origin 1..:", process.env.REWARD_ORIGIN);
       if (message.origin === process.env.REWARD_ORIGIN) {
         switch (message.data.type) {
           case "sign-in@reward":
@@ -96,7 +94,7 @@ const App = (props: any) => {
 
     setAddress((prev) => {
       if ((prev && prev != update) || (prev && !update)) {
-        console.log("OneLink updates address to......", update);
+        //console.log("OneLink updates address to......", update);
         setOpen(false);
 
         const reward = document.getElementById("iframe-npayme-reward");
@@ -190,41 +188,15 @@ if (hasCampaignComponent) {
   );
 }
 
-const hasStatisticsComponent = document.getElementById("stats-react");
-if (hasStatisticsComponent) {
-  const element = document.getElementById("stats-react") as HTMLElement;
+const hasDashboardStatsComponent = document.getElementById("dashboard-react");
+if (hasDashboardStatsComponent) {
+  const element = document.getElementById("dashboard-react") as HTMLElement;
   const root = ReactDOM.createRoot(element);
   const data = {...element.dataset};
 
   root.render(
     <App>
-      <DashboardStatistics stats={data} />
-    </App>
-  );
-}
-
-const hasRegistrationsComponent = document.getElementById("registrations-react");
-if (hasRegistrationsComponent) {
-  const element = document.getElementById("registrations-react") as HTMLElement;
-  const root = ReactDOM.createRoot(element);
-  const data = {...element.dataset};
-
-  root.render(
-    <App>
-      <DashboardRegistrations registrations={data} />
-    </App>
-  );
-}
-
-const hasActiveUsersComponent = document.getElementById("activeUsers-react");
-if (hasActiveUsersComponent) {
-  const element = document.getElementById("activeUsers-react") as HTMLElement;
-  const root = ReactDOM.createRoot(element);
-  const data = {...element.dataset};
-
-  root.render(
-    <App>
-      <DashboardActiveUsers users={data} />
+      <Dashboard data={data} />
     </App>
   );
 }

@@ -86,31 +86,19 @@
     @endif
 
     @if(auth()->user()->role == 'admin' && !config('linkstack.single_user_mode'))
-    <div 
-        id="stats-react" 
-        data-site-links={{ $siteLinks }} 
-        data-site-clicks={{ $siteClicks }} 
-        data-user-number={{ $userNumber }} 
+    <div
+        id="dashboard-react"
+        data-site-links={{ $siteLinks }}
+        data-site-clicks={{ $siteClicks }}
+        data-user-number={{ $userNumber }}
+        data-last-month-count={{ $lastMonthCount }}
+        data-last-week-count={{ $lastWeekCount }}
+        data-last24-hrs-count={{ $last24HrsCount }}
+        data-updated-last30-days-count={{ $updatedLast30DaysCount }}
+        data-updated-last7-days-count={{ $updatedLast7DaysCount }}
+        data-updated-last24-hrs-count={{ $updatedLast24HrsCount }}
     >
-        Stats
-    </div>
-
-    <div 
-        id="registrations-react" 
-        data-last-month-count={{ $lastMonthCount }} 
-        data-last-week-count={{ $lastWeekCount }} 
-        data-last24-hrs-count={{ $last24HrsCount }} 
-    >
-        Reg
-    </div>
-
-    <div 
-        id="activeUsers-react"
-        data-updated-last30-days-count={{ $updatedLast30DaysCount }} 
-        data-updated-last7-days-count={{ $updatedLast7DaysCount }} 
-        data-updated-last24-hrs-count={{ $updatedLast24HrsCount }} 
-    >
-        Active
+        Dashboard Statistics
     </div>
     @endif
 
