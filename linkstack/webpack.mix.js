@@ -58,5 +58,12 @@ mix
                 //     "vendor/laravel/spark/resources/assets/js"
                 // ),
             ],
+            fallback: {
+                "http": false,
+                "async_hooks": false,
+                "path": require.resolve("path-browserify"),
+                "os": false,
+                "crypto": false
+            }
         },
     });

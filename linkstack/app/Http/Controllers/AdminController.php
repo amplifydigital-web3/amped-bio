@@ -56,7 +56,7 @@ class AdminController extends Controller {
       'countries' => visits('App\Models\User', $littlelink_name)->countries(),
     ];
 
-    return view('panel/index', ['lastMonthCount' => $lastMonthCount, 'lastWeekCount' => $lastWeekCount, 'last24HrsCount' => $last24HrsCount, 'updatedLast30DaysCount' => $updatedLast30DaysCount, 'updatedLast7DaysCount' => $updatedLast7DaysCount, 'updatedLast24HrsCount' => $updatedLast24HrsCount, 'toplinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats, 'littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
+    return view('panel/index', ['lastMonthCount' => $lastMonthCount, 'lastWeekCount' => $lastWeekCount, 'last24HrsCount' => $last24HrsCount, 'updatedLast30DaysCount' => $updatedLast30DaysCount, 'updatedLast7DaysCount' => $updatedLast7DaysCount, 'updatedLast24HrsCount' => $updatedLast24HrsCount, 'topLinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats, 'littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
   }
 
 // Users page

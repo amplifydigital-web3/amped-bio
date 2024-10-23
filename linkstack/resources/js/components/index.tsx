@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+require('dotenv').config()
 
 // @ts-ignore
 import ContextProvider from "@npaymelabs/connect";
@@ -9,7 +10,6 @@ import { mainnet, arbitrum, sepolia } from "wagmi/chains";
 console.log("Starting React App...");
 
 import "./index.css";
-import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Web3ConnectButton from "./Connect";
 import Dashboard from "./Dashboard/Dashboard"
@@ -171,19 +171,6 @@ if (hasSpotifyComponent) {
   root.render(
     <App>
       <Spotify />
-    </App>
-  );
-}
-
-const hasCampaignComponent = document.getElementById("campaign-react");
-if (hasCampaignComponent) {
-  const root = ReactDOM.createRoot(
-    document.getElementById("campaign-react") as HTMLElement
-  );
-
-  root.render(
-    <App>
-      <Campaign />
     </App>
   );
 }

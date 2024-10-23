@@ -70,7 +70,7 @@ class UserController extends Controller {
       'countries' => visits('App\Models\User', $littlelink_name)->countries(),
     ];
 
-    return view('studio/index', ['greeting' => $userinfo->name, 'toplinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats]);
+    return view('studio/index', ['greeting' => $userinfo->name, 'topLinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats]);
   }
 
   //Show littlelink page. example => http://127.0.0.1:8000/+admin

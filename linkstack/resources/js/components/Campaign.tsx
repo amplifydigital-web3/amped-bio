@@ -1,12 +1,13 @@
 import { useAccount, useDisconnect } from "wagmi";
-
+import Card from "./core/Card"
 import Viewer from "@knowins/viewer";
 
 const Campaign = () => {
   const { address, status, chain } = useAccount();
 
   return address ? (
-    <Viewer
+    <Card>
+      <Viewer
       config={{
         title: "",
         account: 'oneiro',
@@ -18,8 +19,10 @@ const Campaign = () => {
       // @ts-ignore
       loading={null}
     />
+    </Card>
+    
   ) : (
-    <>Promote Campaigns: Connect your wallet to see your campaigns</>
+    <Card>Promote Campaigns: Connect your wallet to see your campaigns</Card>
   );
 };
 
