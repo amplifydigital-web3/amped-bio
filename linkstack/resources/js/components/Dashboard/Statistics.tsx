@@ -1,7 +1,7 @@
 import Card from "../core/Card"
 
 export default function Statistics(props :any) {
-  const { stats = {} } = props;
+  const { stats = {}, loading } = props;
 
   return (
     <Card>
@@ -10,7 +10,7 @@ export default function Statistics(props :any) {
             <div className="d-flex flex-wrap justify-content-around">
 
                 <div className="p-2">
-                    <h3 className="text-primary"><strong><i className="bi bi-share-fill"> { stats.siteLinks }  </i></strong></h3>
+                    <h3 className="text-primary"><strong><i className="bi bi-share-fill"> {loading && 'LOADING'}{!loading && stats.siteLinks }  </i></strong></h3>
                     <span className="text-muted">Total links</span>
                 </div>
 

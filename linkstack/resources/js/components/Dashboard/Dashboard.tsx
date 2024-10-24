@@ -3,31 +3,37 @@ import Registrations from "./Registrations";
 import ActiveUsers from "./ActiveUsers";
 import Campaign from "../Campaign";
 import TopLinks from "./TopLinks";
-import { useState } from "react";
-import { getRequest } from "../../repository";
+import useFetch from "../../repository/sendRequest";
 
 
 export function DashboardTopLinks() {
-    const [data, setData] = useState({});
-    getRequest('dashboard/data').then(res => setData(res))
-  
+    const {data, loading, error} = useFetch('get', 'dashboard/data');
+
+    if (error) {
+      console.log(error);
+    }
+
     return (
       <>
-        <TopLinks data={data}/>
+        {loading && 'LOADING'}
+        {data && <TopLinks data={data}/>}
         {process.env.ENABLE_PROMOTE === 'true' && (<Campaign />)}
       </>
     );
   }
 
   export function DashboardAdminStats() {
-    const [data, setData] = useState({});
-    getRequest('dashboard/data').then(res => setData(res))
-  
+    const {data, loading, error} = useFetch('get', 'dashboard/data');
+
+    if (error) {
+      console.log(error);
+    }
+
     return (
       <>
-        <Statistics stats={data}/>
-        <Registrations registrations={data}/>
-        <ActiveUsers users={data}/>
+        <Statistics stats={data} loading={loading}/>
+        <Registrations registrations={data} loading={loading}/>
+        <ActiveUsers users={data} loading={loading}/>
       </>
     );
   }
