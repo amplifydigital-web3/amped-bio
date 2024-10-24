@@ -21,15 +21,15 @@ function renderLink(link :any) {
 }
 
 export default function TopLinks(props :any) {
-    const { data } = props;
-    console.log(data);
+    const { data = {} } = props;
+
     return (
         <Card>
-            <h3 className="mb-4"><i className="bi bi-menu-up"></i>{'Dashboard'}</h3>
+            <h3 className="mb-4"><i className="bi bi-menu-up"></i>{' Dashboard'}</h3>
             <div className="mb-3 text-center p-4 w-full">
                 <div className=" d-flex">
-                    <div className='p-2 h6'><i className="bi bi-link"></i>{'Total Links: '}<span className='text-primary'>{data.linkCount} </span></div>
-                    <div className='p-2 h6'><i className="bi bi-eye"></i> {'Link Clicks:'} <span className='text-primary'>{data.clickCount}</span></div>
+                    <div className='p-2 h6'><i className="bi bi-link"></i>{'Total Links: '}<span className='text-primary'>{data.links} </span></div>
+                    <div className='p-2 h6'><i className="bi bi-eye"></i> {'Link Clicks:'} <span className='text-primary'>{data.clicks}</span></div>
                 </div>
                 <div className='text-center w-100'>
                     <a href="{{ url('/studio/links') }}">{'View/Edit Links'}</a>
@@ -38,7 +38,7 @@ export default function TopLinks(props :any) {
                     <h6><i className="bi bi-sort-up"></i> {'Top Links:'}</h6>
                     <div className="bd-example" >
                         <ol className="list-group list-group-numbered" style={{textAlign: 'left'}}>
-                            {data.linkMap.length === 0 && (
+                            {data.topLinks?.length === 0 && (
                                 <div className="container">
                                     <div className="row justify-content-center mt-3">
                                         <div className="col-6 text-center">
@@ -47,9 +47,9 @@ export default function TopLinks(props :any) {
                                     </div>
                                 </div>
                             )}
-                            {data.linkMap.length >= 0 && (
+                            {data.topLinks?.length >= 0 && (
                                 <>
-                                    {data.linkMap.map((link: any) => renderLink(link))}
+                                    {data.topLinks?.map((link: any) => renderLink(link))}
                                 </>
                             )}
                         </ol>

@@ -1,7 +1,7 @@
 import Card from "../core/Card"
 
 export default function Registrations(props :any) {
-  const { registrations } = props;
+  const { registrations = {} } = props;
 
   return (
     <Card>

@@ -10,9 +10,10 @@ import { mainnet, arbitrum, sepolia } from "wagmi/chains";
 console.log("Starting React App...");
 
 import "./index.css";
+import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Web3ConnectButton from "./Connect";
-import Dashboard from "./Dashboard/Dashboard"
+import { DashboardAdminStats, DashboardTopLinks } from "./Dashboard/Dashboard"
 import { addwallet } from "../repository";
 
 const projectId =
@@ -175,15 +176,26 @@ if (hasSpotifyComponent) {
   );
 }
 
-const hasDashboardStatsComponent = document.getElementById("dashboard-react");
-if (hasDashboardStatsComponent) {
-  const element = document.getElementById("dashboard-react") as HTMLElement;
+const hasDashboardTopLinksComponent = document.getElementById("dashboard-topLinks-react");
+if (hasDashboardTopLinksComponent) {
+  const element = document.getElementById("dashboard-topLinks-react") as HTMLElement;
   const root = ReactDOM.createRoot(element);
-  const data = {...element.dataset};
 
   root.render(
     <App>
-      <Dashboard data={data} />
+      <DashboardTopLinks />
+    </App>
+  );
+}
+
+const hasDashboardStatsComponent = document.getElementById("dashboard-adminStats-react");
+if (hasDashboardStatsComponent) {
+  const element = document.getElementById("dashboard-adminStats-react") as HTMLElement;
+  const root = ReactDOM.createRoot(element);
+
+  root.render(
+    <App>
+      <DashboardAdminStats />
     </App>
   );
 }

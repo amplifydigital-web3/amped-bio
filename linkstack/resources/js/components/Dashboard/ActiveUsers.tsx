@@ -1,7 +1,7 @@
 import Card from "../core/Card"
 
 export default function ActiveUsers(props :any) {
-  const { users } = props;
+  const { users = {} } = props;
 
   return (
     <Card>

@@ -1,7 +1,7 @@
 import Card from "../core/Card"
 
 export default function Statistics(props :any) {
-  const { stats } = props;
+  const { stats = {} } = props;
 
   return (
     <Card>
