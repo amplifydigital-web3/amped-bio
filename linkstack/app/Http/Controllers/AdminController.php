@@ -59,6 +59,49 @@ class AdminController extends Controller {
     return view('panel/index', ['lastMonthCount' => $lastMonthCount, 'lastWeekCount' => $lastWeekCount, 'last24HrsCount' => $last24HrsCount, 'updatedLast30DaysCount' => $updatedLast30DaysCount, 'updatedLast7DaysCount' => $updatedLast7DaysCount, 'updatedLast24HrsCount' => $updatedLast24HrsCount, 'topLinks' => $topLinks, 'links' => $links, 'clicks' => $clicks, 'pageStats' => $pageStats, 'littlelink_name' => $littlelink_name, 'links' => $links, 'clicks' => $clicks, 'siteLinks' => $siteLinks, 'siteClicks' => $siteClicks, 'userNumber' => $userNumber]);
   }
 
+  // Return stats and top link data without rendering page
+  public function userData() {
+    $userId = Auth::user()->id;
+    $littlelink_name = Auth::user()->littlelink_name;
+    $links = Link::where('user_id', $userId)->select('link')->count();
+    $clicks = Link::where('user_id', $userId)->sum('click_number');
+
+    $userNumber = User::count();
+    $siteLinks = Link::count();
+    $siteClicks = Link::sum('click_number');
+
+    $users = User::select('id', 'name', 'email', 'created_at', 'updated_at')->get();
+    $lastMonthCount = $users->where('created_at', '>=', Carbon::now()->subDays(30))->count();
+    $lastWeekCount = $users->where('created_at', '>=', Carbon::now()->subDays(7))->count();
+    $last24HrsCount = $users->where('created_at', '>=', Carbon::now()->subHours(24))->count();
+    $updatedLast30DaysCount = $users->where('updated_at', '>=', Carbon::now()->subDays(30))->count();
+    $updatedLast7DaysCount = $users->where('updated_at', '>=', Carbon::now()->subDays(7))->count();
+    $updatedLast24HrsCount = $users->where('updated_at', '>=', Carbon::now()->subHours(24))->count();
+
+    $links = Link::where('user_id', $userId)->select('link')->count();
+    $clicks = Link::where('user_id', $userId)->sum('click_number');
+    $topLinks = Link::where('user_id', $userId)->orderby('click_number', 'desc')
+      ->whereNotNull('link')->where('link', '<>', '')
+      ->take(5)->get();
+
+    return response()->json([
+      'lastMonthCount' => $lastMonthCount,
+      'lastWeekCount' => $lastWeekCount,
+      'last24HrsCount' => $last24HrsCount,
+      'updatedLast30DaysCount' => $updatedLast30DaysCount,
+      'updatedLast7DaysCount' => $updatedLast7DaysCount,
+      'updatedLast24HrsCount' => $updatedLast24HrsCount,
+      'topLinks' => $topLinks,
+      'links' => $links,
+      'clicks' => $clicks,
+      'littlelink_name' => $littlelink_name,
+      'links' => $links,
+      'clicks' => $clicks,
+      'siteLinks' => $siteLinks,
+      'siteClicks' => $siteClicks,
+      'userNumber' => $userNumber]);
+  }
+
 // Users page
   public function users() {
     return view('panel/users');

@@ -82,4 +82,15 @@ export const addwallet = async (
   });
 };
 
+export const getRequest = async (
+  requestURL: string
+) => {
+  try {
+    const res = await fetch_axios("get", requestURL);
+    return res;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export { baseURL };
