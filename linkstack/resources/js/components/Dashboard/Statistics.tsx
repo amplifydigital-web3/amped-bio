@@ -1,4 +1,5 @@
 import Card from "../core/Card"
+import Spinner from "../core/Spinner";
 
 export default function Statistics(props :any) {
   const { stats = {}, loading } = props;
@@ -10,17 +11,27 @@ export default function Statistics(props :any) {
             <div className="d-flex flex-wrap justify-content-around">
 
                 <div className="p-2">
-                    <h3 className="text-primary"><strong><i className="bi bi-share-fill"> {loading && 'LOADING'}{!loading && stats.siteLinks }  </i></strong></h3>
+                    <h3 className="text-primary">
+                        <strong><i className="bi bi-share-fill">
+                        <Spinner loading={loading}> { stats.siteLinks }</Spinner>
+                        </i></strong>
+                    </h3>
                     <span className="text-muted">Total links</span>
                 </div>
 
                 <div className="p-2">
-                    <h3 className="text-primary"><strong><i className="bi bi-eye-fill"> { stats.siteClicks } </i></strong></h3>
+                    <h3 className="text-primary">
+                        <strong><i className="bi bi-eye-fill">
+                        <Spinner loading={loading}> { stats.siteClicks }</Spinner>
+                        </i></strong></h3>
                     <span className="text-muted">Total clicks</span>
                 </div>
 
                 <div className="p-2">
-                    <h3 className="text-primary"><strong><i className="bi bi bi-person-fill"> { stats.userNumber }</i></strong></h3>
+                    <h3 className="text-primary">
+                        <strong><i className="bi bi bi-person-fill">
+                            <Spinner loading={loading}> { stats.userNumber }</Spinner>
+                        </i></strong></h3>
                     <span className="text-muted">Total users</span>
                 </div>
 

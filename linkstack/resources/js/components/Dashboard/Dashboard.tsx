@@ -15,8 +15,7 @@ export function DashboardTopLinks() {
 
     return (
       <>
-        {loading && 'LOADING'}
-        {data && <TopLinks data={data}/>}
+        <TopLinks data={data} loading={loading}/>
         {process.env.ENABLE_PROMOTE === 'true' && (<Campaign />)}
       </>
     );

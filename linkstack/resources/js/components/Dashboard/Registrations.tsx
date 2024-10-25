@@ -1,7 +1,8 @@
 import Card from "../core/Card"
+import Spinner from "../core/Spinner";
 
 export default function Registrations(props :any) {
-  const { registrations = {} } = props;
+  const { registrations = {}, loading } = props;
 
   return (
     <Card>
@@ -10,20 +11,31 @@ export default function Registrations(props :any) {
           <div className="d-flex flex-wrap justify-content-around">
 
               <div className="p-2">
-                  <h3 className="text-primary"><strong> { registrations.lastMonthCount } </strong></h3>
-                  <span className="text-muted">Last 30 days'</span>
+                <h3 className="text-primary">
+                  <strong>
+                    <Spinner loading={loading}>{ registrations.lastMonthCount }</Spinner>
+                  </strong>
+                </h3>
+                <span className="text-muted">Last 30 days'</span>
               </div>
 
               <div className="p-2">
-                  <h3 className="text-primary"><strong> { registrations.lastWeekCount } </strong></h3>
-                  <span className="text-muted">Last 7 days</span>
+                <h3 className="text-primary">
+                  <strong>
+                    <Spinner loading={loading}>{ registrations.lastWeekCount }</Spinner>
+                  </strong>
+                </h3>
+                <span className="text-muted">Last 7 days</span>
               </div>
 
               <div className="p-2">
-                  <h3 className="text-primary"><strong> { registrations.last24HrsCount }</strong></h3>
-                  <span className="text-muted">Last 24 hours</span>
+                <h3 className="text-primary">
+                  <strong>
+                    <Spinner loading={loading}>{ registrations.last24HrsCount }</Spinner>
+                  </strong>
+                </h3>
+                <span className="text-muted">Last 24 hours</span>
               </div>
-
           </div>
       </div>
     </Card>

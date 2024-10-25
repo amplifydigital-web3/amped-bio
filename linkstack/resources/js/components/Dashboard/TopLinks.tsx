@@ -7,7 +7,7 @@ function renderLink(link :any) {
         return null;
     }
     return (
-        <li className="list-group-item d-flex justify-content-between align-items-start">
+        <li className="list-group-item d-flex justify-content-between align-items-start" key={link.id}>
             <div className="ms-2 me-auto text-truncate">
                 <div className="fw-bold text-truncate">{link.title}</div>
                 {link.link} - {link.name}
@@ -21,7 +21,7 @@ function renderLink(link :any) {
 }
 
 export default function TopLinks(props :any) {
-    const { data = {} } = props;
+    const { data = {}, loading } = props;
 
     return (
         <Card>
@@ -36,6 +36,15 @@ export default function TopLinks(props :any) {
                 </div>
                 <div className='w-100 text-left'>
                     <h6><i className="bi bi-sort-up"></i> {'Top Links:'}</h6>
+                    {loading && (
+                        <div className="container">
+                            <div className="row justify-content-center mt-3">
+                                <div className="col-6 text-center">
+                                    <p className="p-2">{'Loading...'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                     <div className="bd-example" >
                         <ol className="list-group list-group-numbered" style={{textAlign: 'left'}}>
                             {data.topLinks?.length === 0 && (
