@@ -793,12 +793,17 @@ class UserController extends Controller {
       EnvEditor::editKey('HOME_URL', $pageName);
     }
 
-    User::where('id', $userId)->update([
+    $toUpdate = [
       'littlelink_name' => $pageName,
       'littlelink_description' => $pageDescription,
-      'name' => $name,
-      'reward_business_id' => $reward,
-    ]);
+      'name' => $name
+    ];
+
+    if (env('ENABLE_LOYALTY') == true){
+      $toUpdate['reward_business_id'] = $reward;
+    }
+
+    User::where('id', $userId)->update($toUpdate);
 
     if ($request->hasFile('image')) {
 
