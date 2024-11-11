@@ -154,7 +154,7 @@ class InstallerController extends Controller
             sleep(1);
         }
 
-        return redirect(url('dashboard'));
+        return redirect(url('home'));
     }
 
     public function editConfigInstaller(request $request)
@@ -167,7 +167,7 @@ class InstallerController extends Controller
         
         if(EnvEditor::keyExists($entry)){EnvEditor::editKey($entry, $value);}
 
-        return Redirect(url('dashboard'));
+        return Redirect(url('home'));
     }
 
 }

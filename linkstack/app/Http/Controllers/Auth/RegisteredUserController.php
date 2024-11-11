@@ -76,6 +76,6 @@ class RegisteredUserController extends Controller {
 
     event(new Registered($user));
 
-    return redirect(url('dashboard'));
+    return redirect(url('home'));
   }
 }
