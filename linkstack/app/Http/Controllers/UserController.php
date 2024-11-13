@@ -116,6 +116,11 @@ class UserController extends Controller {
     return view('linkstack.linkstack', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
   }
 
+  // home page
+  public function homeBlog() {
+    return view('panel/home');
+  }
+
   //Redirect to user page
   public function userRedirect(request $request) {
     $id = $request->id;

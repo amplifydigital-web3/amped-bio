@@ -166,6 +166,7 @@ return array(
   'Site logo' => 'Logotipo do site',
   'Favicon' => 'Favicon',
   'Home message' => 'Mensagem inicial',
+  'Menu' => 'Menu',
 
   /*
   |--------------------------------------------------------------------------

@@ -117,10 +117,20 @@ $usrhandl = Auth::user()->littlelink_name;
                 <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
                     <li class="nav-item static-item">
                         <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                            <span class="default-icon">{{__('messages.Home')}}</span>
+                            <span class="default-icon">{{__('messages.Menu')}}</span>
                             <span class="mini-icon">-</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link {{ Request::segment(1) == 'home' ? 'active' : 'bg-soft-primary'}}" aria-current="page" href="{{ route('homeBlog') }}">
+                          <i class="icon">
+                              <svg width="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-20">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" fill="currentColor"></path>
+                              </svg>
+                          </i>
+                          <span class="item-name">{{__('messages.Home')}}</span>
+                      </a>
+                  </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'dashboard' ? 'active' : 'bg-soft-primary'}}" aria-current="page" href="{{ route('panelIndex') }}">
                             <i class="icon">
