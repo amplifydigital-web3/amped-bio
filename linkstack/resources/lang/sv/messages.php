@@ -159,6 +159,7 @@ return [
   'Site logo' => 'Webbplatsens logga',
   'Favicon' => 'Favicon',
   'Home message' => 'Hemmedelande',
+  'Menu' => 'Meny',
 
   /*
   |--------------------------------------------------------------------------

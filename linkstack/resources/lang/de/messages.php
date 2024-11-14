@@ -161,6 +161,7 @@ return [
   'Site logo' => 'Seitenlogo',
   'Favicon' => 'Favicon',
   'Home message' => 'Startseitennachricht',
+  'Menu' => 'Menü',
 
   /*
   |--------------------------------------------------------------------------

@@ -85,6 +85,7 @@ return array(
   'Site logo' => 'Лого на сайта',
   'Favicon' => 'Favicon',
   'Home message' => 'Начално съобщение',
+  'Menu' => 'меню',
   'View Page' => 'Преглед на страницата',
   'Share your profile' => 'Споделете своя профил',
   'Share your profile:' => 'Споделете своя профил:',

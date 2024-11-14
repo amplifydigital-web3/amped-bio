@@ -116,6 +116,11 @@ class UserController extends Controller {
     return view('linkstack.linkstack', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
   }
 
+  // home page
+  public function homeBlog() {
+    return view('panel/home');
+  }
+
   //Redirect to user page
   public function userRedirect(request $request) {
     $id = $request->id;
@@ -793,12 +798,17 @@ class UserController extends Controller {
       EnvEditor::editKey('HOME_URL', $pageName);
     }
 
-    User::where('id', $userId)->update([
+    $toUpdate = [
       'littlelink_name' => $pageName,
       'littlelink_description' => $pageDescription,
-      'name' => $name,
-      'reward_business_id' => $reward,
-    ]);
+      'name' => $name
+    ];
+
+    if (env('ENABLE_LOYALTY') == true){
+      $toUpdate['reward_business_id'] = $reward;
+    }
+
+    User::where('id', $userId)->update($toUpdate);
 
     if ($request->hasFile('image')) {
 

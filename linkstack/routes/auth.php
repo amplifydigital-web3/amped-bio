@@ -100,6 +100,6 @@ Route::get('/blocked', function () {
   if ($user && $user->block == 'yes') {
     return view('auth.blocked');
   } else {
-    return redirect(url('dashboard'));
+    return redirect(url('home'));
   }
 })->name('blocked');
