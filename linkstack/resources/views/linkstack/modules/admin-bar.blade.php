@@ -138,7 +138,7 @@ if(Auth::user()->id == $userinfo->id){
           window.location.href = document.getElementById("confirmationLink").getAttribute("href");
         }
       }
-      document.getElementById("confirmationLink").addEventListener("click", function(event) {
+      document.getElementById("confirmationLink") && document.getElementById("confirmationLink").addEventListener("click", function(event) {
         event.preventDefault();
         showConfirmation();
       });

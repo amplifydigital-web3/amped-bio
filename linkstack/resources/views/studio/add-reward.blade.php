@@ -32,6 +32,8 @@
                                             case 'pong':
                                                 clearTimeout(t);
                                                 break;
+                                            case 'sign-in@reward':
+                                                break;
                                             default:
                                         }
                                     }
