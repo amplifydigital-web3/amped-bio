@@ -34,7 +34,7 @@ import DashboardRegistrations from "./Registrations";
 import DashboardActiveUsers from "./ActiveUsers";
 import { addwallet } from "../repository";
 
-import { Provider } from "../providers";
+import Provider from "../providers/Providers";
 // const WagmiProvider = lazy(() => import("../lib/connect/main"));
 // const queryClient = new QueryClient();
 

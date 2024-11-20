@@ -40,7 +40,7 @@ const wagmiConfig = defaultWagmiConfig({
   enableEIP6963: true,
 });
 
-export function Providers({ children }: { children: any }) {
+export default function Providers({ children }: { children: any }) {
   const [modal, setModal] = useState<any>();
 
   useEffect(() => {
