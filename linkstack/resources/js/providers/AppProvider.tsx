@@ -4,7 +4,7 @@ import { useEffect, useState, createContext } from 'react';
 // import { signOut, useSession } from 'next-auth/react';
 // import { useRouter } from 'next/router';
 // import { AddressType } from '@npaymelabs/connect';
-import { AddressType } from '../lib/connect/main';
+import { AddressType, useConnectContext } from '../lib/connect/main';
 import { useWeb3ModalEvents } from '@web3modal/wagmi/react';
 
 import { useAccount, useSignMessage } from 'wagmi';
@@ -31,9 +31,9 @@ export default function AppProvider({
   // const { pathname, push } = useRouter();
   // const notProgramme = !pathname.includes('/programme');
   // @ts-ignore
-  // const { address: update, status, signMessageAsync } = useConnectContext(); // ConnectContext;
+  const { signMessageAsync } = useConnectContext(); // ConnectContext;
   const { address: update, isConnected, status } = useAccount();
-  const { signMessageAsync } = useSignMessage();
+  // const { signMessageAsync } = useSignMessage();
 
   // const { status: sessionStatus } = useSession();
   let sessionStatus = '';
