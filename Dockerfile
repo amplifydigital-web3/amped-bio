@@ -73,7 +73,7 @@ RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
 
 COPY configs/apache2/httpd.conf /etc/apache2/httpd.conf
 COPY configs/apache2/ssl.conf /etc/apache2/conf.d/ssl.conf
-COPY configs/php/php.ini /etc/php8.2/php.ini
+COPY configs/php/php.ini /etc/php82/php.ini
 
 RUN chown apache:apache /etc/ssl/apache2/server.pem
 RUN chown apache:apache /etc/ssl/apache2/server.key
