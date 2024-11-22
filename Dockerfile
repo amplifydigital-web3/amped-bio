@@ -22,6 +22,7 @@ RUN apk --no-cache --update \
     php82-mbstring \
     php82-mysqli \
     php82-mysqlnd \
+    php82-opcache \
     php82-openssl \
     php82-pdo_mysql \
     php82-pdo_pgsql \
