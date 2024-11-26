@@ -72,13 +72,20 @@ ingress:
       hosts:
         - onelink.npayme.io
 
+tolerations:
+- key: "test"
+  operator: "Equal"
+  value: "test1"
+  effect: "NoSchedule"
+
 resources:
   limits:
-    cpu: 300m
-    memory: 2048Mi
+    cpu: 4
+    memory: 8Gi
   requests:
-    cpu: 100m
-    memory: 512Mi
+    cpu: 1
+    memory: 3Gi
+    
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -101,8 +108,6 @@ autoscaling:
 env: {}
 
 nodeSelector: {}
-
-tolerations: []
 
 affinity: {}
 
