@@ -165,3 +165,4 @@ data:
     ENABLE_SPOTIFY=true
 
     REWARD_URL=https://reward-dev.npayme.io/get-started/business
+    HOME_BLOG_LINK=https://blog.npayme.com/home/
