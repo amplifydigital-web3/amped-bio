@@ -16,7 +16,7 @@
 
                           <section class='text-gray-400'>
                               <div class='class="holds-the-iframe'>
-                                  <iframe id="iframe-onelink-home" loading="lazy" class="holds-the-iframe" style="width: 100%;height: 800px;" src="https://blog.npayme.com/home/"></iframe>
+                                  <iframe id="iframe-onelink-home" loading="lazy" class="holds-the-iframe" style="width: 100%;height: 800px;" src="{{env('HOME_BLOG_LINK')}}"></iframe>
                               </div>
                           </section>
                         </div>
