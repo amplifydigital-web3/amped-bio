@@ -85,7 +85,7 @@
     </div>
     @endif
 
-    @if(auth()->user()->role == 'admin' && !config('linkstack.single_user_mode'))
+    {{-- @if(auth()->user()->role == 'admin' && !config('linkstack.single_user_mode'))
     <div 
         id="stats-react" 
         data-site-links={{ $siteLinks }} 
@@ -112,9 +112,9 @@
     >
         Active
     </div>
-    @endif
+    @endif --}}
 
-    {{-- <div class="col-lg-12">
+    <div class="col-lg-12">
           <div class="card   rounded">
              <div class="card-body">
                 <div class="row">
@@ -219,7 +219,7 @@
            </div>
         </div>
      </div> 
-     @endif --}}
+     @endif
 
     </div>
     </div>
