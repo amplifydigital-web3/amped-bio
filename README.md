@@ -323,4 +323,4 @@ server {
 docker compose -f docker-compose.dev.yml up
 ```
 
-And every change in `/linkstack` folder will auto reload :)
+And every change in `/linkstack` folder will auto reload :) at `http://localhost:8082/`
