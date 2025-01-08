@@ -64,9 +64,9 @@ ingress:
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://reward-dev.npayme.io https://www.googletagmanager.com; connect-src 'self' https://*.npayme.io wss://relay.walletconnect.com https://api.web3modal.org https://rpc.walletconnect.org https://cloudflare-eth.com https://www.google-analytics.com; img-src 'self' blob: data: ; frame-src 'self' https://reward-dev.npayme.io/ https://open.spotify.com/ https://secure.walletconnect.org https://secure-mobile.walletconnect.com https://verify.walletconnect.org/; frame-ancestors 'self' https://secure.walletconnect.org https://secure-mobile.walletconnect.com; style-src 'self' 'unsafe-inline' https://reward-dev.npayme.io https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; upgrade-insecure-requests; object-src 'self' https://reward-dev.npayme.io/";
-    #   more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
-    #   more_set_headers "Feature-Policy: camera 'none'; microphone 'none'; geolocation 'none'; encrypted-media 'none'; payment 'none'; speaker 'none'; usb 'none';";
+      more_set_headers "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io https://reward.npayme.io https://www.googletagmanager.com; connect-src 'self' https://plausible.io/ https://*.npayme.io wss://relay.walletconnect.com https://api.web3modal.org https://rpc.walletconnect.org https://cloudflare-eth.com https://www.google-analytics.com; img-src 'self' blob: data: ;frame-src 'self' https://blog.npayme.com/ https://reward-dev.npayme.io/ https://reward.npayme.io/ https://open.spotify.com/ https://secure.walletconnect.org https://secure-mobile.walletconnect.com https://verify.walletconnect.org/; frame-ancestors 'self' https://secure.walletconnect.org https://secure-mobile.walletconnect.com; style-src 'self' 'unsafe-inline' https://reward.npayme.io https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data: ; upgrade-insecure-requests;";
+    #  more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
+    #  more_set_headers "Feature-Policy: camera 'none'; microphone 'none'; geolocation 'none'; encrypted-media 'none'; payment 'none'; speaker 'none'; usb 'none';";
  
   hosts:
     - host: onelink-dev.npayme.io
@@ -76,13 +76,20 @@ ingress:
       hosts:
         - onelink-dev.npayme.io
 
+tolerations:
+- key: "test"
+  operator: "Equal"
+  value: "test1"
+  effect: "NoSchedule"
+
 resources:
   limits:
-    cpu: 300m
-    memory: 1024Mi
+    cpu: 4
+    memory: 8Gi
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 1
+    memory: 3Gi
+
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -106,10 +113,7 @@ env: {}
 
 nodeSelector: {}
 
-tolerations: []
-
 affinity: {}
-
 
 volumes:
   - name: onelink-pvc

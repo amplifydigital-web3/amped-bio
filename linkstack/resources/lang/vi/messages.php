@@ -159,6 +159,7 @@ return [
   'Site logo' => 'Logo trang web',
   'Favicon' => 'favicon',
   'Home message' => 'Tin nhắn nhà',
+  'Menu' => 'Thực đơn',
 
   /*
   |--------------------------------------------------------------------------

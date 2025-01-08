@@ -214,40 +214,46 @@ $(window).on('load', function() {
                     </div>
                                     <?php
                                         if ($handle = opendir('themes')) {
+                                            $entries = [];
                                             while (false !== ($entry = readdir($handle))) {
                                                 if ($entry != "." && $entry != "..") {
-                                                    if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
-                                                        $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
-                                                        $pattern = '/Theme Name:.*/';
-                                                        preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
-                                                        if(sizeof($matches) > 0) {
-                                                            $themeName = substr($matches[0][0],12);
-                                                        }
+                                                    $entries[] = $entry;
+                                                }
+                                            }
+                                            closedir($handle);
+                                            sort($entries);
+                                            foreach ($entries as $entry) {
+                                                if(file_exists(base_path('themes') . '/' . $entry . '/readme.md')){
+                                                    $text = file_get_contents(base_path('themes') . '/' . $entry . '/readme.md');
+                                                    $pattern = '/Theme Name:.*/';
+                                                    preg_match($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
+                                                    if(sizeof($matches) > 0) {
+                                                        $themeName = substr($matches[0][0],12);
                                                     }
-                                                    if(isset($themeName)){
-                                                        ?> 
-                                                        
-                                                        <div class="col-lg-3">
-                                                            <div class="card shadow-lg @if($page->theme == $entry) bg-primary @else bg-soft-primary @endif">
-                                                               <div class="card-body pb-0">
-                                                                <a style="cursor:pointer;" onclick="setTheme('{{$entry}}')">
-                                                                  <div class="d-flex justify-content-between">
-                                                                     <div>
-                                                                        <img draggable="false" class="bd-placeholder-img bd-placeholder-img-lg img-fluid" src="{{url('themes/'.$entry.'/preview.png')}}">
-                                                                     </div>
-                                                                  </div>
-                                                                  <div class="text-center">
-                                                                     <h2 class="m-3 @if($page->theme == $entry) text-white @else text-gray @endif">{{$themeName}}</h2>
-                                                                     <div>
-                                                                     </div>
-                                                                  </div>
-                                                                </a>
-                                                               </div>
-                                                            </div>
+                                                }
+                                                if(isset($themeName)){
+                                                    ?> 
+                                                    
+                                                    <div class="col-lg-3">
+                                                        <div class="card shadow-lg @if($page->theme == $entry) bg-primary @else bg-soft-primary @endif">
+                                                           <div class="card-body pb-0">
+                                                            <a style="cursor:pointer;" onclick="setTheme('{{$entry}}')">
+                                                              <div class="d-flex justify-content-between">
+                                                                 <div>
+                                                                    <img draggable="false" class="bd-placeholder-img bd-placeholder-img-lg img-fluid" src="{{url('themes/'.$entry.'/preview.png')}}">
+                                                                 </div>
+                                                              </div>
+                                                              <div class="text-center">
+                                                                 <h2 class="m-3 @if($page->theme == $entry) text-white @else text-gray @endif">{{$themeName}}</h2>
+                                                                 <div>
+                                                                 </div>
+                                                              </div>
+                                                            </a>
+                                                           </div>
                                                         </div>
+                                                    </div>
 
-                                                        <?php
-                                                    }
+                                                    <?php
                                                 }
                                             }
                                         }

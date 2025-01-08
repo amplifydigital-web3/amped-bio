@@ -22,6 +22,7 @@ RUN apk --no-cache --update \
     php82-mbstring \
     php82-mysqli \
     php82-mysqlnd \
+    php82-opcache \
     php82-openssl \
     php82-pdo_mysql \
     php82-pdo_pgsql \
@@ -72,7 +73,7 @@ RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
 
 COPY configs/apache2/httpd.conf /etc/apache2/httpd.conf
 COPY configs/apache2/ssl.conf /etc/apache2/conf.d/ssl.conf
-COPY configs/php/php.ini /etc/php8.2/php.ini
+COPY configs/php/php.ini /etc/php82/php.ini
 
 RUN chown apache:apache /etc/ssl/apache2/server.pem
 RUN chown apache:apache /etc/ssl/apache2/server.key

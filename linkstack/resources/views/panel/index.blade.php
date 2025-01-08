@@ -85,7 +85,36 @@
     </div>
     @endif
 
-       <div class="col-lg-12">
+    {{-- @if(auth()->user()->role == 'admin' && !config('linkstack.single_user_mode'))
+    <div 
+        id="stats-react" 
+        data-site-links={{ $siteLinks }} 
+        data-site-clicks={{ $siteClicks }} 
+        data-user-number={{ $userNumber }} 
+    >
+        Stats
+    </div>
+
+    <div 
+        id="registrations-react" 
+        data-last-month-count={{ $lastMonthCount }} 
+        data-last-week-count={{ $lastWeekCount }} 
+        data-last24-hrs-count={{ $last24HrsCount }} 
+    >
+        Reg
+    </div>
+
+    <div 
+        id="activeUsers-react"
+        data-updated-last30-days-count={{ $updatedLast30DaysCount }} 
+        data-updated-last7-days-count={{ $updatedLast7DaysCount }} 
+        data-updated-last24-hrs-count={{ $updatedLast24HrsCount }} 
+    >
+        Active
+    </div>
+    @endif --}}
+
+    <div class="col-lg-12">
           <div class="card   rounded">
              <div class="card-body">
                 <div class="row">
@@ -189,7 +218,7 @@
               </div>
            </div>
         </div>
-     </div>
+     </div> 
      @endif
 
     </div>

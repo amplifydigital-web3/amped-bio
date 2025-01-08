@@ -160,6 +160,7 @@ return [
   'Site logo' => 'Site logo',
   'Favicon' => 'Favicon',
   'Home message' => 'Home message',
+  'Menu' => 'Menu',
 
   /*
   |--------------------------------------------------------------------------

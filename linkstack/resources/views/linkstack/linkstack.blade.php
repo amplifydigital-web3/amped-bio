@@ -9,7 +9,7 @@
    @stack('linkstack-head-end')
 
    @if (strlen($userinfo->reward_business_id) > 0)
-      <script src="https://reward.npayme.io/panel.js?onelink={{ $userinfo->reward_business_id }}"></script>
+      <script src="{{env('REWARD_BUTTON_URL')}}?onelink={{ $userinfo->reward_business_id }}"></script>
    @endif
    
 </head>
