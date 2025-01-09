@@ -38,14 +38,13 @@ RUN apk --no-cache --update \
     tzdata \
     python3 py3-pip make \
     nodejs \
-    && npm install -g pnpm \
     && mkdir /htdocs
 
 COPY linkstack /htdocs
 COPY --from=composer /usr/bin/composer /bin/composer
 COPY ./linkstack/composer.json /htdocs/
 COPY ./linkstack/package.json /htdocs/
-COPY ./linkstack/pnpm-lock.yaml /htdocs/
+COPY ./linkstack/package-lock.json /htdocs/
 
 RUN chown -R apache:apache /htdocs
 
@@ -69,19 +68,19 @@ RUN ln -s /usr/bin/php82 /usr/bin/php
 RUN cd /htdocs && composer install --no-interaction
 
 # Ensure webpack is installed
-RUN cd /htdocs && pnpm install
+RUN cd /htdocs && npm install
 
 # Ensure node_modules/.bin is in the PATH
 ENV PATH /htdocs/node_modules/.bin:$PATH
 
-RUN cd /htdocs && pnpm run dev
+RUN cd /htdocs && npm run dev
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
 
 RUN mkdir -p /htdocs/js/
 RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
 
-# RUN pnpm run production
+# RUN npm run production
 
 COPY configs/apache2/httpd.conf /etc/apache2/httpd.conf
 COPY configs/apache2/ssl.conf /etc/apache2/conf.d/ssl.conf
