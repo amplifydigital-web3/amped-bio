@@ -19,5 +19,3 @@ npm-debug.log
 yarn-error.log
 _ide_*
 **/.DS_Store
-/docker
-docker-compose.dev.yml
