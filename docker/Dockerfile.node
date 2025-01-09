@@ -1,13 +1,9 @@
 FROM node:20.14.0-alpine
 
-# Install pnpm
-RUN npm install -g pnpm
-
 WORKDIR /app
 COPY . .
 
-# Use pnpm to install dependencies
-RUN pnpm install
-RUN pnpm run dev
+RUN npm install
+RUN npm run dev
 
 VOLUME ["/app/node_modules"]
