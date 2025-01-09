@@ -16,7 +16,8 @@ const path = require("path");
 //     runtimeChunkPath: "public/js",
 // });
 
-// mix.setPublicPath('public');
+mix.setPublicPath('public');
+
 const extractLibs = [
     "react",
     "react-dom/client",
@@ -27,16 +28,15 @@ const extractLibs = [
 ];
 
 mix
-    // .extract(extractLibs)
     .js("resources/js/app.js", "public/js")
     .react()
-    .postCss("resources/css/app.css", "css", [
+    .postCss("resources/css/app.css", "public/css", [
         require("postcss-import"),
         require("tailwindcss"),
         require("autoprefixer"),
     ])
     .alias({
-        '@': 'public/js',
+        '@': path.resolve('resources/js'), // Corrigido para apontar corretamente para a pasta de recursos JS
     })
     .webpackConfig({
         module: {
@@ -52,11 +52,7 @@ mix
             extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"],
             modules: [
                 path.resolve("./node_modules"),
-                path.resolve("./public"),
-                // path.resolve(
-                //     __dirname,
-                //     "vendor/laravel/spark/resources/assets/js"
-                // ),
+                path.resolve("./resources"), // Corrigido para apontar corretamente para a pasta de recursos
             ],
         },
     });
