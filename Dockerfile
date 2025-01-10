@@ -1,4 +1,4 @@
-FROM alpine:3.19.0 As build
+FROM node:22.11.0-alpine As build
 LABEL maintainer="VietLe"
 LABEL description="Onelink Docker"
 
@@ -7,6 +7,7 @@ RUN apk --no-cache --update \
     add apache2 \
     apache2-ssl \
     curl \
+    php82 \
     php82-apache2 \
     php82-bcmath \
     php82-bz2 \
@@ -35,13 +36,15 @@ RUN apk --no-cache --update \
     php82-xmlwriter \
     php82-redis \
     tzdata \
-    npm \
     python3 py3-pip make \
+    nodejs \
     && mkdir /htdocs
 
 COPY linkstack /htdocs
 COPY --from=composer /usr/bin/composer /bin/composer
 COPY ./linkstack/composer.json /htdocs/
+COPY ./linkstack/package.json /htdocs/
+COPY ./linkstack/package-lock.json /htdocs/
 
 RUN chown -R apache:apache /htdocs
 
@@ -59,9 +62,17 @@ RUN chown -R apache:apache /var/www/logs
 RUN chown -R apache:apache /var/log/apache2/
 RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
+# Ensure PHP is available in the PATH
+RUN ln -s /usr/bin/php82 /usr/bin/php
+
 RUN cd /htdocs && composer install --no-interaction
 
-RUN cd /htdocs && npm i 
+# Ensure webpack is installed
+RUN cd /htdocs && npm install
+
+# Ensure node_modules/.bin is in the PATH
+ENV PATH /htdocs/node_modules/.bin:$PATH
+
 RUN cd /htdocs && npm run dev
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
@@ -77,7 +88,6 @@ COPY configs/php/php.ini /etc/php82/php.ini
 
 RUN chown apache:apache /etc/ssl/apache2/server.pem
 RUN chown apache:apache /etc/ssl/apache2/server.key
-
 
 USER apache:apache
 
