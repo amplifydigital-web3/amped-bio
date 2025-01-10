@@ -27,6 +27,7 @@
         "@walletconnect/keyvaluestorage": "^1.1.1",
         "axios": "^1.7.3",
         "lodash": "^4.17.21",
+        "plotly.js": "^2.35.3",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "siwe": "^2.3.2",

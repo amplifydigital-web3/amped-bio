@@ -128,7 +128,7 @@ const App = (props: any) => {
         metadata,
         open,
         setOpen,
-        close,
+        // close,
         w3m,
         setW3m,
         onAccountChanged,
