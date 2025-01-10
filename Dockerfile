@@ -1,4 +1,4 @@
-FROM node:22.11.0-alpine As build
+FROM node:22.11.0-alpine AS build
 LABEL maintainer="VietLe"
 LABEL description="Onelink Docker"
 
@@ -38,13 +38,14 @@ RUN apk --no-cache --update \
     tzdata \
     python3 py3-pip make \
     nodejs \
+    yarn \
     && mkdir /htdocs
 
 COPY linkstack /htdocs
 COPY --from=composer /usr/bin/composer /bin/composer
 COPY ./linkstack/composer.json /htdocs/
 COPY ./linkstack/package.json /htdocs/
-COPY ./linkstack/package-lock.json /htdocs/
+COPY ./linkstack/yarn.lock /htdocs/
 
 RUN chown -R apache:apache /htdocs
 
@@ -68,19 +69,19 @@ RUN ln -s /usr/bin/php82 /usr/bin/php
 RUN cd /htdocs && composer install --no-interaction
 
 # Ensure webpack is installed
-RUN cd /htdocs && npm install
+RUN cd /htdocs && yarn install
 
 # Ensure node_modules/.bin is in the PATH
 ENV PATH /htdocs/node_modules/.bin:$PATH
 
-RUN cd /htdocs && npm run dev
+RUN cd /htdocs && yarn run build
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
 
 RUN mkdir -p /htdocs/js/
-RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
+RUN cp /htdocs/public/build/assets/*.js /htdocs/js/
 
-# RUN npm run production
+# RUN yarn run production
 
 COPY configs/apache2/httpd.conf /etc/apache2/httpd.conf
 COPY configs/apache2/ssl.conf /etc/apache2/conf.d/ssl.conf
