@@ -151,6 +151,8 @@ const App = (props: any) => {
   );
 };
 
+console.log("React script loaded")
+
 const hasConnectComponent = document.getElementById("connect-react");
 if (hasConnectComponent) {
   const root = ReactDOM.createRoot(

@@ -843,9 +843,8 @@ try {
 <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
 <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
-<!-- <script async type="text/javascript" src="{{ asset('public/js/app-CM72Oxb9.js') }}"></script> -->
-<!-- @viteReactRefresh
-@vite('resources/js/app.tsx') -->
+
+<!-- @vite('resources/js/app.tsx') -->
 @stack('sidebar-scripts')
 
   </body>

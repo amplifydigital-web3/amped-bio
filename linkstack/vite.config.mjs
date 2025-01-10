@@ -7,4 +7,7 @@ export default defineConfig({
         laravel(['resources/js/app.tsx']),
         react(),
     ],
+    server: { 
+        host: '0.0.0.0',
+    }
 });
