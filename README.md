@@ -329,11 +329,7 @@ Install composer packages
 docker compose -f docker-compose.dev.yml run --rm composer install
 ```
 
-Run node server
-
-```
-docker compose -f docker-compose.dev.yml run --rm node dev
-```
+Open server: http://localhost:8082/
 
 
 And every change in `/linkstack` folder will auto reload :) at `http://localhost:8082/`

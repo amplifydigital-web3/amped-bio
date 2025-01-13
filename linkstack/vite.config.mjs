@@ -8,8 +8,10 @@ export default defineConfig({
         react(),
     ],
     server: {
-        hmr: {
-            host: 'localhost',
-        },
+        // respond to all network requests (same as '0.0.0.0')
+        host: "0.0.0.0",
+        // we need a strict port to match on PHP side
+        strictPort: true,
+        port: 5173,
     }
 });
