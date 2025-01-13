@@ -42,7 +42,7 @@ RUN apk --no-cache --update \
     && mkdir /htdocs
 
 COPY linkstack /htdocs
-COPY --from=composer /usr/bin/composer /bin/composer
+COPY --from=composer:2.7.9 /usr/bin/composer /bin/composer
 COPY ./linkstack/composer.json /htdocs/
 COPY ./linkstack/package.json /htdocs/
 COPY ./linkstack/yarn.lock /htdocs/
