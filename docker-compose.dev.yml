@@ -1,7 +1,4 @@
 ## inspired by https://github.com/aschmelyun/docker-compose-laravel/blob/main/docker-compose.yml
-networks:
-  laravel:
-
 services:
   linkstack:
     build:
@@ -67,7 +64,7 @@ services:
       - "3001:3001"
       - "5173:5173"
     working_dir: /var/www/html
-    entrypoint: [ 'sh', '-c', 'yarn install && yarn run dev' ]
+    entrypoint: [ 'yarn' ]
     networks:
       - laravel
 
@@ -91,3 +88,7 @@ services:
       - "1080:1080"
     networks:
       - laravel
+
+networks:
+  laravel:
+    # driver: bridge
