@@ -24,8 +24,8 @@ RUN addgroup -g ${GID} -S laravel && \
     adduser -S -D -H -u ${UID} -G laravel -s /bin/sh laravel
 
 # Update php-fpm configuration to use the laravel user
-RUN sed -i "s/user = www-data/#user = laravel/g" /usr/local/etc/php-fpm.d/www.conf && \
-    sed -i "s/group = www-data/#group = laravel/g" /usr/local/etc/php-fpm.d/www.conf && \
+RUN sed -i "s/user = www-data/;user = laravel/g" /usr/local/etc/php-fpm.d/www.conf && \
+    sed -i "s/group = www-data/;group = laravel/g" /usr/local/etc/php-fpm.d/www.conf && \
     echo "php_admin_flag[log_errors] = on" >> /usr/local/etc/php-fpm.d/www.conf
 
 # Install build dependencies
@@ -55,10 +55,12 @@ RUN mkdir -p /usr/src/php/ext/redis && \
 
 # Ensure proper permissions for laravel user
 RUN mkdir -p /var/log/apache2 && \
+    mkdir -p /var/www/html/bootstrap/cache && \
     chown -R laravel:laravel /var/log/apache2 && \
     chown -R laravel:laravel /var/www/html && \
     chmod -R 775 /var/log/apache2 && \
-    chmod -R 775 /var/www/html
+    chmod -R 775 /var/www/html && \
+    chmod -R 775 /var/www/html/bootstrap/cache
 
 USER laravel
 
