@@ -1,17 +1,17 @@
-## inspired by https://github.com/alloyking1/twilio_laravel_and_docker_/blob/master/docker-compose.yml
+## inspired by https://github.com/aschmelyun/docker-compose-laravel/blob/main/docker-compose.yml
+networks:
+  laravel:
+
 services:
-  maildev:
-    image: maildev/maildev
-    ports:
-      - "1025:1025"
-      - "1080:1080"
-  
   linkstack:
     build:
-      context: .
-      dockerfile: ./docker/Dockerfile.php
+      context: ./dockerfiles
+      dockerfile: nginx.Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     ports:
-      - 8082:8000
+      - 8082:80
     environment:
       - DEVELOPMENT=true
       - LOG_LEVEL=info
@@ -21,17 +21,73 @@ services:
       - TZ=Europe/Berlin
       - PHP_MEMORY_LIMIT=512M
       - UPLOAD_MAX_FILESIZE=16M
-    working_dir: /var/www/html
+    volumes:
+      - ./linkstack:/var/www/html:delegated
+    depends_on:
+      - php
+      - maildev
+    networks:
+      - laravel
+
+  php:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./linkstack:/var/www/html:delegated
+    networks:
+      - laravel
+
+  composer:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     volumes:
       - ./linkstack:/var/www/html
-  
+    depends_on:
+      - php
+    entrypoint: ["composer", "--ignore-platform-reqs"]
+    networks:
+      - laravel
+
   node:
-    build: 
-      context: ./linkstack
-      dockerfile: ../docker/Dockerfile.node
-    ports:
-      - 5173:5173
+    image: node:22.11.0-alpine
     volumes:
-      - ./linkstack:/app
-      - ./linkstack/node_modules:/app/node_modules
-    tty: true
+      - ./linkstack:/var/www/html
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "5173:5173"
+    working_dir: /var/www/html
+    entrypoint: [ 'sh', '-c', 'yarn install && yarn run dev' ]
+    networks:
+      - laravel
+
+  artisan:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    volumes:
+      - ./linkstack:/var/www/html:delegated
+    entrypoint: ["php", "/var/www/html/artisan"]
+    networks:
+      - laravel
+
+  maildev:
+    image: maildev/maildev
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+    networks:
+      - laravel
