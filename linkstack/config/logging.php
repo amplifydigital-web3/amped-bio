@@ -43,13 +43,13 @@ return [
 
         'single' => [
             'driver' => 'single',
-            'path' => '/var/log/apache2/laravel.log', // storage_path('logs/laravel.log'),
+            'path' => env('APP_ENV', 'local') == 'local' ? storage_path('logs/laravel.log') : '/var/log/apache2/laravel.log', // storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
         'daily' => [
             'driver' => 'daily',
-            'path' => '/var/log/apache2/laravel.log', // storage_path('logs/laravel.log'),
+            'path' => env('APP_ENV', 'local') == 'local' ? storage_path('logs/laravel.log') : '/var/log/apache2/laravel.log', // storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],
