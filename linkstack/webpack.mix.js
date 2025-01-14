@@ -20,7 +20,6 @@ const path = require("path");
 const extractLibs = [
     "react",
     "react-dom/client",
-    "@npaymelabs/connect",
     "wagmi",
     "viem",
     "@tanstack/react-query",

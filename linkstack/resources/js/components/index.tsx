@@ -1,10 +1,5 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom/client";
-
-// @ts-ignore
-import ContextProvider from "@npaymelabs/connect";
-import { QueryClient } from "@tanstack/react-query";
-import { mainnet, arbitrum, sepolia } from "wagmi/chains";
 
 console.log("Starting React App...");
 
@@ -16,12 +11,12 @@ import DashboardStatistics from "./Statistics";
 import DashboardRegistrations from "./Registrations";
 import DashboardActiveUsers from "./ActiveUsers";
 import { addwallet } from "../repository";
-
-const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
-  "64c300c731392456340fe626355b366e";
-
-const chains = [mainnet, sepolia, arbitrum] as const;
+import { networks, projectId, wagmiAdapter } from "../config/wagmiConfig";
+import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import WalletProvider, { ConnectModal } from "./connect/main";
+import { createAppKit } from "@reown/appkit";
+import { AppKitNetwork } from "@reown/appkit/networks";
 
 const metadata = {
   name: "OneLink",
@@ -30,32 +25,50 @@ const metadata = {
   icons: [],
 };
 
-// Setup queryClient
-const queryClient = new QueryClient();
+const modal = createAppKit({
+  adapters: [wagmiAdapter],
+  projectId,
+  networks: networks as [AppKitNetwork, ...AppKitNetwork[]],
+  defaultNetwork: networks[0],
+  metadata: metadata,
+  enableCoinbase: true,
+  coinbasePreference: "smartWalletOnly",
+  featuredWalletIds: [
+    "fd20dc426fb37566d803205b19bbc1d4096b248ac04548e3cfb6b3a38bd033aa", // coinbase
+    "4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0", // trustwallet
+  ],
+  features: {
+    swaps: true,
+    socials: [
+      "google",
+      "x",
+      "github",
+      "discord",
+      "apple",
+      "facebook",
+      "farcaster",
+    ],
+  },
+  // siweConfig: siweConfig,
+});
 
 // Setup AppContext
 export const AppContext = createContext({});
 
 type CreateContextProviderProps = {
-  address: string | undefined;
-  setAddress: any;
   openModal: any;
-  openWeb3Modal: any;
+  openWeb3Modal: () => void;
   requestSIWE: any;
   children: React.ReactNode;
 };
 
 const AppContextProvider = ({
-  address,
-  setAddress,
   openModal,
   openWeb3Modal,
   children,
 }: CreateContextProviderProps) => {
   return (
-    <AppContext.Provider
-      value={{ address, setAddress, openModal, openWeb3Modal }}
-    >
+    <AppContext.Provider value={{ openModal, openWeb3Modal }}>
       {children}
     </AppContext.Provider>
   );
@@ -66,6 +79,19 @@ const App = (props: any) => {
   const [w3m, setW3m] = useState<boolean | null>(null);
   const [address, setAddress] = useState();
   const [siwe, setSiwe] = useState<any>(null);
+
+  const openModal = useCallback(() => setOpen(true), []);
+
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false, // configure as per your needs
+          },
+        },
+      })
+  );
 
   useEffect(() => {
     window.addEventListener("message", (message) => {
@@ -122,32 +148,30 @@ const App = (props: any) => {
   };
 
   return (
-    <ContextProvider
-      config={{
-        projectId,
-        metadata,
-        open,
-        setOpen,
-        close,
-        w3m,
-        setW3m,
-        onAccountChanged,
-        siwe,
-        setSiwe,
-        brandColor: "#563AE8",
-        copyColor: "#FFFFFF",
-      }}
-    >
-      <AppContextProvider
-        address={address}
-        setAddress={setAddress}
-        openModal={() => setOpen(true)}
-        openWeb3Modal={() => setW3m(true)}
-        requestSIWE={setSiwe}
-      >
-        {props.children}
-      </AppContextProvider>
-    </ContextProvider>
+    <WagmiProvider config={wagmiAdapter.wagmiConfig as Config}>
+      <QueryClientProvider client={queryClient}>
+        <AppContextProvider
+          openModal={openModal}
+          openWeb3Modal={() => setW3m(true)}
+          requestSIWE={setSiwe}
+        >
+          <WalletProvider
+            config={{
+              modal,
+              open,
+              setOpen,
+              w3m,
+              setW3m,
+              siwe,
+              setSiwe,
+            }}
+          >
+            <ConnectModal modal={modal} open={open} setOpen={setOpen} />
+            {props.children}
+          </WalletProvider>
+        </AppContextProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 
@@ -194,7 +218,7 @@ const hasStatisticsComponent = document.getElementById("stats-react");
 if (hasStatisticsComponent) {
   const element = document.getElementById("stats-react") as HTMLElement;
   const root = ReactDOM.createRoot(element);
-  const data = {...element.dataset};
+  const data = { ...element.dataset };
 
   root.render(
     <App>
@@ -203,11 +227,13 @@ if (hasStatisticsComponent) {
   );
 }
 
-const hasRegistrationsComponent = document.getElementById("registrations-react");
+const hasRegistrationsComponent = document.getElementById(
+  "registrations-react"
+);
 if (hasRegistrationsComponent) {
   const element = document.getElementById("registrations-react") as HTMLElement;
   const root = ReactDOM.createRoot(element);
-  const data = {...element.dataset};
+  const data = { ...element.dataset };
 
   root.render(
     <App>
@@ -220,7 +246,7 @@ const hasActiveUsersComponent = document.getElementById("activeUsers-react");
 if (hasActiveUsersComponent) {
   const element = document.getElementById("activeUsers-react") as HTMLElement;
   const root = ReactDOM.createRoot(element);
-  const data = {...element.dataset};
+  const data = { ...element.dataset };
 
   root.render(
     <App>
