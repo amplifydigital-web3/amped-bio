@@ -45,5 +45,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
 
 USER laravel
 
+# RUN chown -R ${UID}:${GID} /var/www/html && chmod -R 755 /var/www/html
+
 EXPOSE 9000
 CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
