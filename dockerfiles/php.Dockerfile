@@ -10,10 +10,18 @@ RUN mkdir -p /var/www/html
 
 WORKDIR /var/www/html
 
-RUN apk add --no-cache git
-
 # Install composer
 COPY --from=composer:2.7.9 /usr/bin/composer /usr/local/bin/composer
+
+# MacOS staff group's gid is 20, so is the dialout group in alpine linux. We're not using it, let's just remove it.
+RUN delgroup dialout
+
+RUN addgroup -g ${GID} --system laravel
+RUN adduser -G laravel --system -D -s /bin/sh -u ${UID} laravel
+
+RUN sed -i "s/user = www-data/user = laravel/g" /usr/local/etc/php-fpm.d/www.conf
+RUN sed -i "s/group = www-data/group = laravel/g" /usr/local/etc/php-fpm.d/www.conf
+RUN echo "php_admin_flag[log_errors] = on" >> /usr/local/etc/php-fpm.d/www.conf
 
 # Install build dependencies
 RUN apk add --no-cache autoconf g++ make
@@ -34,6 +42,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     pecl install -o -f redis && \
     rm -rf /tmp/pear && \
     docker-php-ext-enable redis
+
+USER laravel
 
 EXPOSE 9000
 CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
