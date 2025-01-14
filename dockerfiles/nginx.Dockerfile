@@ -11,6 +11,3 @@ RUN delgroup dialout
 
 RUN rm /etc/nginx/conf.d/default.conf
 ADD ./nginx/default.conf /etc/nginx/conf.d/
-
-# Set permissions for the shared log directory
-RUN mkdir -p /var/log/apache2 && chown -R nginx:nginx /var/log/apache2

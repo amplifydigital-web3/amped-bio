@@ -35,13 +35,5 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     rm -rf /tmp/pear && \
     docker-php-ext-enable redis
 
-# Create apache2 folder for PHP logs
-RUN mkdir -p /var/log/apache2 && chown -R ${UID}:${GID} /var/log/apache2
-
-# Create default log files and set correct permissions
-RUN touch /var/log/apache2/access.log /var/log/apache2/error.log /var/log/apache2/laravel.log && \
-    chown ${UID}:${GID} /var/log/apache2/access.log /var/log/apache2/error.log /var/log/apache2/laravel.log && \
-    chmod 664 /var/log/apache2/access.log /var/log/apache2/error.log /var/log/apache2/laravel.log
-
 EXPOSE 9000
 CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
