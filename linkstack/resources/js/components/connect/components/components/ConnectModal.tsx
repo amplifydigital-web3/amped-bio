@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import { AppKit } from '@reown/appkit';
 import Modal from './Modal';
 import ProgrammeHeader from '../header/Header';
@@ -11,7 +11,6 @@ import Spacer from './Spacer';
 import SectionWrapper from './SectionWrapper';
 import Body from './Body';
 
-import { AppContext } from '@/providers/AppProvider';
 
 export type ConnectModalProps = {
   modal: AppKit;
@@ -21,9 +20,6 @@ export type ConnectModalProps = {
 
 export function ConnectModal(props: ConnectModalProps) {
   const { modal, open, setOpen } = props;
-
-  const ctx = useContext<any>(AppContext);
-  const { setAddress } = ctx;
 
   const closeModal = useCallback(() => setOpen(false), []);
 
@@ -40,7 +36,7 @@ export function ConnectModal(props: ConnectModalProps) {
       closeModal();
 
       // TODO: Investigate - setAddress should be good enough
-      setAddress(address);
+      // setAddress(address);
       // window.location.reload();
     },
     [modal]

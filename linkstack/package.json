@@ -24,6 +24,7 @@
         "typescript": "^5.5.3"
     },
     "dependencies": {
+        "@coinbase/wallet-sdk": "^4.2.4",
         "@knowins/viewer": "^1.0.19",
         "@npaymelabs/connect": "0.1.0",
         "@reown/appkit": "^1.6.4",

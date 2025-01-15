@@ -37,6 +37,7 @@ mix
     .alias({
         '@': 'public/js',
     })
+    .setPublicPath("public")
     .webpackConfig({
         module: {
             rules: [
