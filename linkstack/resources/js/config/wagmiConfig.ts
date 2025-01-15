@@ -1,4 +1,3 @@
-import { cookieStorage, createStorage } from '@wagmi/core';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import {
   mainnet,
@@ -25,11 +24,7 @@ export const networks: AppKitNetwork[] = [
 ];
 
 export const wagmiAdapter = new WagmiAdapter({
-  // @ts-ignore
-  storage: createStorage({
-    storage: cookieStorage,
-  }),
-  ssr: true,
-  projectId,
   networks,
+  projectId,
+  ssr: false,
 });

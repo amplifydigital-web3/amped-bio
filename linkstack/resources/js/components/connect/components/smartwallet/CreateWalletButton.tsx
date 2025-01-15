@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { CoinbaseWalletLogo } from './CoinbaseWalletLogo';
 import { BrandedProgrammeButton } from '../components/Buttons';
-import { useConnect } from 'wagmi';
 import { coinbaseWallet } from '@wagmi/connectors';
+import { useConnect } from 'wagmi';
 
 export function CreateWalletButton({
   handleSuccess,
@@ -21,7 +21,6 @@ export function CreateWalletButton({
 
       const res = await connect.connectAsync({
         chainId: 1,
-        // @ts-ignore
         connector: coinbase,
       });
 
