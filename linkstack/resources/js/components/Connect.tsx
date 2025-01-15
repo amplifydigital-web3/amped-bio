@@ -1,9 +1,11 @@
-import { useAppKitAccount } from "@reown/appkit/react";
-import { ModalContext, ModalContextType } from "./connect/components/AppKitProvider";
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
+import { ModalContext } from "./connect/components/AppKitProvider";
 import { useContext } from "react";
 
 export default function Web3ConnectButton() {
   const ctx = useContext(ModalContext);
+  const wallet = useAppKit()
+
   if (!ctx) {
     throw new Error("AppKitContext is null");
   }
@@ -13,6 +15,7 @@ export default function Web3ConnectButton() {
   const handleClick = () => {
     if (account.address) {
       // openWeb3Modal();
+      wallet.open();
     } else {
       setOpen(true);
     }

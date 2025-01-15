@@ -1,8 +1,8 @@
-import { useCallback } from 'react';
-import { CoinbaseWalletLogo } from './CoinbaseWalletLogo';
-import { BrandedProgrammeButton } from '../components/Buttons';
-import { coinbaseWallet } from '@wagmi/connectors';
-import { useConnect } from 'wagmi';
+import { useCallback, useEffect } from "react";
+import { CoinbaseWalletLogo } from "./CoinbaseWalletLogo";
+import { BrandedProgrammeButton } from "../components/Buttons";
+import { useAppKitWallet } from "@reown/appkit-wallet-button/react";
+import { useAppKitAccount } from "@reown/appkit/react";
 
 export function CreateWalletButton({
   handleSuccess,
@@ -11,25 +11,23 @@ export function CreateWalletButton({
   handleSuccess: (address: string) => void;
   handleError: (error: unknown) => void;
 }) {
-  const connect = useConnect();
+  const wallet = useAppKitWallet();
+  const { address } = useAppKitAccount();
 
   const createWallet = useCallback(async () => {
     try {
-      const coinbase = coinbaseWallet({
-        preference: 'smartWalletOnly',
-      });
-
-      const res = await connect.connectAsync({
-        chainId: 1,
-        connector: coinbase,
-      });
-
-      handleSuccess(res.accounts[0]);
+      await wallet.connect("coinbase");
     } catch (error) {
-      console.log('error.....', error);
+      console.log("error.....", error);
       handleError(error);
     }
-  }, [connect, handleSuccess, handleError]);
+  }, [handleSuccess, handleError]);
+
+  useEffect(() => {
+    if (address) {
+      handleSuccess(address);
+    }
+  }, [address, handleSuccess]);
 
   return (
     <BrandedProgrammeButton onClick={createWallet}>
