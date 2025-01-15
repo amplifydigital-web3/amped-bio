@@ -76,8 +76,9 @@ RUN cd /htdocs && yarn install \
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
 
-RUN mkdir -p /htdocs/js/
-RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
+# fixed in PR #17
+# RUN mkdir -p /htdocs/js/
+# RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
 
 # RUN npm run production
 
