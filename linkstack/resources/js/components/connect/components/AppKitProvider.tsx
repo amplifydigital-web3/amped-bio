@@ -1,13 +1,10 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useEffect, useState, type ReactNode } from "react";
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiProvider } from "wagmi";
 import { AppKitNetwork } from "@reown/appkit/networks";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { networks, projectId, wagmiAdapter } from "../../../config/wagmiConfig";
-import { ConnectModal } from "../main";
-
-// 0. Setup queryClient
-const queryClient = new QueryClient();
+import { ConnectModal } from "./components/ConnectModal";
 
 // 2. Create a metadata object - optional
 const metadata = {
@@ -44,24 +41,71 @@ const modal = createAppKit({
   // siweConfig: siweConfig,
 });
 
-export type AppKitContextType = {
+export type ModalContextType = {
   open: boolean;
   setOpen: (open: boolean) => void;
 };
 
-export const AppKitContext = createContext<AppKitContextType | null>(null);
+export const ModalContext = createContext<ModalContextType | null>(null);
 
 export function AppKitProvider({ children }: { children: ReactNode }) {
+  const [isClient, setIsClient] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
 
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false, // configure as per your needs
+          },
+        },
+      })
+  );
+
+  useEffect(() => {
+    console.info("QueryClient initialized", queryClient);
+    setIsClient(true);
+  }, [queryClient]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.documentElement.style.setProperty(
+        "--npayme__brand-color",
+        "#000"
+      );
+      document.documentElement.style.setProperty(
+        "--npayme__copy-color",
+        "#fff"
+      );
+      document.documentElement.style.setProperty("--widget-card", "#fff");
+      document.documentElement.style.setProperty(
+        "--widget-contrast",
+        "#1A1A1A"
+      );
+      document.documentElement.style.setProperty(
+        "--widget-contrast-low",
+        "#A64646"
+      );
+      document.documentElement.style.setProperty(
+        "--widget-contrast-high",
+        "#000"
+      );
+
+      document.documentElement.style.setProperty("--bg", "#f2f4f5");
+    }
+  }, []);
+
   return (
-    <AppKitContext.Provider value={{ open, setOpen }}>
-      <QueryClientProvider client={queryClient}>
-        <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-          <ConnectModal modal={modal} open={open} setOpen={setOpen} />
+    <ModalContext.Provider value={{ open, setOpen }}>
+      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+        <QueryClientProvider client={queryClient}>
+          {isClient && (
+            <ConnectModal modal={modal} open={open} setOpen={setOpen} />
+          )}
           {children}
-        </WagmiProvider>
-      </QueryClientProvider>
-    </AppKitContext.Provider>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </ModalContext.Provider>
   );
 }

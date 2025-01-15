@@ -12,31 +12,30 @@ const path = require("path");
  |
  */
 
-// mix.options({
-//     runtimeChunkPath: "public/js",
-// });
-
-// mix.setPublicPath('public');
-const extractLibs = [
-    "react",
-    "react-dom/client",
-    "wagmi",
-    "viem",
-    "@tanstack/react-query",
-    "@wagmi/core"
-];
+// const extractLibs = [
+//     "react",
+//     "react-dom/client",
+//     "wagmi",
+//     "viem",
+//     "@tanstack/react-query",
+//     "@wagmi/core",
+//     "@coinbase/wallet-sdk",
+//     "@reown/appkit-adapter-wagmi",
+//     "@reown/appkit"
+// ];
 
 mix
     // .extract(extractLibs)
-    .js("resources/js/app.js", "public/js")
+    .js("resources/js/app.js", "js")
     .react()
-    .postCss("resources/css/app.css", "css", [
+    .postCss("resources/css/app.css", "css/app.css", [
         require("postcss-import"),
         require("tailwindcss"),
         require("autoprefixer"),
     ])
+    .setPublicPath('') // Setting the public path to the project root
     .alias({
-        '@': 'public/js',
+        '@': '/js',
     })
     .webpackConfig({
         module: {
@@ -52,11 +51,7 @@ mix
             extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"],
             modules: [
                 path.resolve("./node_modules"),
-                path.resolve("./public"),
-                // path.resolve(
-                //     __dirname,
-                //     "vendor/laravel/spark/resources/assets/js"
-                // ),
+                path.resolve("./"),
             ],
         },
     });

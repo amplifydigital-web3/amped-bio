@@ -1,14 +1,14 @@
 import { useAppKitAccount } from "@reown/appkit/react";
-import { AppKitContext, AppKitContextType } from "./connect/components/AppKitProvider";
+import { ModalContext, ModalContextType } from "./connect/components/AppKitProvider";
 import { useContext } from "react";
 
 export default function Web3ConnectButton() {
-  const account = useAppKitAccount();
-  const ctx = useContext(AppKitContext);
+  const ctx = useContext(ModalContext);
   if (!ctx) {
     throw new Error("AppKitContext is null");
   }
   const { setOpen } = ctx;
+  const account = useAppKitAccount();
 
   const handleClick = () => {
     if (account.address) {

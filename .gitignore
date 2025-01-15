@@ -21,3 +21,5 @@ _ide_*
 **/.DS_Store
 /docker
 docker-compose.dev.yml
+linkstack/css
+linkstack/js
