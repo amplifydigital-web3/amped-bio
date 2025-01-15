@@ -56,12 +56,12 @@ export function AppKitProvider({ children }: { children: ReactNode }) {
 
   return (
     <AppKitContext.Provider value={{ open, setOpen }}>
-      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <WagmiProvider config={wagmiAdapter.wagmiConfig}>
           <ConnectModal modal={modal} open={open} setOpen={setOpen} />
           {children}
-        </QueryClientProvider>
-      </WagmiProvider>
+        </WagmiProvider>
+      </QueryClientProvider>
     </AppKitContext.Provider>
   );
 }

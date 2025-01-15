@@ -23,6 +23,7 @@ const extractLibs = [
     "wagmi",
     "viem",
     "@tanstack/react-query",
+    "@wagmi/core"
 ];
 
 mix
@@ -37,7 +38,6 @@ mix
     .alias({
         '@': 'public/js',
     })
-    .setPublicPath("public")
     .webpackConfig({
         module: {
             rules: [
