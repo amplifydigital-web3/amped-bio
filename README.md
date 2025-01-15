@@ -316,3 +316,21 @@ server {
 
 <br>
 <br>
+
+
+# Run in development
+
+```bash
+docker compose -f docker-compose.dev.yml up
+```
+
+Install composer packages
+
+```
+docker compose -f docker-compose.dev.yml run --rm composer install
+```
+
+Open server: http://localhost:8082/
+
+
+And every change in `/linkstack` folder will auto reload :) at `http://localhost:8082/`
