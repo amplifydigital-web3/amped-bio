@@ -1,4 +1,4 @@
-FROM alpine:3.19.0 As build
+FROM alpine:3.19.0 AS build
 LABEL maintainer="VietLe"
 LABEL description="Onelink Docker"
 
@@ -36,6 +36,7 @@ RUN apk --no-cache --update \
     php82-redis \
     tzdata \
     npm \
+    bash \
     python3 py3-pip make \
     && mkdir /htdocs
 
@@ -61,13 +62,23 @@ RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
 RUN cd /htdocs && composer install --no-interaction
 
-RUN cd /htdocs && npm i 
-RUN cd /htdocs && npm run dev
+# Install 'n' and set Node.js version to 22.11.0
+RUN npm install -g n \
+    && n 22.11.0
+
+# Install Yarn
+RUN npm install -g yarn
+
+# Use Yarn to install dependencies and run development server
+RUN cd /htdocs && yarn install \
+    && yarn run dev
+
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
 
-RUN mkdir -p /htdocs/js/
-RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
+# fixed in PR #17
+# RUN mkdir -p /htdocs/js/
+# RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
 
 # RUN npm run production
 
@@ -77,7 +88,6 @@ COPY configs/php/php.ini /etc/php82/php.ini
 
 RUN chown apache:apache /etc/ssl/apache2/server.pem
 RUN chown apache:apache /etc/ssl/apache2/server.key
-
 
 USER apache:apache
 
