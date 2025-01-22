@@ -26,5 +26,4 @@ export const networks: AppKitNetwork[] = [
 export const wagmiAdapter = new WagmiAdapter({
   networks,
   projectId,
-  ssr: false,
 });

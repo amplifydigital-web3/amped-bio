@@ -48,23 +48,13 @@ export type ModalContextType = {
 
 export const ModalContext = createContext<ModalContextType | null>(null);
 
+const queryClient = new QueryClient();
+
 export function AppKitProvider({ children }: { children: ReactNode }) {
   const [isClient, setIsClient] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
 
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false, // configure as per your needs
-          },
-        },
-      })
-  );
-
   useEffect(() => {
-    console.info("QueryClient initialized", queryClient);
     setIsClient(true);
   }, [queryClient]);
 

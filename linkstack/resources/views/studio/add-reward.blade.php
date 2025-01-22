@@ -20,22 +20,29 @@
                                   <!--embed id="iframe-npayme-reward" class="holds-the-iframe" style="width: 100%;height: 800px;" src="{{env('REWARD_URL')}}"></embed-->
                               </div>
                               <script type="text/javascript">
-                                const reward = document.getElementById("iframe-npayme-reward");
-                                const t = setInterval(() => reward.contentWindow.postMessage({
-                                    type: 'ping',
-                                }, '*'), 1000);
+                                // const reward = document.getElementById("iframe-npayme-reward");
+                                // const t = setInterval(() => reward.contentWindow.postMessage({
+                                //     type: 'ping',
+                                // }, '*'), 1000);
+                                
                                 window.addEventListener('message', message => {
-                                    console.log('message data.........:',message.data);
+                                    console.log('[onelink] message data.........:',message.data);
                                     // console.log('php.... origin:','{{env('REWARD_ORIGIN')}}');
-                                    if (message.origin === '{{env('REWARD_ORIGIN')}}') {
-                                        switch (message.data.type) {
-                                            case 'pong':
-                                                clearTimeout(t);
-                                                break;
-                                            default:
-                                        }
-                                    }
+                                    // if (message.origin === '{{env('REWARD_ORIGIN')}}') {
+                                    //     switch (message.data.type) {
+                                    //         case 'pong':
+                                    //             clearTimeout(t);
+                                    //             break;
+                                    //         default:
+                                    //     }
+                                    // }
                                 });
+
+                                // setTimeout(() => {
+                                //     reward.contentWindow.postMessage({
+                                //         type: 'ping',
+                                //     }, '*');
+                                // }, 2000);
                               </script>
                           </section>
                         </div>
