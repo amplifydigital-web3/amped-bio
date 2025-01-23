@@ -26,6 +26,10 @@
                                 // }, '*'), 1000);
                                 
                                 window.addEventListener('message', message => {
+                                    if (message.data.source === "react-devtools-content-script") {
+                                        return;
+                                    }
+
                                     console.log('[onelink] message data.........:',message.data);
                                     // console.log('php.... origin:','{{env('REWARD_ORIGIN')}}');
                                     // if (message.origin === '{{env('REWARD_ORIGIN')}}') {
