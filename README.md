@@ -334,3 +334,6 @@ Open server: http://localhost:8082/
 
 
 And every change in `/linkstack` folder will auto reload :) at `http://localhost:8082/`
+
+
+Follow this tutorial to create the widget in the correct way https://makerkit.dev/blog/tutorials/embeddable-widgets-react

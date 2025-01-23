@@ -15,9 +15,9 @@
     "build": "tsdx build --env production",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build --env production",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "build:widget": "parcel build src/index.tsx --no-source-maps -d widget && cp build/static/css/*.css widget/index.css"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -49,7 +49,7 @@
   "dependencies": {
     "@coinbase/wallet-sdk": "^4.2.4",
     "@knowins/viewer": "^1.0.19",
-    "@reown/appkit": "^1.6.4",
+    "@reown/appkit": "^1.6.5",
     "@reown/appkit-adapter-wagmi": "^1.6.4",
     "@reown/appkit-wallet-button": "^1.6.4",
     "@tanstack/react-query": "5.0.0",
@@ -60,6 +60,7 @@
     "bs58": "^6.0.0",
     "framer-motion": "^11.18.0",
     "lodash": "^4.17.21",
+    "parcel-bundler": "^1.12.5",
     "plotly.js": "^2.35.3",
     "react-error-boundary": "^5.0.0",
     "react-icons": "^5.4.0",
