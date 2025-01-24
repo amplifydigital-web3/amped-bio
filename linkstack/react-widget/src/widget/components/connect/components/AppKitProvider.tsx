@@ -1,5 +1,4 @@
-// @ts-nocheck
-import React, { createContext, useEffect, useState, ReactNode, ReactElement } from "react";
+import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiProvider } from "wagmi";
 import { AppKitNetwork } from "@reown/appkit/networks";
@@ -57,7 +56,7 @@ export function AppKitProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setIsClient(true);
-  }, [queryClient]);
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

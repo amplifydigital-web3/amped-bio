@@ -843,7 +843,7 @@ try {
 <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
 <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
-<script type="text/javascript" type="module" src="{{ asset('mylib/dist/mylib.cjs.production.min.js') }}"></script>
+<script type="text/javascript" type="module" src="{{ asset('react-widget/dist/widget.js') }}"></script>
 
 @stack('sidebar-scripts')
 
