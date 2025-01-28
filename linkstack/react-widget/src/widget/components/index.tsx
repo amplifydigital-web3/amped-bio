@@ -2,8 +2,6 @@
 import ReactDOM from "react-dom/client";
 
 console.log("Starting React App...");
-
-import "./index.css";
 import Campaign from "./Campaign";
 import Spotify from "./Spotify";
 import Web3ConnectButton from "./Connect";

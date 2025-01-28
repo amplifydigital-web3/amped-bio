@@ -55,7 +55,7 @@ function HomeHeader({ business }: Props) {
   return (
     <HeaderContainer>
       <span>
-        {!!business.imageURI?.trim() ? (
+        {business.imageURI?.trim() ? (
           <div>
             <img
               src={business.imageURI.trim()}
