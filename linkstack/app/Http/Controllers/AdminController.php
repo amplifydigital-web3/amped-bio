@@ -168,6 +168,7 @@ class AdminController extends Controller {
       'password' => Hash::make(random_str(32)),
       'role' => 'user',
       'block' => 'no',
+      'theme' => 'Nebula',
     ]);
 
     return redirect('admin/edit-user/' . $user->id);
