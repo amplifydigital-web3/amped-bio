@@ -1,5 +1,3 @@
-// @ts-nocheck
-import React from "react";
 import { useCallback, useEffect } from "react";
 import { CoinbaseWalletLogo } from "./CoinbaseWalletLogo";
 import { BrandedProgrammeButton } from "../components/Buttons";
@@ -23,7 +21,7 @@ export function CreateWalletButton({
       console.log("error.....", error);
       handleError(error);
     }
-  }, [handleSuccess, handleError]);
+  }, [wallet, handleError]);
 
   useEffect(() => {
     if (address) {
