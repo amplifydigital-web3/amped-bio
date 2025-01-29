@@ -1,6 +1,6 @@
-import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
+import { useAppKit, useAppKitAccount, useAppKitEvents } from "@reown/appkit/react";
 import { ModalContext } from "./connect/components/AppKitProvider";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useWalletClient } from "wagmi";
 import styled from "styled-components";
 
@@ -65,12 +65,15 @@ export default function Web3ConnectButton() {
   const ctx = useContext(ModalContext);
   const wallet = useAppKit()
   const client = useWalletClient();
+  const events = useAppKitEvents(); // TODO create a memo with filtered usefull events to send to iframe
+  const account = useAppKitAccount();
+
+  const rewardRef = useRef<HTMLIFrameElement | null>(null);
 
   if (!ctx) {
     throw new Error("AppKitContext is null");
   }
   const { setOpen } = ctx;
-  const account = useAppKitAccount();
 
   const [rewardLastPong, setRewardLastPong] = useState<Date | null>(null);
 
@@ -88,11 +91,32 @@ export default function Web3ConnectButton() {
   };
 
   useEffect(() => {
-    const reward = document.getElementById("iframe-npayme-reward") as HTMLIFrameElement | null;
+    console.log("[onelink] events", events.data);
+
+    if (rewardRef.current && rewardRef.current.contentWindow) {
+      const updateMessage: UpdateMessage = {
+        id: 0,
+        type: MessageType.UPDATE,
+        data: {
+          event: events.data.event === "DISCONNECT_SUCCESS" ? "disconnect" : events.data.event === "SWITCH_NETWORK" ? "chainChanged" : events.data.event === "CONNECT_SUCCESS" ? "accountsChanged" : "disconnect",
+          data: null
+        },
+      };
+
+      rewardRef.current.contentWindow.postMessage(updateMessage, '*');
+    }
+  }, [account.address, events.data]);
+
+  useEffect(() => {
+    console.log("[onelink] isRewardConnected", isRewardConnected);
+  }, [isRewardConnected]);
+
+  useEffect(() => {
+    rewardRef.current = document.getElementById("iframe-npayme-reward") as HTMLIFrameElement | null;
 
     const sendPing = () => {
-      if (reward && reward.contentWindow) {
-        reward.contentWindow.postMessage({ type: 'ping_onelink', address: account.address }, '*');
+      if (rewardRef.current && rewardRef.current.contentWindow) {
+        rewardRef.current.contentWindow.postMessage({ type: 'ping_onelink', address: account.address }, '*');
       }
     };
 
@@ -121,7 +145,7 @@ export default function Web3ConnectButton() {
 
         console.log("[onelink] RPC_RESPONSE", res);
 
-        reward?.contentWindow?.postMessage({
+        rewardRef.current?.contentWindow?.postMessage({
           id: data.id,
           type: MessageType.RPC_RESPONSE,
           data: res,
