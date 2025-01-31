@@ -324,13 +324,12 @@ server {
 docker compose -f docker-compose.dev.yml up
 ```
 
-Install composer packages
+Build react-widget
 
-```
-docker compose -f docker-compose.dev.yml run --rm composer install
+```bash
+cd /linkstack/react-widget && yarn && yarn run build:widget:production
 ```
 
 Open server: http://localhost:8082/
 
-
-And every change in `/linkstack` folder will auto reload :) at `http://localhost:8082/`
+And every change in `/linkstack` folder will auto reload at `http://localhost:8082/` :)

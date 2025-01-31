@@ -55,6 +55,7 @@ $usrhandl = Auth::user()->littlelink_name;
       <!-- Customizer Css -->
             @if(file_exists(base_path("assets/dashboard-themes/dashboard.css")))
       <link rel="stylesheet" href="{{asset('assets/dashboard-themes/dashboard.css')}}" />
+      <!-- <link rel="stylesheet" href="{{ asset('react-widget/dist/widget.css') }}" /> -->
       @else
       <link rel="stylesheet" href="{{asset('assets/css/customizer.min.css')}}" />
       @endif
@@ -843,7 +844,7 @@ try {
 <script src="{{ asset('assets/js/Sortable.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-block-ui.js') }}"></script>
 <script src="{{ asset('assets/js/main-dashboard.js') }}"></script>
-<script async type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript" type="module" src="{{ asset('react-widget/dist/widget.js') }}"></script>
 
 @stack('sidebar-scripts')
 
