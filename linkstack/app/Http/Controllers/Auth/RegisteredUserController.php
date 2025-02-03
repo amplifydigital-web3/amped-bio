@@ -51,6 +51,7 @@ class RegisteredUserController extends Controller {
       'littlelink_name' => $request->littlelink_name,
       'password' => Hash::make($request->password),
       'role' => 'user',
+      'theme' => 'Nebula',
     ]));
 
     $user->block = $block;

@@ -44,6 +44,7 @@ class SocialLoginController extends Controller
                     'image' => $social_user->getAvatar(),
                     'littlelink_name' => $social_user->getNickname(),
                     'email_verified_at' => now(),
+                    'theme' => 'Nebula'
                 ]);
             }
 

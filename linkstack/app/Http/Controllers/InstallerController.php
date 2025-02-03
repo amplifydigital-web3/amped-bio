@@ -75,6 +75,7 @@ class InstallerController extends Controller
             'littlelink_name' => $handle,
             'littlelink_description' => 'admin page',
             'block' => 'no',
+            'theme' => 'Nebula',
         ]);
 
         User::where('id', '1')->update(['role' => 'admin']);
