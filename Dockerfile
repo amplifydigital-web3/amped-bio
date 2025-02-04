@@ -1,8 +1,10 @@
 ARG NODE_VERSION=22.11.0
 
+# Etapa 1: Usar a imagem do Node.js para copiar arquivos necessários
 FROM node:${NODE_VERSION}-alpine AS node
-FROM alpine:3.19.0 AS build
 
+# Etapa 2: Construir a imagem final
+FROM alpine:3.19.0 AS build
 LABEL maintainer="VietLe"
 LABEL description="Onelink Docker"
 
@@ -41,7 +43,6 @@ RUN apk --no-cache --update \
     tzdata \
     npm \
     bash \
-    build-base \
     python3 py3-pip make \
     && mkdir /htdocs
 
@@ -67,20 +68,21 @@ RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
 RUN cd /htdocs && composer install --no-interaction
 
+# Copy Node.js from the node stage
+COPY --from=node /usr/local/bin /usr/local/bin
 COPY --from=node /usr/lib /usr/lib
 COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
-COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN node -v
+# Set correct permissions for Node.js files
+RUN chown -R apache:apache /usr/local/bin /usr/lib /usr/local/lib /usr/local/include
 
-RUN npm install -g yarn --force
+# Install Yarn
+# RUN npm install -g yarn
 
-RUN yarn -v
-
-# Use Yarn to install dependencies and build assets
-RUN cd /htdocs/react-widget && yarn install \
-    && yarn run build:widget:production
+# Use Yarn to install dependencies and run development server
+# RUN cd /htdocs && yarn install \
+#     && yarn run dev
 
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
