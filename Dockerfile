@@ -80,7 +80,8 @@ RUN yarn -v
 
 # Use Yarn to install dependencies and build assets
 RUN cd /htdocs/react-widget && yarn install \
-    && yarn run build:widget:production
+    && yarn run build:widget:production \
+    && rm -rf node_modules
 
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
