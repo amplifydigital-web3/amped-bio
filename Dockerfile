@@ -78,6 +78,7 @@ RUN npm install -g yarn --force
 WORKDIR /htdocs/react-widget
 RUN yarn install
 RUN yarn run build:widget:production
+RUN rm -rf node_modules
 
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
