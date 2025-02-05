@@ -195,7 +195,7 @@
                   @endif
 
                   @if ((env('ALLOW_REGISTRATION')) and !config('linkstack.single_user_mode'))
-                  <a class="btn btn-secondary me-3" href="{{ route('register') }}">{{__('messages.Claim your Amped Bio')}}</a>
+                  <a class="btn btn-secondary me-3" href="{{ route('register') }}">{{__('messages.Claim your Amped-Bio')}}</a>
                   @endif
               @endauth
                     @endif
