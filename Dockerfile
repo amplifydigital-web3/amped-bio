@@ -1,10 +1,13 @@
-ARG NODE_VERSION=22.11.0
-
-FROM node:${NODE_VERSION}-alpine AS node
-FROM alpine:3.19.0 AS build
-
+FROM node:22.11-alpine AS node
+FROM alpine:3.19.0
 LABEL maintainer="VietLe"
 LABEL description="Onelink Docker"
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/share /usr/local/share
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
 
 # Setup apache and php
 RUN apk --no-cache --update \
@@ -39,8 +42,9 @@ RUN apk --no-cache --update \
     php82-xmlwriter \
     php82-redis \
     tzdata \
-    npm \
     bash \
+    git \
+    openssh-client \
     build-base \
     python3 py3-pip make \
     && mkdir /htdocs
@@ -67,21 +71,14 @@ RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
 RUN cd /htdocs && composer install --no-interaction
 
-COPY --from=node /usr/lib /usr/lib
-COPY --from=node /usr/local/lib /usr/local/lib
-COPY --from=node /usr/local/include /usr/local/include
-COPY --from=node /usr/local/bin /usr/local/bin
-
-RUN node -v
-
+# Install Yarn
 RUN npm install -g yarn --force
 
-RUN yarn -v
-
-# Use Yarn to install dependencies and build assets
-RUN cd /htdocs/react-widget && yarn install \
-    && yarn run build:widget:production \
-    && rm -rf node_modules
+# Use Yarn to install dependencies and build widget
+WORKDIR /htdocs/react-widget
+RUN yarn install
+RUN yarn run build:widget:production
+RUN rm -rf node_modules
 
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
