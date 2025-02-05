@@ -1,6 +1,13 @@
-FROM alpine:3.19.0 AS build
+FROM node:22.11-alpine AS node
+FROM alpine:3.19.0
 LABEL maintainer="VietLe"
 LABEL description="Onelink Docker"
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/share /usr/local/share
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
 
 # Setup apache and php
 RUN apk --no-cache --update \
@@ -35,8 +42,10 @@ RUN apk --no-cache --update \
     php82-xmlwriter \
     php82-redis \
     tzdata \
-    npm \
     bash \
+    git \
+    openssh-client \
+    build-base \
     python3 py3-pip make \
     && mkdir /htdocs
 
@@ -62,16 +71,13 @@ RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
 RUN cd /htdocs && composer install --no-interaction
 
-# Install 'n' and set Node.js version to 22.11.0
-RUN npm install -g n \
-    && n 22.11.0
-
 # Install Yarn
-RUN npm install -g yarn
+RUN npm install -g yarn --force
 
-# Use Yarn to install dependencies and run development server
-RUN cd /htdocs && yarn install \
-    && yarn run dev
+# Use Yarn to install dependencies and build widget
+WORKDIR /htdocs/react-widget
+RUN yarn install
+RUN yarn run build:widget:production
 
 # RUN mkdir -p /htdocs/js/components
 # RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
