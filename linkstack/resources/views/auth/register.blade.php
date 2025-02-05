@@ -43,7 +43,7 @@ foreach($pages as $page)
                 <h4 class="logo-title ms-3">{{env('APP_NAME')}}</h4>
               </a>
               <h2 class="mb-2 text-center">{{__('messages.Sign Up')}}</h2>
-              <p class="text-center">{{__('messages.Claim your Amped Bio')}}.</p>
+              <p class="text-center">{{__('messages.Claim your Amped-Bio')}}.</p>
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="row">

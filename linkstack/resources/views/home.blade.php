@@ -145,7 +145,7 @@
                 @if ((env('ALLOW_REGISTRATION')) and !config('linkstack.single_user_mode'))
                 <li class="me-0 me-xl-2">
                   <a class="btn btn-secondary btn-sm d-flex gap-2 align-items-center" aria-current="page" href="{{ route('register') }}">
-                    {{__('messages.Claim your Amped Bio')}}
+                    {{__('messages.Claim your Amped-Bio')}}
                   </a>
                 </li>
                 @endif
