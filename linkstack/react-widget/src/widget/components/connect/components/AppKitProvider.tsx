@@ -8,9 +8,9 @@ import { ConnectModal } from "./components/ConnectModal";
 
 // 2. Create a metadata object - optional
 const metadata = {
-  name: "OneLink",
-  description: "npayme OneLink",
-  url: "onelink.npayme.io",
+  name: "Amped-Bio",
+  description: "Amped-Bio",
+  url: "amped.bio",
   icons: [],
 };
 

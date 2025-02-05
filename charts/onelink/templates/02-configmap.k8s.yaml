@@ -46,7 +46,7 @@ data:
 
     #App Settings=Changes settings regarding your LinkStack installation. You probably only want to change the App Name setting.
     #=App_Name changes  the displayed name for the App in the title, for example.
-    APP_NAME="onelink"
+    APP_NAME="Amped-Bio"
     APP_KEY=base64:ywpSiy9mFlWCL8pbYdik7jkP20PjbdRiESZfazP6cSg=
     #=The APP_URL should be left empty under most circumstances. This setting is not required for LinkStack, and you should only change this if required for your setup.
     APP_URL=

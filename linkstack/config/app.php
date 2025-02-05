@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'OneLink'),
+    'name' => env('APP_NAME', 'Amped-Bio'),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'copyright' => env('APP_COPYRIGHT', 'npayme Labs'),
+    'copyright' => env('APP_COPYRIGHT', 'Amplify Digital'),
 
     /*
     |--------------------------------------------------------------------------

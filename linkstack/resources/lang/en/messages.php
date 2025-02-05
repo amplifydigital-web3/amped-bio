@@ -13,7 +13,7 @@ return [
 
   'Log in' => 'Log in',
   'Register' => 'Register',
-  'Claim your OneLink' => 'Claim your OneLink',
+  'Claim your Amped Bio' => 'Claim your Amped Bio',
 
   'Dashboard' => 'Dashboard',
   'Copyright' => 'Copyright',
