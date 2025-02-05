@@ -22,7 +22,7 @@ $analytics =
 <!-- End of Google tag (gtag.js) --> 
 
 <!-- Plausible analytics -->
-<script defer data-domain="onelink.npayme.io" src="https://plausible.io/js/script.js"></script>
+<script defer data-domain="amped.bio" src="https://plausible.io/js/script.js"></script>
 <!-- End of Plausible analytics -->
 
 <!--------------------------------------------------->
