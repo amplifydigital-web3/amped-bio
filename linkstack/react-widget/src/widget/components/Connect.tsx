@@ -84,12 +84,16 @@ export default function Web3ConnectButton() {
   useEffect(() => {
     if (memoizedAccountConnected[0] === true && memoizedAccountConnected[1] === false) {
       console.log("[onelink] disconnect");
-      rewardRef.current?.contentWindow?.postMessage({
-        id: 0, type: MessageType.UPDATE, data: {
-          event: "disconnect",
-          data: null
-        }
-      } as UpdateMessage, '*');
+
+      // currently not working, just send the other event and force disconnect using hook useDisconnect.
+      // rewardRef.current?.contentWindow?.postMessage({
+      //   id: 0, type: MessageType.UPDATE, data: {
+      //     event: "disconnect",
+      //     data: null
+      //   }
+      // } as UpdateMessage, '*');
+
+      rewardRef.current?.contentWindow?.postMessage({ type: 'disconnect_onelink' }, '*');
     } else if (memoizedChain[0] !== undefined && memoizedChain[0] !== memoizedChain[1]) {
       console.log("[onelink] chainChanged");
       rewardRef.current?.contentWindow?.postMessage({
@@ -150,8 +154,6 @@ export default function Web3ConnectButton() {
           method: event.data.data.method,
           params: event.data.data.params,
         });
-
-        console.log("[onelink] RPC_RESPONSE", res);
 
         rewardRef.current?.contentWindow?.postMessage({
           id: data.id,
