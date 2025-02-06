@@ -21,7 +21,7 @@ return [
   'by' => 'by',
 
   'HOME.MESSAGE' => '
-    Everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.\n\n
+    Everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.<br><br>
     Claim your Amped-Bio today!  -> amped.bio/@yourname',
 
   /*
