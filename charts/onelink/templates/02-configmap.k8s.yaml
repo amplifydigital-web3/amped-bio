@@ -29,7 +29,7 @@ data:
     NOTIFY_UPDATES=true
     DISPLAY_FOOTER=true
     DISPLAY_CREDIT=false
-    DISPLAY_CREDIT_FOOTER=true
+    DISPLAY_CREDIT_FOOTER=false
 
     ADMIN_EMAIL=
 
