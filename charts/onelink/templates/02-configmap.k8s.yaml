@@ -29,7 +29,7 @@ data:
     NOTIFY_UPDATES=true
     DISPLAY_FOOTER=true
     DISPLAY_CREDIT=false
-    DISPLAY_CREDIT_FOOTER=true
+    DISPLAY_CREDIT_FOOTER=false
 
     ADMIN_EMAIL=
 
@@ -166,4 +166,4 @@ data:
 
     REWARD_BUTTON_URL=https://reward.npayme.io/panel-dev.js
     REWARD_URL=https://reward-dev.npayme.io/get-started/business
-    HOME_BLOG_LINK=https://blog.npayme.com/home/
+    HOME_BLOG_LINK=https://onboarding.ampedbio.com
