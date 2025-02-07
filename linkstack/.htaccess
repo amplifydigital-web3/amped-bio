@@ -5,6 +5,9 @@
 
     RewriteEngine On
 
+    #Redirect to amped.bio
+    RewriteRule (.*) https://amped.bio/$1 [L,R=301,NC]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
