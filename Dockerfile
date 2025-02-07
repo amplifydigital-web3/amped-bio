@@ -14,7 +14,10 @@ WORKDIR /build/react-widget
 RUN yarn install
 RUN yarn run build:widget:production
 
-# Check if the dist directory was created
+# Debugging step to list files in the build directory
+RUN ls -la /build/react-widget
+
+# Ensure the dist directory is created
 RUN if [ ! -d "dist" ]; then echo "Build failed, dist directory not found"; exit 1; fi
 
 # Stage 2: Main image
