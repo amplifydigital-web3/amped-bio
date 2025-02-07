@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['HTTP_HOST'] == 'onelink-dev.npayme.io') {
+if ($_SERVER['HTTP_HOST'] == 'onelink.npayme.io') {
     header('Location: https://amped.bio' . $_SERVER['REQUEST_URI'], true, 301);
     exit;
 }
