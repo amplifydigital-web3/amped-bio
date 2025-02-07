@@ -1,5 +1,10 @@
 <?php
 
+if ($_SERVER['HTTP_HOST'] == 'onelink.npayme.io') {
+    header('Location: https://amped.bio' . $_SERVER['REQUEST_URI'], true, 301);
+    exit;
+}
+
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
