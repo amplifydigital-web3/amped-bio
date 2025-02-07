@@ -1,13 +1,23 @@
-FROM node:22.11-alpine AS node
+# Stage 1: Build Node dependencies and widget
+FROM node:22.11-alpine AS build-react-widget
+
+RUN apk --no-cache --update \
+    add build-base \
+    python3 py3-pip make
+
+WORKDIR /build
+
+# Copy necessary files for building
+COPY linkstack/react-widget ./
+WORKDIR /build/react-widget
+
+RUN yarn install
+RUN yarn run build:widget:production
+
+# Stage 2: Main image
 FROM alpine:3.19.0
 LABEL maintainer="VietLe"
 LABEL description="Onelink Docker"
-
-COPY --from=node /usr/lib /usr/lib
-COPY --from=node /usr/local/share /usr/local/share
-COPY --from=node /usr/local/lib /usr/local/lib
-COPY --from=node /usr/local/include /usr/local/include
-COPY --from=node /usr/local/bin /usr/local/bin
 
 # Setup apache and php
 RUN apk --no-cache --update \
@@ -43,11 +53,12 @@ RUN apk --no-cache --update \
     php82-redis \
     tzdata \
     bash \
-    build-base \
-    python3 py3-pip make \
     && mkdir /htdocs
 
+# Copy application files
 COPY linkstack /htdocs
+RUN rm -rf /htdocs/react-widget
+COPY --from=build-react-widget /build/react-widget /htdocs/react-widget
 COPY --from=composer /usr/bin/composer /bin/composer
 COPY ./linkstack/composer.json /htdocs/
 
@@ -55,37 +66,12 @@ RUN chown -R apache:apache /htdocs
 
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/
 
-# For debugging
-# RUN chown -R root:root /var/www/logs
-# RUN chown -R root:root /var/log/apache2/
-# RUN chmod 777 -R /var/log/apache2/
-# RUN chown -R root:root /htdocs/storage
-# RUN chmod 777 -R /htdocs/storage
-
 # For production
 RUN chown -R apache:apache /var/www/logs
 RUN chown -R apache:apache /var/log/apache2/
 RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 
 RUN cd /htdocs && composer install --no-interaction
-
-# Install Yarn
-RUN npm install -g yarn --force
-
-# Use Yarn to install dependencies and build widget
-WORKDIR /htdocs/react-widget
-RUN yarn install
-RUN yarn run build:widget:production
-RUN rm -rf node_modules
-
-# RUN mkdir -p /htdocs/js/components
-# RUN cp /htdocs/public/js/components/node_modules*.js /htdocs/js/components/
-
-# fixed in PR #17
-# RUN mkdir -p /htdocs/js/
-# RUN cp /htdocs/public/js/node_modules*.js /htdocs/js/
-
-# RUN npm run production
 
 COPY configs/apache2/httpd.conf /etc/apache2/httpd.conf
 COPY configs/apache2/ssl.conf /etc/apache2/conf.d/ssl.conf
