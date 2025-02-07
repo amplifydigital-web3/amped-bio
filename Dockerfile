@@ -8,14 +8,12 @@ RUN apk --no-cache --update \
 WORKDIR /build
 
 # Copy necessary files for building
-COPY linkstack/react-widget ./
+COPY linkstack/react-widget ./react-widget
 WORKDIR /build/react-widget
 
 RUN yarn install
-RUN yarn run build:widget:production
 
-# Debugging step to list files in the build directory
-RUN ls -la /build/react-widget
+RUN yarn run build:widget:production
 
 # Ensure the dist directory is created
 RUN if [ ! -d "dist" ]; then echo "Build failed, dist directory not found"; exit 1; fi
