@@ -35,7 +35,7 @@
                             <div class="form-group col-lg-8">
                               <h3>{{__('messages.Home message')}}</h3>
                               @php
-                              if($home_message == "default") $home_message = __('messages.HOME.MESSAGE');
+                              if($home_message == "default") $home_message = __('messages.HOME.NEW_MESSAGE');
                               @endphp
                               <textarea class="form-control ckeditor" name="message" rows="3">{{ $home_message }}</textarea>
                             </div>

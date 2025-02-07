@@ -20,7 +20,7 @@ return [
   'Made with' => 'Made',
   'by' => 'by',
 
-  'HOME.MESSAGE' => '
+  'HOME.NEW_MESSAGE' => '
     Everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.<br><br>
     Claim your Amped-Bio today!  -> amped.bio/@yourname',
 
