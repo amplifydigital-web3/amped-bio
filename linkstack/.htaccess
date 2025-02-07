@@ -6,6 +6,7 @@
     RewriteEngine On
 
     #Redirect to amped.bio
+    RewriteCond %{HTTP_HOST} ^onelink.npayme.io$
     RewriteRule (.*) https://amped.bio/$1 [L,R=301,NC]
 
     # Handle Authorization Header
