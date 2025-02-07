@@ -43,8 +43,6 @@ RUN apk --no-cache --update \
     php82-redis \
     tzdata \
     bash \
-    git \
-    openssh-client \
     build-base \
     python3 py3-pip make \
     && mkdir /htdocs
