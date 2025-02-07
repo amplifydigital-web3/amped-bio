@@ -14,6 +14,9 @@ WORKDIR /build/react-widget
 RUN yarn install
 RUN yarn run build:widget:production
 
+# Check if the dist directory was created
+RUN if [ ! -d "dist" ]; then echo "Build failed, dist directory not found"; exit 1; fi
+
 # Stage 2: Main image
 FROM alpine:3.19.0
 LABEL maintainer="VietLe"
@@ -58,7 +61,7 @@ RUN apk --no-cache --update \
 # Copy application files
 COPY linkstack /htdocs
 RUN rm -rf /htdocs/react-widget
-COPY --from=build-react-widget /build/react-widget /htdocs/react-widget
+COPY --from=build-react-widget /build/react-widget/dist /htdocs/react-widget/dist
 COPY --from=composer /usr/bin/composer /bin/composer
 COPY ./linkstack/composer.json /htdocs/
 
