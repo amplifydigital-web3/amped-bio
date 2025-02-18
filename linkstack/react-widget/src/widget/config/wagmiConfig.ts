@@ -1,15 +1,10 @@
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import {
   mainnet,
-  sepolia,
-  polygon,
-  baseSepolia,
-  base,
   AppKitNetwork,
 } from '@reown/appkit/networks';
 
-export const projectId = (process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ||
-  '64c300c731392456340fe626355b366e') as string;
+export const projectId = "e0c0b073645ed7ce3b15930fd2847d6d"
 
 if (!projectId) {
   throw new Error('Project ID is not defined');
