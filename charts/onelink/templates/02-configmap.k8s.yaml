@@ -78,10 +78,10 @@ data:
     #Mail Settings=LinkStack comes with a free to use built-in SMTP server for sending mail. You can leave this setting as is, if you wish to use this service please read our terms and conditions at llc-mail.tru.io. If you do not wish to use the built-in SMTP server, change the setting below.
     #=MAIL_MAILER either smtp, sendmail or built-in. Make sure to change this setting if you want to add a custom SMTP server or use sendmail.
     MAIL_MAILER=smtp
-    MAIL_HOST=mail.smtp2go.com
-    MAIL_PORT=2525
-    MAIL_USERNAME=amplifydigital.ai
-    MAIL_PASSWORD="z8IhWs5MvGE2y42n"
+    MAIL_HOST=
+    MAIL_PORT=
+    MAIL_USERNAME=
+    MAIL_PASSWORD=
     MAIL_ENCRYPTION=tls
     MAIL_FROM_ADDRESS=info@amplifydigital.ai
     MAIL_FROM_NAME="${APP_NAME}"
