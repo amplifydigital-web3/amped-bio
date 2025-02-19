@@ -9,8 +9,8 @@ data:
   ENVIRONMENT: development
   LOG_LEVEL: info
   SERVER_ADMIN: viet@oneiro.io
-  HTTP_SERVER_NAME: onelink.npayme.io
-  HTTPS_SERVER_NAME: onelink.npayme.io
+  HTTP_SERVER_NAME: dev.amped.bio
+  HTTPS_SERVER_NAME: dev.amped.bio
   TZ: America/New_York
   PHP_MEMORY_LIMIT: 512M
   UPLOAD_MAX_FILESIZE: 16M
@@ -69,7 +69,7 @@ data:
     # DB_CONNECTION=sqlite
     # DB_DATABASE=/db/onelink.sqlite
     DB_CONNECTION=mysql
-    DB_HOST=173.255.235.147
+    DB_HOST=172.104.13.158
     DB_PORT=31027
     DB_DATABASE=onelink
     DB_USERNAME=oneiro
@@ -77,13 +77,13 @@ data:
 
     #Mail Settings=LinkStack comes with a free to use built-in SMTP server for sending mail. You can leave this setting as is, if you wish to use this service please read our terms and conditions at llc-mail.tru.io. If you do not wish to use the built-in SMTP server, change the setting below.
     #=MAIL_MAILER either smtp, sendmail or built-in. Make sure to change this setting if you want to add a custom SMTP server or use sendmail.
-    MAIL_MAILER=built-in
-    MAIL_HOST=
-    MAIL_PORT=
-    MAIL_USERNAME=
-    MAIL_PASSWORD=
-    MAIL_ENCRYPTION=
-    MAIL_FROM_ADDRESS=
+    MAIL_MAILER=smtp
+    MAIL_HOST=mail.smtp2go.com
+    MAIL_PORT=2525
+    MAIL_USERNAME=amplifydigital.ai
+    MAIL_PASSWORD="z8IhWs5MvGE2y42n"
+    MAIL_ENCRYPTION=tls
+    MAIL_FROM_ADDRESS=info@amplifydigital.ai
     MAIL_FROM_NAME="${APP_NAME}"
     #= Set the path to sendmail binary and set options. Default is /usr/sbin/sendmail -bs
     MAIL_SENDMAIL=
@@ -164,6 +164,6 @@ data:
     ENABLE_LOYALTY=true
     ENABLE_SPOTIFY=true
 
-    REWARD_BUTTON_URL=https://reward.npayme.io/panel-dev.js
-    REWARD_URL=https://reward-dev.npayme.io/get-started/business
+    REWARD_BUTTON_URL=https://reward-dev.amped.bio/panel-dev.js
+    REWARD_URL=https://reward-dev.amped.bio/get-started/business
     HOME_BLOG_LINK=https://onboarding.ampedbio.com
