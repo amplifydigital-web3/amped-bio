@@ -96,18 +96,6 @@ export default {
       exclude: ['crypto'],
     }),
     injectProcessEnv(ENV_VARIABLES),
-    // terser({
-    //   ecma: 2020,
-    //   mangle: { toplevel: true },
-    //   compress: {
-    //     module: false,
-    //     toplevel: true,
-    //     unsafe_arrows: true,
-    //     drop_console: true,
-    //     drop_debugger: true,
-    //   },
-    //   output: { quote_style: 1 },
-    // })
-   
+    terser()
   ],
 };
