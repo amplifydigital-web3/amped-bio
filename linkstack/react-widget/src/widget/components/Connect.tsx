@@ -5,6 +5,7 @@ import { useChainId, useConfig } from "wagmi";
 import styled from "styled-components";
 import { getWalletClient } from "@wagmi/core";
 import useMemoizeValue from "../hooks/useMemoizeValue";
+import { setBusinessId } from "../repository";
 
 enum MessageType {
   RPC = 'rpc_request',
@@ -160,6 +161,9 @@ export default function Web3ConnectButton() {
           type: MessageType.RPC_RESPONSE,
           data: res,
         }, '*');
+      } else if (event.data.type === "set_business_id") {
+        // call api endpoint to update business id
+        await setBusinessId(event.data.business_id);
       }
     };
 
