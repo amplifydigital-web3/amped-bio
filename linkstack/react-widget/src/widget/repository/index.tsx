@@ -20,6 +20,7 @@ export const fetch_axios = async (
   url: string | { base: string; path: string; contentType: string },
   body?: any,
   params?: any,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   config?: any
 ) => {
   const { base, path, contentType } =
@@ -81,5 +82,13 @@ export const addwallet = async (
     wallet_address,
   });
 };
+
+export const setBusinessId = async (
+  business_id: string,
+) => {
+  return await fetch_axios("post", "set-business-id", {
+    business_id,
+  });
+}
 
 export { baseURL };

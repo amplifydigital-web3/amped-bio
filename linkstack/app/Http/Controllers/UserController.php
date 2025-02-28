@@ -1300,4 +1300,34 @@ class UserController extends Controller {
       'user_wallet' => $walletAddress,
     ]);
   }
+
+  public function setBusinessId(Request $request) {
+    $userId = Auth::id();
+    $businessId = $request->input("business_id", '');
+
+    Log::info("Set reward business ID for $userId: $businessId");
+
+    if (!$businessId || strlen($businessId) == 0) {
+      return response()->json([
+      'status' => 'ERROR',
+      'message' => 'Invalid business ID',
+      ]);
+    }
+
+    $user = User::find($userId);
+
+    if (strlen($user->reward_business_id) > 0) {
+      return response()->json([
+      'status' => 'ERROR',
+      'message' => 'Business ID already set',
+      ]);
+    }
+
+    User::where('id', $userId)->update(['reward_business_id' => $businessId]);
+
+    return response()->json([
+      'status' => 'OK',
+      'reward_business_id' => $businessId,
+    ]);
+  }
 }

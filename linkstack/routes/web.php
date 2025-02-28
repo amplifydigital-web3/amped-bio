@@ -95,6 +95,7 @@ Route::middleware(['auth', 'blocked', 'impersonate'])->group(function () {
     Route::get('/studio/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser')->middleware('verified');
     Route::post('/auth-as', [AdminController::class, 'authAs'])->name('authAs');
     Route::post('/add-wallet', [UserController::class, 'addWallet'])->name('addWallet');
+    Route::post('/set-business-id', [UserController::class, 'setBusinessId'])->name('setBusinessId');
 
 // Catch all redirects
     Route::get('/admin/users/all', fn() => redirect(route('showUsers')));
