@@ -20,6 +20,8 @@ return [
   'Made with' => 'Made',
   'by' => 'by',
 
+  'Reward Program ID' => 'Reward Program ID',
+
   'HOME.NEW_MESSAGE' => '
     Everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.<br><br>
     Claim your Amped-Bio today!  -> amped.bio/@yourname',
@@ -49,7 +51,7 @@ return [
   # Login Page
   'Sign In' => 'Sign In',
   'Login to stay connected' => 'Login to stay connected',
-  'Email' => 'Username or email',
+  'Email' => 'Email',
   'Password' => 'Password',
   'Remember Me' => 'Remember Me',
   'Forgot Password?' => 'Forgot Password?',
@@ -1015,7 +1017,7 @@ return [
   'footer.Home' => 'Home',
   'footer.Terms' => 'Terms',
   'footer.Privacy' => 'Privacy',
-  'footer.Contact' => 'Contact Support',
+  'footer.Contact' => '',
 
   /*
   |--------------------------------------------------------------------------
