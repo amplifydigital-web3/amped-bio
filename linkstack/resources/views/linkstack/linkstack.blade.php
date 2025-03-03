@@ -12,6 +12,12 @@
       <script src="{{env('REWARD_BUTTON_URL')}}?onelink={{ $userinfo->reward_business_id }}"></script>
    @endif
 
+   <script>
+      window.fwSettings={'widget_id':154000003485};
+	   !function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}()
+   </script>
+   <script type='text/javascript' src='https://widget.freshworks.com/widgets/154000003485.js' async defer></script>
+   
 </head>
 
 <body>
