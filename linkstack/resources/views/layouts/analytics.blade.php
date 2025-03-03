@@ -9,6 +9,12 @@ if (substr($_SERVER['REQUEST_URI'], 0, 2) !== '/@') {
 } 
 ?>
 
+<script>
+      window.fwSettings={'widget_id':154000003485};
+	   !function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}()
+</script>
+<script type='text/javascript' src='https://widget.freshworks.com/widgets/154000003485.js' async defer></script>
+   
 @if(preg_replace( "/\r|\n/", "", $analyticsHTML ) != '')
 
 <!-- Analytics -->
