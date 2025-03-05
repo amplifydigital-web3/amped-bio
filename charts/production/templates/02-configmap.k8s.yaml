@@ -6,13 +6,13 @@ metadata:
   labels:
     app: onelink-config
 data:
-  ENVIRONMENT: development
+  ENVIRONMENT: production
   LOG_LEVEL: info
   SERVER_ADMIN: viet@oneiro.io
-  HTTP_SERVER_NAME: dev.amped.bio
-  HTTPS_SERVER_NAME: dev.amped.bio
+  HTTP_SERVER_NAME: onelink.npayme.io
+  HTTPS_SERVER_NAME: onelink.npayme.io
   TZ: America/New_York
-  PHP_MEMORY_LIMIT: 512M
+  PHP_MEMORY_LIMIT: 4096M
   UPLOAD_MAX_FILESIZE: 16M
   env.conf: |-
     LOCALE=en
@@ -31,7 +31,7 @@ data:
     DISPLAY_CREDIT=false
     DISPLAY_CREDIT_FOOTER=false
 
-    ADMIN_EMAIL=
+    ADMIN_EMAIL="admin@amplifydigital.ai"
 
     SUPPORTED_DOMAINS=""
 
@@ -49,8 +49,9 @@ data:
     APP_NAME="Amped-Bio"
     APP_KEY=base64:ywpSiy9mFlWCL8pbYdik7jkP20PjbdRiESZfazP6cSg=
     #=The APP_URL should be left empty under most circumstances. This setting is not required for LinkStack, and you should only change this if required for your setup.
+    #APP_URL=https://amped.bio
+    #APP_COPYRIGHT="Amplify Digital"
     APP_URL=
-
     #ENABLE_BUTTON_EDITOR=Determines if the custom button editor should be enabled or not, default is true.
     #=ENABLE_BUTTON_EDITOR either true or false.
     ENABLE_BUTTON_EDITOR=true
@@ -59,9 +60,9 @@ data:
     #=App_debug either true or false. You might want to change this to false after you're done installing, but it's very useful for troubleshooting.
     APP_DEBUG=true
     #=App_env either local or production. Change this to production if you set the value above to false.
-    APP_ENV=development
+    APP_ENV=production
     LOG_CHANNEL=stack
-    # LOG_LEVEL=debug
+    LOG_LEVEL=debug
     #=Disables all routes and displays a Maintenance placeholder page.
     MAINTENANCE_MODE=false
 
@@ -69,11 +70,11 @@ data:
     # DB_CONNECTION=sqlite
     # DB_DATABASE=/db/onelink.sqlite
     DB_CONNECTION=mysql
-    DB_HOST=172.104.13.158
-    DB_PORT=31027
+    DB_HOST=lin-142698-17538-mysql-primary.servers.linodedb.net
+    DB_PORT=3306
     DB_DATABASE=onelink
-    DB_USERNAME=oneiro
-    DB_PASSWORD=admin
+    DB_USERNAME=linroot
+    DB_PASSWORD=M&ILe4LwdHUS1u7w
 
     #Mail Settings=LinkStack comes with a free to use built-in SMTP server for sending mail. You can leave this setting as is, if you wish to use this service please read our terms and conditions at llc-mail.tru.io. If you do not wish to use the built-in SMTP server, change the setting below.
     #=MAIL_MAILER either smtp, sendmail or built-in. Make sure to change this setting if you want to add a custom SMTP server or use sendmail.
@@ -121,12 +122,9 @@ data:
 
     #ENABLE_THEME_UPDATER=Determines if the theme updater should be enabled or not, default is true.
     #=ENABLE_THEME_UPDATER either true or false.
-    ENABLE_THEME_UPDATER=true
-
-
+    ENABLE_THEME_UPDATER=false
 
     ENABLE_SOCIAL_LOGIN=false
-
 
     USE_THEME_PREVIEW_IFRAME=true
 
@@ -139,11 +137,12 @@ data:
     DISPLAY_FOOTER_CONTACT=false
 
     TITLE_FOOTER_HOME="Claim your own Amped-Bio"
+    #TITLE_FOOTER_HOME=
     TITLE_FOOTER_TERMS=
     TITLE_FOOTER_PRIVACY=
     TITLE_FOOTER_CONTACT=
 
-    HOME_FOOTER_LINK=""
+    HOME_FOOTER_LINK="https://amped.bio/register"
 
     HIDE_VERIFICATION_CHECKMARK=false
 
@@ -159,11 +158,12 @@ data:
 
     ENABLE_ADMIN_BAR=true
 
+    # Toggle Web3 features
     ENABLE_CONNECT_WALLET=true
-    ENABLE_PROMOTE=true
+    ENABLE_PROMOTE=false
     ENABLE_LOYALTY=true
-    ENABLE_SPOTIFY=true
+    ENABLE_SPOTIFY=false
 
-    REWARD_BUTTON_URL=https://reward-dev.amped.bio/panel-dev.js
-    REWARD_URL=https://reward-dev.amped.bio/get-started/business
+    REWARD_BUTTON_URL=https://reward.amped.bio/panel.js
+    REWARD_URL=https://reward.amped.bio
     HOME_BLOG_LINK=https://onboarding.ampedbio.com
