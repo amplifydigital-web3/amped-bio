@@ -327,7 +327,7 @@ docker compose -f docker-compose.dev.yml up
 Build react-widget
 
 ```bash
-cd /linkstack/react-widget && yarn && yarn run build:widget:production
+cd linkstack/react-widget && yarn && yarn run build:widget:production
 ```
 
 Open server: http://localhost:8082/
