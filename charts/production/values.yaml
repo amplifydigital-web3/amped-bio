@@ -11,7 +11,7 @@ fullnameOverride: ''
 image:
   repository: npaymelabs/onelink
   pullPolicy: Always
-  tag: 0.0.49
+  tag: 0.0.50
   # pullPolicy: IfNotPresent
   imagePullSecrets:
     - name: npaymelabs-repo-dockerhub
