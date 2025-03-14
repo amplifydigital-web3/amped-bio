@@ -7,10 +7,11 @@
    @include('linkstack.modules.assets')
    @foreach($information as $info)
    @stack('linkstack-head-end')
-
+<!--
    @if (strlen($userinfo->reward_business_id) > 0)
       <script src="{{env('REWARD_BUTTON_URL')}}?onelink={{ $userinfo->reward_business_id }}"></script>
    @endif
+-->
 </head>
 
 <body>
