@@ -165,5 +165,5 @@ data:
     ENABLE_SPOTIFY=true
 
     REWARD_BUTTON_URL=https://reward-dev.amped.bio/panel-dev.js
-    REWARD_URL=https://reward-dev.amped.bio/get-started/business
+    REWARD_URL=https://reward-dev.amped.bio/
     HOME_BLOG_LINK=https://onboarding.ampedbio.com
