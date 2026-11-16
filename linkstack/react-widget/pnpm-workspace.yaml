@@ -1,0 +1,10 @@
+allowBuilds:
+  bufferutil: true
+  core-js: false
+  deasync: false
+  es5-ext: false
+  esbuild: true
+  fsevents: false
+  keccak: true
+  parcel-bundler: false
+  utf-8-validate: true
